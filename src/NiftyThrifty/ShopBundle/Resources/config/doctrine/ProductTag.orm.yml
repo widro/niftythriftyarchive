@@ -1,0 +1,36 @@
+NiftyThrifty\ShopBundle\Entity\ProductTag:
+    type: entity
+    repositoryClass: ProductTagRepository
+    table: product_tag
+    fields:
+        productTagId:
+            id: true
+            type: bigint
+            nullable: false
+            column: product_tag_id
+            generator:
+                strategy: IDENTITY
+        productTagName:
+            type: string
+            length: 254
+            fixed: false
+            nullable: false
+            column: product_tag_name
+        productTagSlug:
+            type: string
+            length: 254
+            fixed: false
+            nullable: false
+            column: product_tag_slug
+        productTagtypeId:
+            type: bigint
+            nullable: false
+            column: product_tagtype_id
+    manyToOne:
+        productTagtype:
+            targetEntity:   ProductTagtype
+            inversedBy:     productTags
+            joinColumn:
+                name:                   product_tagtype_id
+                referencedColumnName:   product_tagtype_id
+    lifecycleCallbacks: {  }

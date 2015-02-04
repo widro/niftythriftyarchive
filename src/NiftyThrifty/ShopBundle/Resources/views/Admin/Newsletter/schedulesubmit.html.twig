@@ -1,0 +1,21 @@
+{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
+
+{% block title %}
+{{ parent() }} -  {{ 'views.edit.edit'|trans({'%entity%': 'Newsletter'}, 'JordiLlonchCrudGeneratorBundle') }}
+{% endblock %}
+
+{% block page %}
+
+<h1>Newsletter Scheduled!</h1>
+
+              {{ newsletterHtml }} 
+            
+            
+<div>
+    <div class="float-left">
+        <a class="btn" href="{{ path('newsletter_admin') }}">
+            {{ 'views.recordactions.backtothelist'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>
+    </div>
+</div>
+{% endblock %}

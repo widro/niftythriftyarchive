@@ -1,0 +1,30 @@
+{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
+
+{% block title %}
+{{ parent() }} -  {{ 'views.edit.edit'|trans({'%entity%': 'Newsletter'}, 'JordiLlonchCrudGeneratorBundle') }}
+{% endblock %}
+
+{% block page %}
+
+<h1>Schedule {{ 'views.edit.edit'|trans({'%entity%': 'Newsletter'}, 'JordiLlonchCrudGeneratorBundle') }}</h1>
+
+            
+<form class="well" action="{{ path('newsletter_admin_schedule_submit', { 'id': entity.id }) }}" method="post">
+    <input type="hidden" name="_method" value="POST" />
+    
+    
+    Time:
+    <input type="text" id="schedule_time" name="schedule_time" value="2013-mm-dd 10:00:00">
+    <p>
+        <button type="submit" class="btn btn-success">Schedule</button>
+    </p>
+</form>
+
+<div>
+    <div class="float-left">
+        <a class="btn" href="{{ path('newsletter_admin') }}">
+            {{ 'views.recordactions.backtothelist'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>
+    </div>
+</div>
+{% endblock %}

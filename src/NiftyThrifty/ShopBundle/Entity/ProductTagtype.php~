@@ -1,0 +1,100 @@
+<?php
+
+namespace NiftyThrifty\ShopBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ProductTagtype
+ */
+class ProductTagtype
+{
+    /**
+     * @var integer
+     */
+    private $productTagtypeId;
+
+    /**
+     * @var string
+     */
+    private $productTagtypeName;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $productTags;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->productTags = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Get productTagtypeId
+     *
+     * @return integer 
+     */
+    public function getProductTagtypeId()
+    {
+        return $this->productTagtypeId;
+    }
+
+    /**
+     * Set productTagtypeName
+     *
+     * @param string $productTagtypeName
+     * @return ProductTagtype
+     */
+    public function setProductTagtypeName($productTagtypeName)
+    {
+        $this->productTagtypeName = $productTagtypeName;
+    
+        return $this;
+    }
+
+    /**
+     * Get productTagtypeName
+     *
+     * @return string 
+     */
+    public function getProductTagtypeName()
+    {
+        return $this->productTagtypeName;
+    }
+
+    /**
+     * Add productTags
+     *
+     * @param \NiftyThrifty\ShopBundle\Entity\ProductTag $productTags
+     * @return ProductTagtype
+     */
+    public function addProductTag(\NiftyThrifty\ShopBundle\Entity\ProductTag $productTags)
+    {
+        $this->productTags[] = $productTags;
+    
+        return $this;
+    }
+
+    /**
+     * Remove productTags
+     *
+     * @param \NiftyThrifty\ShopBundle\Entity\ProductTag $productTags
+     */
+    public function removeProductTag(\NiftyThrifty\ShopBundle\Entity\ProductTag $productTags)
+    {
+        $this->productTags->removeElement($productTags);
+    }
+
+    /**
+     * Get productTags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProductTags()
+    {
+        return $this->productTags;
+    }
+}

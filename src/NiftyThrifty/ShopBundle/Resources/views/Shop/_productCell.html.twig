@@ -1,0 +1,14 @@
+    <div id="p{{ product.getProductId }}" style="border: 1px solid black;">
+        <div id="p{{ product.getProductId }}_itemLink">Item: <a href="{{ path('show_item', {'slug': product.getProductName|slugify ~ '-' ~ product.getProductId}) }}">{{ product.getProductName }}</a></div>
+        {% if product.getDesignerId() %}
+            <div id="p{{ product.getProductId }}_itemDesigner">Designer: <a href="{{ path('show_designer', {'slug': product.getDesigner.getDesignerName|slugify}) }}-{{ product.getDesigner.getDesignerId }}">{{ product.getDesigner.getDesignerName }}</a></div>
+        {% endif %}
+        <div id="p{{ product.getProductId }}_size">Size: <a href="{{ path('show_size', {'slug': product.getProductCategorySize.getProductCategorySizeName|slugify}) }}-{{ product.getProductCategorySize.getProductCategorySizeId }}">{{ product.getProductCategorySize.getProductCategorySizeName }}</a></div>
+        <div id="p{{ product.getProductId }}_price">Price: ${{ product.getProductPrice }}</div>
+        <div id="p{{ product.getProductId }}_availability">Availablility: {{ product.getProductAvailability }}</div>
+        <br>
+        {% if product.getProductAvailability == 'sale' %}
+            <div id="p{{ product.getProductId }}_addLink"><a href="{{ path('add_item_to_basket', {'productId': product.getProductId}) }}">Add to basket</a></div>
+        {% endif %}
+    </div>
+

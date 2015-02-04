@@ -1,0 +1,165 @@
+NiftyThrifty\ShopBundle\Entity\User:
+    type: entity
+    table: user
+    fields:
+        userId:
+            id: true
+            type: bigint
+            nullable: false
+            column: user_id
+            generator:
+                strategy: IDENTITY
+        userFirstName:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+            column: user_first_name
+        userLastName:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+            column: user_last_name
+        userEmail:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+            column: user_email
+        userPassword:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: user_password
+        userDateCreation:
+            type: date
+            nullable: false
+            column: user_date_creation
+        userDateLastConnection:
+            type: datetime
+            nullable: false
+            column: user_date_last_connection
+        userInstagramId:
+            type: string
+            length: 50
+            fixed: false
+            nullable: true
+            column: user_instagram_id
+        userInstagramAccessToken:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: user_instagram_access_token
+        userFbId:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: user_fb_id
+        userActive:
+            type: string
+            length: null
+            fixed: false
+            nullable: false
+            column: user_active
+        addressIdShipping:
+            type: bigint
+            nullable: true
+            column: address_id_shipping
+        addressIdBilling:
+            type: bigint
+            nullable: true
+            column: address_id_billing
+        userAdmin:
+            type: string
+            length: null
+            fixed: false
+            nullable: false
+            column: user_admin
+        authorizeNetCustomerId:
+            type: bigint
+            nullable: true
+            column: authorize_net_customer_id
+    oneToMany:
+        baskets:
+            targetEntity:   Basket
+            mappedBy:       user
+        # All addresses associated with a user.  The defaults are included.  To get
+        # this array without the defaults, use the AddressRepository
+        addresses:
+            targetEntity:   Address
+            mappedBy:       user
+        invoices:
+            targetEntity:   Invoice
+            mappedBy:       user
+            orderBy:
+                invoiceDate: DESC
+        userPaymentProfiles:
+            targetEntity:   UserPaymentProfile
+            mappedBy:       user
+        userInvitations:
+            targetEntity:   UserInvitation
+            mappedBy:       invitingUser
+            orderBy:
+                userInvitationDate: DESC
+        # This association is needed to save the user->loved_product association.  This also returns 
+        # deleted loves, so the user entity should filter on is_deleted
+        userLovedProducts:
+            targetEntity:   UserLovedProduct
+            mappedBy:       user
+
+        userViewedProducts:
+            targetEntity:   UserViewedProduct
+            mappedBy:       user
+
+    # This is a shortcut to all userLovedProducts.  This will also include deleted loves.
+    manyToMany:
+        lovedProducts:
+            targetEntity:   Product
+            joinTable: 
+                name:       user_loved_product
+                joinColumns:
+                    user_id:
+                        referencedColumnName: user_id
+                inverseJoinColumns:
+                    product_id:
+                        referencedColumnName: product_id
+        viewedProducts:
+            targetEntity:   Product
+            joinTable:
+                name:       user_viewed_product
+                joinColumns:
+                    user_id:
+                        referencedColumnName: user_id
+                inverseJoinColumns:
+                    product_id:
+                        referencedColumnName: product_id
+
+    # These are unidirectional.  The full manyToOne addresses array is bi-directional.
+    oneToOne:
+        addressShipping:
+            targetEntity:   Address
+            cascade: ["persist"]
+            joinColumn:
+                name:                   address_id_shipping
+                referencedColumnName:   address_id
+        addressBilling:
+            targetEntity:   Address
+            cascade: ["persist"]
+            joinColumn:
+                name:                   address_id_billing
+                referencedColumnName:   address_id
+########################################################
+# This SHOULD be the basket association, but it's not currently formatted that way.  There should
+# be one active basket and many archived baskets in a different location.  This is currently
+# all stored in the basket table
+#    oneToOne:
+#        basket:
+#            targetEntity: Basket
+#            mappedBy: user
+########################################################
+    lifecycleCallbacks:
+        prePersist: [setCreationTime]

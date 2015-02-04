@@ -1,0 +1,22 @@
+NiftyThrifty\ShopBundle\Entity\UserLogins:
+    type: entity
+    table: user_logins
+    fields:
+        userLoginId:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: user_login_id
+            generator:
+                strategy: IDENTITY
+        userId:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: user_id
+        userLoginDate:
+            type: datetime
+            nullable: false
+            column: user_login_date
+    lifecycleCallbacks: {  }

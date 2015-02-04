@@ -1,0 +1,155 @@
+{% extends 'NiftyThriftyShopBundle::layout.html.twig' %}
+
+{% block page_heading %}Nifty Thrifty Order{% endblock %}
+
+{% block page_content %}
+		<div class="content_page content_shipping">
+			<h1>Order checkout</h1>
+			<div class="subtitle">
+				<p>
+					Thanks for shopping with us. You're only few steps away from receiving your product. 
+					<br />Follow the instructions below and you'll get your package very soon.
+				
+				</p>
+			</div>
+			<div class="steps">
+				<div class="steps_list">
+					<div class="item truck selected">
+						<div class="bg"><span><img src="/images/images/truck.png"/></span></div>
+						<div class="mask"></div>
+					</div>
+					<div class="separator"><div></div></div>
+					<div class="item card">
+						<div class="bg"><span><img src="/images/images/suitcase.png"/></span></div>
+						<div class="mask"></div>
+					</div>
+					<div class="separator"><div></div></div>
+					<div class="item tag">
+						<div class="bg"><span><img src="/images/images/tag.png"/></span></div>
+						<div class="mask"></div>
+					</div>
+				</div>
+			</div>
+			<h1 class="step_title">Shipping</h1>
+			<div class="subtitle"><p>Where should we send the package(s)?</p></div>
+			
+			<div class="shipping_wrapper">
+<!--
+<div id="basketItems">
+        {% for basketItem in basketItems %}
+            <div id="bi{{ basketItem.getBasketItemid }}_checkout">
+                <div id="bi{{ basketItem.getBasketItemId }}_name">{{ basketItem.getProduct.getProductName }}</div>
+                <div id="bi{{ basketItem.getBasketItemId }}_price">${{ basketItem.getBasketItemPrice }}</div>
+                <div id="bi{{ basketItem.getBasketItemId }}_time">{{ basketItem.getBasketItemTimeRemaining }}</div>
+            </div>
+        {% endfor %}
+    </div>
+-->
+
+					<div class="main">
+						<div class="form">	
+							<div id="shipping_address">
+								<h2>Shipping address</h2>
+    {{ form_start(orderForm) }}
+        <div style="border: 1px solid black; padding-bottom: 10px;" id="orderShippingAddress">
+            <h3>Shipping info</h3>
+            {{ form_row(orderForm.orderShippingAddressFirstName) }}
+            {{ form_row(orderForm.orderShippingAddressLastName) }}
+            {{ form_row(orderForm.orderShippingAddressStreet) }}
+            {{ form_row(orderForm.orderShippingAddressCity) }}
+            {{ form_row(orderForm.orderShippingAddressState) }}
+            {{ form_row(orderForm.orderShippingAddressZipcode) }}
+            {{ form_row(orderForm.orderShippingAddressCountry) }}
+								<div class="alert">
+									<div class="arrow"></div>
+									Currently, we only ship within the United States. International orders will be possible in the near future, please stay tuned for updates!
+								</div>
+
+							</div>
+							
+							<div class="separator"></div>
+							
+							<div id="billing_address">						
+								<h2>Billing address</h2>
+								
+        <div>{{ form_row(orderForm.orderDuplicateBillingAndShipping) }}</div>
+        <div style="border: 1px solid black; padding-bottom: 10px;" id="orderBillingAddress">
+            <h3>Billing info</h3>
+            {{ form_row(orderForm.orderBillingAddressFirstName) }}
+            {{ form_row(orderForm.orderBillingAddressLastName) }}
+            {{ form_row(orderForm.orderBillingAddressStreet) }}
+            {{ form_row(orderForm.orderBillingAddressCity) }}
+            {{ form_row(orderForm.orderBillingAddressState) }}
+            {{ form_row(orderForm.orderBillingAddressZipcode) }}
+            {{ form_row(orderForm.orderBillingAddressCountry) }}
+        </div>
+								</div>		
+							</div>
+	
+        <div id="cardInfo">
+            <h3>Card info</h3>
+            <div {% if profiles|length == 0 %} style="display: none;' {% endif %}>{{ form_row(orderForm.savedCardProfileId) }}</div>
+            {{ form_row(orderForm.cardName) }}
+            {{ form_row(orderForm.cardNumber) }}
+            {{ form_row(orderForm.expirationDateMonth) }}
+            {{ form_row(orderForm.expirationDateYear) }}
+            {{ form_row(orderForm.securityCode) }}
+            {{ form_row(orderForm.saveCard) }}
+        </div>
+	
+    {{ form_end(orderForm) }}
+							
+						</div>
+					
+					</div>
+					<div class="sidebar_checkout">
+						<div class="summary">
+							<div class="resume_nb">
+								<span>{{ basketItems|length }}</span>item{% if basketItems|length > 1 %}s{% endif %}<br />in your cart
+								<span class="clear"></span>
+							</div>
+							
+							<div class="resume_row">
+								<span class="label">Subtotal</span><span class="price">${{ order.getOrderAmount|number_format(2) }}</span>
+							</div>
+							
+           						{% if order.getOrderAmountVat == true %}
+								<div class="resume_row">
+									<span class="label">Taxes</span><span class="price">${{ order.getOrderAmountVat|number_format(2) }}</span>
+								</div>
+							{% endif %}
+
+           						{% if order.getOrderAmountCoupon == true %}
+								<div class="resume_row">
+									<span class="label">Coupons</span><span class="price">-${{ order.getOrderAmountCoupon|number_format(2) }}</span>
+								</div>
+							{% endif %}
+
+           						{% if order.getOrderAmountCredits == true %}
+								<div class="resume_row">
+									<span class="label">Total</span><span class="price">${{ order.getOrderTotalPreCredits|number_format(2) }}</span>
+								</div>
+								<div class="resume_row">
+									<span class="label">Credits</span><span class="price">-${{ order.getOrderAmountCredits|number_format(2) }}</span>
+								</div>
+							{% endif %}
+
+							
+							<div class="resume_row">
+								<span class="label">Shipping</span><span class="price">${{ order.getOrderAmountShipping|number_format(2) }}</span>
+							</div>
+							
+							<div class="resume_row total">
+								<span class="label">Total</span><span class="price">${{ order.getOrderTotal|number_format(2) }}</span>
+							</div>
+							<div class="clear"></div>
+						</div>
+						
+					</div>
+
+
+
+
+			</div>
+		</div>
+{% endblock %}

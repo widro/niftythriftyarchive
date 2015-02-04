@@ -1,0 +1,78 @@
+NiftyThrifty\ShopBundle\Entity\UserInvitation:
+    type: entity
+    repositoryClass: UserInvitationRepository
+    table: user_invitation
+    fields:
+        userInvitationId:
+            id: true
+            type: bigint
+            nullable: false
+            column: user_invitation_id
+            generator:
+                strategy: IDENTITY
+        userInvitationLastName:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: user_invitation_last_name
+        userInvitationFirstName:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: user_invitation_first_name
+        userInvitationStatus:
+            type: string
+            length: null
+            fixed: false
+            nullable: false
+            column: user_invitation_status
+        userInvitationDate:
+            type: date
+            nullable: false
+            column: user_invitation_date
+        userInvitationType:
+            type: string
+            length: null
+            fixed: false
+            nullable: false
+            column: user_invitation_type
+        userInvitationContent:
+            type: text
+            nullable: false
+            column: user_invitation_content
+        userInvitationEmail:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: user_invitation_email
+        userInvitationFbId:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: user_invitation_fb_id
+        userInvitationTwitterId:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: user_invitation_twitter_id
+        userInvitationUserId:
+            type: bigint
+            nullable: false
+            column: user_invitation_user_id
+        userId:
+            type: bigint
+            nullable: false
+            column: user_id
+    manyToOne:
+        invitingUser:
+            targetEntity:   User
+            inversedBy:     userInvitations
+            joinColumn:
+                name:                   user_id
+                referencedColumnName:   user_id
+    lifecycleCallbacks: {  }

@@ -1,0 +1,264 @@
+{% extends 'NiftyThriftyShopBundle::layout.html.twig' %}
+
+{% block page_heading %}Nifty Thrifty Order{% endblock %}
+
+{% block page_content %}
+
+<style>
+
+div.input_gen_middle label{
+	display:none;
+}
+
+div.textarea_gen_middle label{
+	display:none;
+}
+div.half_input input{
+	width:241px;
+}
+
+div.full_input input{
+	width: 524px;
+}
+
+
+div.input_date{
+	float:left;
+}
+
+div.date_input select{
+	width: 83px;
+	height: 35px;
+	line-height: 35px;
+	border:0px;
+}
+
+div.full_input textarea{
+	border: 0 none;
+	height: 120px;
+	margin: 0;
+	padding: 0;
+	width: 516px;
+}
+
+button{
+	background-color: #FF7070;
+	color: #FFFFFF;
+	display: block;
+	font-size: 15px;
+	height: 39px;
+	text-align: center;
+	width: 155px;
+	margin: 15px 0 0 0;
+	font-family: Volkorn-Italic;
+	cursor: pointer;
+	border: none;
+}
+
+
+
+</style>
+
+<script type="text/javascript">
+	//window.addEvent('domready', function(){
+		//disable button
+		//document.getElements('button').addEvent('click', function(){
+			//document.getElements('button').set('disabled', true); 
+			//document.getElements('button').setStyles({'background-color' : '#cccccc'});			
+			//document.getElements('button').set('html', 'Loading...'); 			
+			//document.forms[0].submit()
+		//});
+	//});
+</script>
+
+<div id="orderStepTwo" class="content_page content_shipping">
+			<h1>Order checkout</h1>
+			<div class="subtitle">
+				<p>
+					Thanks for shopping with us. You're only few steps away from receiving your product. 
+					<br />Follow the instructions below and you'll get your package very soon.
+				
+				</p>
+			</div>
+			<div class="steps">
+				<div class="steps_list">
+					<div class="item truck">
+						<div class="bg"><span><img src="/images/images/truck.png"/></span></div>
+						<div class="mask"></div>
+					</div>
+					<div class="separator"><div></div></div>
+					<div class="item tag selected">
+						<div class="bg"><span><img src="/images/images/tag.png"/></span></div>
+						<div class="mask"></div>
+					</div>
+					<div class="separator"><div></div></div>
+					<div class="item card">
+						<div class="bg"><span><img src="/images/images/suitcase.png"/></span></div>
+						<div class="mask"></div>
+					</div>
+				</div>
+			</div>
+			<h1 class="step_title">Payment</h1>
+			<div class="subtitle">
+				<p>Choose your payment method</p>
+			</div>
+			
+
+	
+            <div class="checkout_form">
+
+	<div class="shipping_wrapper">
+		<div class="main">
+			<div class="form">
+			    {% if not orderForm.vars.valid %}
+    			    <div class="checkout_errors">There was a problem processing this request.  Please correct the errors below.</div>
+			    {% endif %}
+			
+				    {{ form_start(orderForm) }}
+
+            {{ form_row(orderForm.orderShippingAddressFirstName) }}
+            {{ form_row(orderForm.orderShippingAddressLastName) }}
+            {{ form_row(orderForm.orderShippingAddressStreet) }}
+            {{ form_row(orderForm.orderShippingAddressCity) }}
+            {{ form_row(orderForm.orderShippingAddressState) }}
+            {{ form_row(orderForm.orderShippingAddressZipcode) }}
+            {{ form_row(orderForm.orderShippingAddressCountry) }}
+            {{ form_row(orderForm.orderBillingAddressFirstName) }}
+            {{ form_row(orderForm.orderBillingAddressLastName) }}
+            {{ form_row(orderForm.orderBillingAddressStreet) }}
+            {{ form_row(orderForm.orderBillingAddressCity) }}
+            {{ form_row(orderForm.orderBillingAddressState) }}
+            {{ form_row(orderForm.orderBillingAddressZipcode) }}
+            {{ form_row(orderForm.orderBillingAddressCountry) }}
+
+
+					<div class="row">
+           					 <div id="paymentProfileSelector" {% if profiles|length == 0 %} style="display: none;" {% endif %}>{{ form_row(orderForm.savedCardProfileId) }}</div>
+					</div>
+					<div class="row">
+					    <div class="checkout_errors">{{ form_errors(orderForm.cardName) }}</div>
+						<label for="payment[credit_card_number]">Card Name</label>
+						<div class="input_gen">
+							<div class="input_gen_left"></div>
+							<div class="input_gen_middle full_input">
+							    {{ form_widget(orderForm.cardName) }}
+							</div>
+							<div class="input_gen_right"></div>
+						</div>
+					</div>
+					<div class="row">
+					    <div class="checkout_errors">{{ form_errors(orderForm.cardNumber) }}</div>
+						<label for="payment[credit_card_number]">Card number</label>
+						<div class="input_gen">
+							<div class="input_gen_left"></div>
+							<div class="input_gen_middle full_input">
+							    {{ form_widget(orderForm.cardNumber) }}
+							</div>
+							<div class="input_gen_right"></div>
+						</div>
+					</div>
+					<div class="row">
+					    <div class="checkout_errors">{{ form_errors(orderForm.expirationDateMonth) }}</div>
+					    <div class="checkout_errors">{{ form_errors(orderForm.expirationDateYear) }}</div>
+						<div class="block">
+							<label for="payment[credit_card_expiration_month]">Expiration date</label>
+							<div class="clear"></div>
+							<div class="input_gen input_date">
+								<div class="input_gen_left"></div>
+								<div class="input_gen_middle date_input">
+							    		{{ form_widget(orderForm.expirationDateMonth) }}
+								</div>
+								<div class="input_gen_right"></div>
+							</div>
+
+							<div class="input_gen input_date">
+								<div class="input_gen_left"></div>
+								<div class="input_gen_middle date_input">
+							    		{{ form_widget(orderForm.expirationDateYear) }}
+								</div>
+								<div class="input_gen_right"></div>
+							</div>
+						</div>
+						<div class="block">
+					    <div class="checkout_errors">{{ form_errors(orderForm.securityCode) }}</div>
+							<label for="payment[credit_card_ccv]">Security code</label>
+							<div class="input_gen">
+								<div class="input_gen_left"></div>
+								<div class="input_gen_middle half_input">
+							    		{{ form_widget(orderForm.securityCode) }}
+								</div>
+								<div class="input_gen_right"></div>
+							</div>
+
+							<div class="alert code">
+								<div class="arrow"></div>
+								This is the three or four digits code located on the back of your card.
+							</div>
+						</div>
+						<br />
+						<div class="submit_button">
+							    {{ form_row(orderForm.saveCard) }}
+							    {{ form_rest(orderForm) }}
+							ALL SALES ARE FINAL
+						</div>
+					</div>
+							    {{ form_end(orderForm) }}
+			</div>
+		</div>					
+					
+					
+		<div class="sidebar_checkout">
+			<div class="summary">
+				<div id="stepTwoItemCount" class="resume_nb">
+					<span>{{ basketItems|length }}</span>item{% if basketItems|length > 1 %}s{% endif %}<br />in your cart
+					<span class="clear"></span>
+				</div>
+
+				<div id="stepTwoSubtotal" class="resume_row">
+					<span class="label">Subtotal</span><span class="price">${{ order.getOrderAmount|number_format(2) }}</span>
+				</div>
+
+				{% if order.getOrderAmountVat == true %}
+					<div id="stepTwoTax" class="resume_row">
+						<span class="label">Taxes</span><span class="price">${{ order.getOrderAmountVat|number_format(2) }}</span>
+					</div>
+				{% endif %}
+
+				{% if order.getOrderAmountCoupon == true %}
+					<div id="stepTwoCoupon" class="resume_row">
+						<span class="label">Coupons</span><span class="price">-${{ order.getOrderAmountCoupon|number_format(2) }}</span>
+					</div>
+				{% endif %}
+
+				{% if order.getOrderAmountCredits == true %}
+					<div id="stepTwoPreCreditsTotal" class="resume_row">
+						<span class="label">Total</span><span class="price">${{ order.getOrderTotalPreCredits|number_format(2) }}</span>
+					</div>
+					<div id="stepTwoCredits" class="resume_row">
+						<span class="label">Credits</span><span class="price">-${{ order.getOrderAmountCredits|number_format(2) }}</span>
+					</div>
+				{% endif %}
+
+				{% if order.getOrderAmountShipping == true %}
+				  <div id="stepTwoShipping" class="resume_row">
+					  <span class="label">Shipping</span><span class="price">${{ order.getOrderAmountShipping|number_format(2) }}</span>
+				  </div>
+				{% endif %}
+
+				<div id="stepTwoTotal" class="resume_row total">
+					<span class="label">Total</span><span class="price">${{ order.getOrderTotal|number_format(2) }}</span>
+				</div>
+							<div class="clear"></div>
+							<div style="font-size:13px; margin-top:10px; padding:10px; background:#FF7070; color:#ffffff; font-weight:normal; text-decoration:underline;">
+								ALL SALES ARE FINAL
+							</div>
+				<div class="clear"></div>
+			</div>
+
+		</div>
+		<div class="clear"></div>
+
+
+	</div>
+</div>
+{% endblock %}

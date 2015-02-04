@@ -1,0 +1,86 @@
+{% extends 'NiftyThriftyShopBundle::layout.html.twig' %}
+
+{% block page_heading %}Nifty Thrifty - Rare Finds Everyday{% endblock %}
+
+{% block page_content %}
+<script>
+window.addEvent('domready',function() {
+
+	$$('div.current_cell').addEvent('mouseover', function(){
+		$(this).getElementById('current_cell_bar').setStyle('display','none');
+		$(this).getElementById('current_cell_bar2').setStyle('display','block');
+	});
+	$$('div.current_cell').addEvent('mouseout', function(){
+		$(this).getElementById('current_cell_bar').setStyle('display','block');
+		$(this).getElementById('current_cell_bar2').setStyle('display','none');
+	});
+
+});
+
+</script>
+<div class="splash_header">
+		Presenting the Collections
+	</div>
+
+	<div class="splash_subheader">
+		Rare and covetable vintage pieces, hand-selected by our team of buyers and<br/>assembled into expertly curated themed collections.
+	</div>
+
+	<div id="ending_soon_collections" class="current_container" style="height:auto;margin-bottom:40px;">
+		<div class="sale_splash_header">
+			ENDING SOON
+		</div>
+
+		<div class="clear"></div>
+    {% if endingcollections|length > 0 %}
+            {% for collection in endingcollections %}
+			<div class="current_cell" style="background:url('/{{collection.getCollectionVisualMainPanel }}') top left no-repeat;">
+				<a href="{{ path('show_collection', {'slug': collection.getCollectionName|slugify}) }}-{{ collection.getId }}" title="{{ collection.getCollectionName }}" class="top">
+				</a>
+				<div class="current_cell_bar current_cell_bar_sale" id="current_cell_bar">
+					<a href="{{ path('show_collection', {'slug': collection.getCollectionName|slugify}) }}-{{ collection.getId }}" title="{{ collection.getCollectionName }}">{{ collection.getCollectionName }}</a>
+					<p>{{ collection.getCollectionDescription }}</p>
+				</div>
+				<div class="current_cell_bar" id="current_cell_bar2">
+					<br/><b>SALE ENDS IN </b> {{ collection.getCollectionEndDateDiff }}
+				</div>
+			</div>
+            {% endfor %}
+    {% endif %}
+
+
+		<div class="clear"></div>
+
+	</div>
+	
+	
+		<div class="clear"></div>
+
+	<div id="current_sale_collections" class="current_container" style="height:auto;margin-bottom:40px;">
+		<div class="sale_splash_header">
+			CURRENT SALES
+		</div>
+
+		<div class="clear"></div>
+
+    {% if collections|length > 0 %}
+            {% for collection in collections %}
+			<div class="current_cell" style="background:url('/{{collection.getCollectionVisualMainPanel }}') top left no-repeat;">
+				<a href="{{ path('show_collection', {'slug': collection.getCollectionName|slugify}) }}-{{ collection.getId }}" title="{{ collection.getCollectionName }}" class="top">
+				</a>
+				<div class="current_cell_bar current_cell_bar_sale" id="current_cell_bar">
+					<a href="{{ path('show_collection', {'slug': collection.getCollectionName|slugify}) }}-{{ collection.getId }}" title="{{ collection.getCollectionName }}">{{ collection.getCollectionName }}</a>
+					<p>{{ collection.getCollectionDescription }}</p>
+				</div>
+				<div class="current_cell_bar" id="current_cell_bar2">
+					<br/><b>SALE ENDS IN </b> {{ collection.getCollectionEndDateDiff }}
+				</div>
+			</div>
+            {% endfor %}
+    {% endif %}
+
+
+		<div class="clear"></div>
+	</div>
+	
+{% endblock %}

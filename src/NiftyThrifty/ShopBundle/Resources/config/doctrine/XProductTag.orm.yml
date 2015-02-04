@@ -1,0 +1,18 @@
+NiftyThrifty\ShopBundle\Entity\XProductTag:
+    type: entity
+    repositoryClass: NiftyThrifty\ShopBundle\Entity\XProductTagRepository
+    table: xproduct_tag
+    fields:
+        productTagId:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: product_tag_id
+        productId:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: product_id
+    lifecycleCallbacks: {  }

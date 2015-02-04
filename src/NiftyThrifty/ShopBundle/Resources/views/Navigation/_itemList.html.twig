@@ -1,0 +1,5 @@
+{% for item in items %}
+	<li style="list-style:none;font-family: 'Playfair Display', serif;font-size:12px;" id="{{ prefix ~ item.getId }}">
+		<a href="{{ path(path_name, {'slug': item.getName|slugify}) }}-{{ item.getId }}">{{ item.getName }}</a>
+	</li>
+{% endfor %}

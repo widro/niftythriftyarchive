@@ -1,0 +1,189 @@
+NiftyThrifty\ShopBundle\Entity\Order:
+    type: entity
+    repositoryClass: OrderRepository
+    table: user_order
+    fields:
+        orderId:
+            id: true
+            type: bigint
+            nullable: false
+            column: order_id
+            generator:
+                strategy: IDENTITY
+        basketId:
+            type: bigint
+            nullable: false
+            column: basket_id
+        orderStatus:
+            type: string
+            length: null
+            fixed: false
+            nullable: false
+            column: order_status
+        orderDateCreation:
+            type: datetime
+            nullable: false
+            column: order_date_creation
+        orderDateEnd:
+            type: datetime
+            nullable: false
+            column: order_date_end
+        orderUserFirstName:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+            column: order_user_first_name
+        orderUserLastName:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+            column: order_user_last_name
+        orderUserEmail:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+            column: order_user_email
+        orderAmount:
+            type: float
+            nullable: false
+            column: order_amount
+        orderAmountCoupon:
+            type: float
+            nullable: false
+            column: order_amount_coupon
+        orderAmountVat:
+            type: float
+            nullable: false
+            column: order_amount_vat
+        orderAmountShipping:
+            type: float
+            nullable: false
+            column: order_amount_shipping
+        orderAmountCredits:
+            type: float
+            nullable: false
+            column: order_amount_credits
+        orderAmountTotal:
+            type: float
+            nullable: false
+            column: order_amount_total
+        orderProducts:
+            type: text
+            nullable: false
+            column: order_products
+        orderShippingMethod:
+            type: string
+            length: null
+            fixed: false
+            nullable: true
+            column: order_shipping_method
+        orderShippingAddressFirstName:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: order_shipping_address_first_name
+        orderShippingAddressLastName:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: order_shipping_address_last_name
+        orderShippingAddressStreet:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: order_shipping_address_street
+        orderShippingAddressCity:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: order_shipping_address_city
+        orderShippingAddressState:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: order_shipping_address_state
+        orderShippingAddressZipcode:
+            type: string
+            length: 20
+            fixed: false
+            nullable: false
+            column: order_shipping_address_zipcode
+        orderShippingAddressCountry:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: order_shipping_address_country
+        orderBillingAddressFirstName:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: order_billing_address_first_name
+        orderBillingAddressLastName:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: order_billing_address_last_name
+        orderBillingAddressStreet:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: order_billing_address_street
+        orderBillingAddressCity:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: order_billing_address_city
+        orderBillingAddressState:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: order_billing_address_state
+        orderBillingAddressZipcode:
+            type: string
+            length: 20
+            fixed: false
+            nullable: false
+            column: order_billing_address_zipcode
+        orderBillingAddressCountry:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: order_billing_address_country
+        orderUserIpAddress:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: order_user_ip_address
+        couponId:
+            type: bigint
+            nullable: true
+            column: coupon_id
+    oneToOne:
+        basket:
+            targetEntity: Basket
+            joinColumn:
+                name:                   basket_id
+                referencedColumnName:   basket_id
+        coupon:
+            targetEntity: Coupon
+            joinColumn:
+                name:                   coupon_id
+                referencedColumnName:   coupon_id
+    lifecycleCallbacks:
+        prePersist: [beforeSave]

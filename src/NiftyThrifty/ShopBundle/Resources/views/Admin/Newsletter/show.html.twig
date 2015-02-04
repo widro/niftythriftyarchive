@@ -1,0 +1,67 @@
+{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
+
+{% block title %}
+{{ parent() }} - {{ 'views.show.show'|trans({'%entity%': 'Newsletter'}, 'JordiLlonchCrudGeneratorBundle') }}
+{% endblock %}
+
+{% block page %}
+
+<h1>Newsletter</h1>
+
+<form class="form-horizontal">
+    <fieldset>        <div class="control-group">
+            <label class="control-label">Newsletterid</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.newsletterId }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Newslettername</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.newsletterName }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Newslettertitle</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.newsletterTitle }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Newsletterlink</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.newsletterLink }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Newslettercollectionimg</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.newsletterCollectionImg }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Newsletterproduct1img</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.newsletterProduct1Img }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Newsletterproduct1link</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.newsletterProduct1Link }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Newsletterproduct2img</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.newsletterProduct2Img }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Newsletterproduct2link</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.newsletterProduct2Link }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Newsletterblastid</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.newsletterBlastId }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Newsletterblastscheduletime</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.newsletterBlastScheduleTime|date('Y-m-d H:i:s') }}</span>            </div>
+        </div>    </fieldset>
+</form>
+
+<div>
+    <div class="float-left">
+        <a class="btn" href="{{ path('newsletter_admin') }}">
+            {{ 'views.recordactions.backtothelist'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>
+    </div>
+    <div class="float-left">
+        <a class="btn btn-primary" href="{{ path('newsletter_admin_edit', { 'id': entity.id }) }}">
+            {{ 'views.recordactions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>
+    </div>
+    <div class="float-left">
+        <form action="{{ path('newsletter_admin_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button class="btn btn-danger" type="submit" onclick="return confirm('{{ 'views.recordactions.confirm'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}');">{{ 'views.recordactions.delete'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

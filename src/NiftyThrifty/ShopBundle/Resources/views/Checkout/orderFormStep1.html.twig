@@ -1,0 +1,448 @@
+{% extends 'NiftyThriftyShopBundle::layout.html.twig' %}
+
+{% block page_heading %}Nifty Thrifty Order{% endblock %}
+
+{% block page_content %}
+
+<script type="text/javascript">
+	window.addEvent('domready', function(){
+		//hide for if default=yes
+		if($('orderFormStep1_orderDuplicateBillingAndShipping_0').checked){
+			$('billing_address').setStyle('display','none');
+		}
+
+		$('orderFormStep1_orderDuplicateBillingAndShipping_0').addEvent('click', function(){
+			//hide billing form
+			$('billing_address').setStyle('display','none');
+			
+			//assign values from ship to billing
+			$('orderFormStep1_orderBillingAddressFirstName').value = $('orderFormStep1_orderShippingAddressFirstName').value;
+			$('orderFormStep1_orderBillingAddressLastName').value = $('orderFormStep1_orderShippingAddressLastName').value;
+			$('orderFormStep1_orderBillingAddressStreet').value = $('orderFormStep1_orderShippingAddressStreet').value;
+			$('orderFormStep1_orderBillingAddressCity').value = $('orderFormStep1_orderShippingAddressCity').value;
+			$('orderFormStep1_orderBillingAddressState').value = $('orderFormStep1_orderShippingAddressState').value;
+			$('orderFormStep1_orderBillingAddressZipcode').value = $('orderFormStep1_orderShippingAddressZipcode').value;
+			$('orderFormStep1_orderBillingAddressCountry').value = $('orderFormStep1_orderShippingAddressCountry').value;
+
+		});
+		$('orderFormStep1_orderDuplicateBillingAndShipping_1').addEvent('click', function(){
+			//show billing form
+			$('billing_address').setStyle('display','inline');
+		});
+		$('orderFormStep1_orderShippingAddressFirstName').addEvent('change', function(){
+			if($('orderFormStep1_orderDuplicateBillingAndShipping_0').checked){
+				$('orderFormStep1_orderBillingAddressFirstName').value = $('orderFormStep1_orderShippingAddressFirstName').value;
+			}
+		});
+		$('orderFormStep1_orderShippingAddressLastName').addEvent('change', function(){
+			if($('orderFormStep1_orderDuplicateBillingAndShipping_0').checked){
+				$('orderFormStep1_orderBillingAddressLastName').value = $('orderFormStep1_orderShippingAddressLastName').value;
+			}
+		});
+		$('orderFormStep1_orderShippingAddressStreet').addEvent('change', function(){
+			if($('orderFormStep1_orderDuplicateBillingAndShipping_0').checked){
+			$('orderFormStep1_orderBillingAddressStreet').value = $('orderFormStep1_orderShippingAddressStreet').value;
+			}
+		});
+		$('orderFormStep1_orderShippingAddressCity').addEvent('change', function(){
+			if($('orderFormStep1_orderDuplicateBillingAndShipping_0').checked){
+			$('orderFormStep1_orderBillingAddressCity').value = $('orderFormStep1_orderShippingAddressCity').value;
+			}
+		});
+		$('orderFormStep1_orderShippingAddressState').addEvent('change', function(){
+			if($('orderFormStep1_orderDuplicateBillingAndShipping_0').checked){
+			$('orderFormStep1_orderBillingAddressState').value = $('orderFormStep1_orderShippingAddressState').value;
+			}
+		});
+		$('orderFormStep1_orderShippingAddressZipcode').addEvent('change', function(){
+			if($('orderFormStep1_orderDuplicateBillingAndShipping_0').checked){
+			$('orderFormStep1_orderBillingAddressZipcode').value = $('orderFormStep1_orderShippingAddressZipcode').value;
+			}
+		});
+		$('orderFormStep1_orderShippingAddressCountry').addEvent('change', function(){
+			if($('orderFormStep1_orderDuplicateBillingAndShipping_0').checked){
+			$('orderFormStep1_orderBillingAddressCountry').value = $('orderFormStep1_orderShippingAddressCountry').value;
+			}
+		});
+		
+		//disable button
+		//document.getElements('button').addEvent('click', function(){
+			//document.getElements('button').set('disabled', true); 
+			//document.getElements('button').setStyles({'background-color' : '#cccccc'});			
+			//document.getElements('button').set('html', 'Loading...'); 			
+			//document.forms[0].submit()
+		//});
+	});
+</script>
+
+<style>
+
+
+div.input_gen_middle label{
+	display:none;
+}
+
+div.textarea_gen_middle label{
+	display:none;
+}
+
+div.half_input input{
+	width:241px;
+}
+
+div.half_input select{
+	border:0px;
+}
+
+div.full_input textarea{
+	border: 0 none;
+	height: 120px;
+	margin: 0;
+	padding: 0;
+	width: 516px;
+}
+
+button{
+	background-color: #FF7070;
+	color: #FFFFFF;
+	display: block;
+	font-size: 15px;
+	height: 39px;
+	text-align: center;
+	width: 155px;
+	margin: 15px 0 0 0;
+	font-family: Volkorn-Italic;
+	cursor: pointer;
+	border: none;
+}
+
+</style>
+	<div id="orderStepOne" class="content_page content_shipping">
+			<h1>Order checkout</h1>
+			<div class="subtitle">
+				<p>
+					Thanks for shopping with us. You're only few steps away from receiving your product. 
+					<br />Follow the instructions below and you'll get your package very soon.
+				
+				</p>
+			</div>
+			<div class="steps">
+				<div class="steps_list">
+					<div class="item truck selected">
+						<div class="bg"><span><img src="/images/images/truck.png"/></span></div>
+						<div class="mask"></div>
+					</div>
+					<div class="separator"><div></div></div>
+					<div class="item card">
+						<div class="bg"><span><img src="/images/images/suitcase.png"/></span></div>
+						<div class="mask"></div>
+					</div>
+					<div class="separator"><div></div></div>
+					<div class="item tag">
+						<div class="bg"><span><img src="/images/images/tag.png"/></span></div>
+						<div class="mask"></div>
+					</div>
+				</div>
+			</div>
+			<h1 class="step_title">Shipping</h1>
+			<div class="subtitle"><p>Where should we send the package(s)?</p></div>
+			
+			<div class="shipping_wrapper">
+    {{ form_start(orderForm) }}
+					<div class="main">
+						<div class="form">	
+							<div id="shipping_address">
+								<h2>Shipping address</h2>
+        <div class="checkout_form" id="orderShippingAddress">
+								<div class="row">
+									<div class="block">
+										<label for="address_shipping[first_name]">
+											First name
+										</label>
+										<div class="input_gen">
+											<div class="input_gen_left">
+											</div>
+												<div class="input_gen_middle half_input">
+									            {{ form_row(orderForm.orderShippingAddressFirstName) }}
+											</div>
+											<div class="input_gen_right">
+											</div>
+										</div>
+									</div>
+									<div class="block">
+										<label for="address_shipping[last_name]">
+											Last name
+										</label>
+										<div class="input_gen">
+											<div class="input_gen_left">
+											</div>
+												<div class="input_gen_middle half_input">
+									            {{ form_row(orderForm.orderShippingAddressLastName) }}
+											</div>
+											<div class="input_gen_right">
+											</div>
+										</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<div class="row">
+									<label for="address_shipping[street]">
+										Street address (note that our UPS carrier cannot ship to PO Boxes)
+									</label>
+									<div class="textarea_gen">
+										<div class="textarea_gen_left">
+										</div>
+										<div class="textarea_gen_middle full_input">
+								            {{ form_row(orderForm.orderShippingAddressStreet) }}
+										</div>
+										<div class="textarea_gen_right">
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="block">
+										<label for="address_shipping[city]">
+											City
+										</label>
+										<div class="input_gen">
+											<div class="input_gen_left">
+											</div>
+											<div class="input_gen_middle half_input">
+									            {{ form_row(orderForm.orderShippingAddressCity) }}
+											</div>
+											<div class="input_gen_right">
+											</div>
+										</div>
+									</div>
+									<div class="block">
+										<label for="address_shipping[state]">
+											State/Region
+										</label>
+										<div class="input_gen">
+											<div class="input_gen_left">
+											</div>
+											<div class="input_gen_middle half_input">
+									            {{ form_row(orderForm.orderShippingAddressState) }}
+											</div>
+											<div class="input_gen_right">
+											</div>
+										</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+
+								<div class="row">
+									<div class="block">
+										<label for="address_shipping[zipcode]">
+											Zip code
+										</label>
+										<div class="input_gen">
+											<div class="input_gen_left">
+											</div>
+											<div class="input_gen_middle half_input">
+									            {{ form_row(orderForm.orderShippingAddressZipcode) }}
+											</div>
+											<div class="input_gen_right">
+											</div>
+										</div>
+									</div>
+									<div class="block">
+										<label for="address_shipping[country]">
+											Country
+										</label>
+										<div class="input_gen disabled">
+												United States
+            {{ form_row(orderForm.orderShippingAddressCountry) }}
+										</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+								
+								<div class="alert">
+									<div class="arrow"></div>
+									Currently, we only ship within the United States. International orders will be possible in the near future, please stay tuned for updates!
+								</div>
+
+							</div>
+							
+							<div class="separator"></div>
+
+
+								        {{ form_row(orderForm.orderDuplicateBillingAndShipping) }}
+
+							<div class="separator"></div>
+							
+							<div id="billing_address">						
+								<h2>Billing address</h2>
+									<div class="row">
+										<div class="block">
+											<label for="address_billing[first_name]">
+												First name
+											</label>
+											<div class="input_gen">
+												<div class="input_gen_left">
+												</div>
+												<div class="input_gen_middle half_input">
+										            {{ form_row(orderForm.orderBillingAddressFirstName) }}
+												</div>
+												<div class="input_gen_right">
+												</div>
+											</div>
+										</div>
+										<div class="block">
+											<label for="address_billing[last_name]">
+												Last name
+											</label>
+											<div class="input_gen">
+												<div class="input_gen_left">
+												</div>
+												<div class="input_gen_middle half_input">
+										            {{ form_row(orderForm.orderBillingAddressLastName) }}
+												</div>
+												<div class="input_gen_right">
+												</div>
+											</div>
+										</div>
+										<div class="clear"></div>
+									</div>
+	
+									<div class="row">
+										<label for="address_billing[street]">
+											Street address
+										</label>
+										<div class="textarea_gen">
+											<div class="textarea_gen_left">
+											</div>
+											<div class="textarea_gen_middle full_input">
+												{{ form_row(orderForm.orderBillingAddressStreet) }}
+											</div>
+											<div class="textarea_gen_right">
+											</div>
+										</div>
+									</div>
+	
+									<div class="row">
+										<div class="block">
+											<label for="address_billing[city]">
+												City
+											</label>
+											<div class="input_gen">
+												<div class="input_gen_left">
+												</div>
+												<div class="input_gen_middle half_input">
+										            {{ form_row(orderForm.orderBillingAddressCity) }}
+												</div>
+												<div class="input_gen_right">
+												</div>
+											</div>
+										</div>
+										<div class="block">
+											<label for="address_billing[state]">
+												State/Region
+											</label>
+											<div class="input_gen">
+												<div class="input_gen_left">
+												</div>
+												<div class="input_gen_middle half_input">
+										            {{ form_row(orderForm.orderBillingAddressState) }}
+												</div>
+												<div class="input_gen_right">
+												</div>
+											</div>
+										</div>
+										<div class="clear"></div>
+									</div>
+	
+									<div class="row">
+										<div class="block">
+											<label for="address_billing[zipcode]">
+												Zip code
+											</label>
+											<div class="input_gen">
+												<div class="input_gen_left">
+												</div>
+												<div class="input_gen_middle half_input">
+										            {{ form_row(orderForm.orderBillingAddressZipcode) }}
+												</div>
+												<div class="input_gen_right">
+												</div>
+											</div>
+										</div>
+										<div class="block">
+											<label for="address_billing[country]">
+												Country
+											</label>
+											<div class="input_gen disabled">
+													United States
+            {{ form_row(orderForm.orderBillingAddressCountry) }}
+											</div>
+										</div>
+										<div class="clear"></div>
+
+
+									</div>
+								
+
+		
+							</div>
+							</div>
+							</div>
+							ALL SALES ARE FINAL
+            {{ form_rest(orderForm) }}
+							</div>
+    {{ form_end(orderForm) }}
+							
+
+					<div class="sidebar_checkout">
+						<div class="summary">
+							<div id="stepOneTotalItemCell" class="resume_nb">
+								<span id="stepOneItemCount">{{ basketItems|length }}</span>item{% if basketItems|length > 1 %}s{% endif %} <br />in your cart
+								<span class="clear"></span>
+							</div>
+							
+							<div id="stepOneSubtotal" class="resume_row">
+								<span class="label">Subtotal</span><span class="price">${{ order.getOrderAmount|number_format(2) }}</span>
+							</div>
+							
+           						{% if order.getOrderAmountVat == true %}
+								<div id="stepOneVat" class="resume_row">
+									<span class="label">Taxes</span><span class="price">${{ order.getOrderAmountVat|number_format(2) }}</span>
+								</div>
+							{% endif %}
+
+           						{% if order.getOrderAmountCoupon == true %}
+								<div id="stepOneCoupon" class="resume_row">
+									<span class="label">Coupons</span><span class="price">-${{ order.getOrderAmountCoupon|number_format(2) }}</span>
+								</div>
+							{% endif %}
+
+           						{% if order.getOrderAmountCredits == true %}
+								<div id="stepOnePreCreditsTotal" class="resume_row">
+									<span class="label">Total</span><span class="price">${{ order.getOrderTotalPreCredits|number_format(2) }}</span>
+								</div>
+								<div id="stepOneCredits" class="resume_row">
+									<span class="label">Credits</span><span class="price">-${{ order.getOrderAmountCredits|number_format(2) }}</span>
+								</div>
+							{% endif %}
+
+							
+							
+							<div id="stepOneTotal" class="resume_row total">
+								<span class="label">Total</span><span class="price">${{ order.getOrderTotal|number_format(2) }}</span>
+							</div>
+							<div class="clear"></div>
+							<div style="font-size:13px; margin-top:10px; padding:10px; background:#FF7070; color:#ffffff; font-weight:normal; text-decoration:underline;">
+								ALL SALES ARE FINAL
+							</div>
+							<div class="clear"></div>
+						</div>
+						
+					</div>
+
+
+
+
+			</div>
+		</div>
+{% endblock %}

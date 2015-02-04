@@ -1,0 +1,124 @@
+{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
+
+{% block title %}
+{{ parent() }} - {{ 'views.show.show'|trans({'%entity%': 'Product'}, 'JordiLlonchCrudGeneratorBundle') }}
+{% endblock %}
+
+{% block page %}
+
+<h1>Product</h1>
+
+<form class="form-horizontal">
+    <fieldset>        <div class="control-group">
+            <label class="control-label">Productid</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productId }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Productname</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productName }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Productdescription</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productDescription }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Productcategorysizeid</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productCategorySizeId }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Producttypeid</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productTypeId }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Productoverallcondition</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productOverallCondition }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Productprice</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productPrice }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Productoldprice</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productOldPrice }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Productdiscount</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productDiscount }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Productdetailedconditionvalue</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productDetailedConditionValue }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Productdetailedconditiondescription</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productDetailedConditionDescription }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Productfabric</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productFabric }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Productmeasurements</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productMeasurements }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Productavailability</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productAvailability }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Productheavy</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productHeavy }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Productvisual1</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productVisual1 }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Productvisual1large</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productVisual1Large }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Productvisual2</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productVisual2 }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Productvisual2large</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productVisual2Large }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Productvisual3</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productVisual3 }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Productvisual3large</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productVisual3Large }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Collectionid</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.collectionId }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Designerid</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.designerId }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Producthashtag</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productHashtag }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Productinstagrammediaidnifty</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productInstagramMediaIdNifty }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Productinstagrammediaidcustomer</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productInstagramMediaIdCustomer }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Producttaxes</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productTaxes }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Producttaxesactive</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productTaxesActive }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Productcode</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productCode }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Producttagsize</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.productTagsize }}</span>            </div>
+        </div>    </fieldset>
+</form>
+
+<div>
+    <div class="float-left">
+        <a class="btn" href="{{ path('product_admin') }}">
+            {{ 'views.recordactions.backtothelist'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>
+    </div>
+    <div class="float-left">
+        <a class="btn btn-primary" href="{{ path('product_admin_edit', { 'id': entity.id }) }}">
+            {{ 'views.recordactions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>
+    </div>
+    <div class="float-left">
+        <form action="{{ path('product_admin_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button class="btn btn-danger" type="submit" onclick="return confirm('{{ 'views.recordactions.confirm'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}');">{{ 'views.recordactions.delete'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

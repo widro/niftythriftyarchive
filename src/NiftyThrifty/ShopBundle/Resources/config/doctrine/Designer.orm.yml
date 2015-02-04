@@ -1,0 +1,22 @@
+NiftyThrifty\ShopBundle\Entity\Designer:
+    type: entity
+    table: designer
+    fields:
+        designerId:
+            id: true
+            type: bigint
+            nullable: false
+            column: designer_id
+            generator:
+                strategy: IDENTITY
+        designerName:
+            type: string
+            length: 90
+            fixed: false
+            nullable: false
+            column: designer_name
+    oneToMany:
+        products:
+            targetEntity:   Product
+            mappedBy:       designer
+    lifecycleCallbacks: {  }

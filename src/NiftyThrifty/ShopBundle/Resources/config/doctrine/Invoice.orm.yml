@@ -1,0 +1,217 @@
+NiftyThrifty\ShopBundle\Entity\Invoice:
+    type: entity
+    table: invoice
+    fields:
+        invoiceId:
+            id: true
+            type: bigint
+            nullable: false
+            column: invoice_id
+            generator:
+                strategy: IDENTITY
+        invoiceNum:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+            column: invoice_num
+        orderId:
+            type: bigint
+            nullable: false
+            column: order_id
+        basketId:
+            type: bigint
+            nullable: false
+            column: basket_id
+        invoiceStatus:
+            type: string
+            length: null
+            fixed: false
+            nullable: false
+            column: invoice_status
+        invoiceDate:
+            type: datetime
+            nullable: true
+            column: invoice_date
+        userId:
+            type: bigint
+            nullable: false
+            column: user_id
+        invoiceUserFirstName:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+            column: invoice_user_first_name
+        invoiceUserLastName:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+            column: invoice_user_last_name
+        invoiceUserEmail:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+            column: invoice_user_email
+        invoiceAmount:
+            type: float
+            nullable: false
+            column: invoice_amount
+        invoiceAmountCoupon:
+            type: float
+            nullable: false
+            column: invoice_amount_coupon
+        invoiceAmountVat:
+            type: float
+            nullable: false
+            column: invoice_amount_vat
+        invoiceAmountShipping:
+            type: float
+            nullable: false
+            column: invoice_amount_shipping
+        invoiceAmountCredits:
+            type: float
+            nullable: false
+            column: invoice_amount_credits
+        invoiceAmountTotal:
+            type: float
+            nullable: false
+            column: invoice_amount_total
+        invoiceProducts:
+            type: text
+            nullable: false
+            column: invoice_products
+        invoiceShippingMethod:
+            type: string
+            length: null
+            fixed: false
+            nullable: true
+            column: invoice_shipping_method
+        invoiceShippingAddressFirstName:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: invoice_shipping_address_first_name
+        invoiceShippingAddressLastName:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: invoice_shipping_address_last_name
+        invoiceShippingAddressStreet:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: invoice_shipping_address_street
+        invoiceShippingAddressCity:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: invoice_shipping_address_city
+        invoiceShippingAddressState:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: invoice_shipping_address_state
+        invoiceShippingAddressZipcode:
+            type: string
+            length: 20
+            fixed: false
+            nullable: false
+            column: invoice_shipping_address_zipcode
+        invoiceShippingAddressCountry:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: invoice_shipping_address_country
+        invoiceShippingStatus:
+            type: string
+            length: null
+            fixed: false
+            nullable: true
+            column: invoice_shipping_status
+        invoiceShippingTrackingUrl:
+            type: string
+            length: 1024
+            fixed: false
+            nullable: true
+            column: invoice_shipping_tracking_url
+        invoiceBillingAddressFirstName:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: invoice_billing_address_first_name
+        invoiceBillingAddressLastName:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: invoice_billing_address_last_name
+        invoiceBillingAddressStreet:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: invoice_billing_address_street
+        invoiceBillingAddressCity:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: invoice_billing_address_city
+        invoiceBillingAddressState:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: invoice_billing_address_state
+        invoiceBillingAddressZipcode:
+            type: string
+            length: 20
+            fixed: false
+            nullable: false
+            column: invoice_billing_address_zipcode
+        invoiceBillingAddressCountry:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: invoice_billing_address_country
+        invoiceUserIpAddress:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: invoice_user_ip_address
+        couponId:
+            type: bigint
+            nullable: true
+            column: coupon_id
+    manyToOne:
+        user:
+            targetEntity:   User
+            inversedBy:     invoices
+            joinColumn:
+                name:                   user_id
+                referencedColumnName:   user_id
+    oneToOne:
+        order:
+            targetEntity: Order
+            joinColumn:
+                name:                   order_id
+                referencedColumnName:   order_id
+        basket:
+            targetEntity: Basket
+            joinColumn:
+                name:                   basket_id
+                referencedColumnName:   basket_id
+    lifecycleCallbacks:
+        prePersist: [generateInvoiceNum]

@@ -1,0 +1,64 @@
+NiftyThrifty\ShopBundle\Entity\Banner:
+    type:               entity
+    repositoryClass:    BannerRepository
+    table:              banner
+    fields:
+        bannerId:
+            id:         true
+            type:       bigint
+            nullable:   false
+            column:     banner_id
+            generator:
+                strategy: IDENTITY
+        description:
+            type:       string
+            length:     50
+            fixed:      false
+            nullable:   false
+            column:     description
+        url:
+            type:       string
+            length:     255
+            fixed:      false
+            nullable:   true
+            column:     url
+        bannerImage:
+            type:       string
+            length:     50
+            fixed:      false
+            nullable:   false
+            column:     banner_image
+        bannerType:
+            type:       string
+            length:     50
+            fixed:      false
+            nullable:   false
+            column:     banner_type
+        rotationStartTime:
+            type:       datetime
+            nullable:   false
+            column:     rotation_start_time
+        rotationEndTime:
+            type:       datetime
+            nullable:   false
+            column:     rotation_end_time
+        isDefault:
+            type:       string
+            length:     10
+            fixed:      false
+            nullable:   false
+            column:     is_default
+    manyToOne:
+        bannerTypeEntity:
+            targetEntity:   BannerType
+            inversedBy:     banners
+            joinColumn:
+                name:               banner_type
+                referencedColumnName:   name
+    lifecycleCallbacks:
+        prePersist: [processImages]
+        postPersist: [upload]
+        preUpdate: [checkImages]
+        postUpdate: [checkUpload]
+        postRemove: [deleteFile]
+

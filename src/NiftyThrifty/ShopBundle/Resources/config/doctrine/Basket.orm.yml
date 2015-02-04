@@ -1,0 +1,70 @@
+NiftyThrifty\ShopBundle\Entity\Basket:
+    type: entity
+    repositoryClass: BasketRepository
+    table: basket
+    fields:
+        basketId:
+            id: true
+            type: bigint
+            nullable: false
+            column: basket_id
+            generator:
+                strategy: IDENTITY
+        basketDateCreation:
+            type: datetime
+            nullable: false
+            column: basket_date_creation
+        basketDateUpdate:
+            type: datetime
+            nullable: false
+            column: basket_date_update
+        basketStatus:
+            type: string
+            length: null
+            fixed: false
+            nullable: false
+            column: basket_status
+        userId:
+            type: bigint
+            nullable: false
+            column: user_id
+########################################################
+# This SHOULD be the basket association, but it's not currently formatted that way.  There should
+# be one active basket and many archived baskets in a different location.  This is currently
+# all stored in the basket table
+#   oneToOne:
+#        user:
+#            targetEntity:   User
+#            inversedBy:     basket
+#            joinColumn:
+#                name:       user_id
+#                referenceColumnName: user_id
+########################################################
+    manyToOne:
+        user:
+            targetEntity:   User
+            inversedBy:     baskets
+            joinColumn:
+                name:                   user_id
+                referencedColumnName:   user_id
+    oneToMany:
+        basketItems:
+            cascade:        ["persist"]
+            targetEntity:   BasketItem
+            mappedBy:       basket
+            orderBy:        { 'basketItemId' : 'asc' }
+    manyToMany:
+        products:
+            targetEntity: Product
+            joinTable:    
+                name: basket_item
+                joinColumns: 
+                    basket_id:
+                        referencedColumnName: basket_id
+                inverseJoinColumns:
+                    product_id:
+                        referencedColumnName: product_id
+
+    lifecycleCallbacks:
+        prePersist: [setCreationTime]
+        preUpdate:  [setLastUpdateTime]

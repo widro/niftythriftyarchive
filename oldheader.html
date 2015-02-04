@@ -1,0 +1,174 @@
+<div class="topnav_container">
+	<div class="topnav_logo"><a href="{{ path('nifty_thrifty_content', {'slug': 'home'}) }}"><img src="/images/images/topnavlogo.png"></img></a></div>
+
+<style>
+div.topnav_cell_pinkarrow{
+	background:url('https://www.niftythrifty.com/images/images/topnav_arrow_pink.png');
+}
+
+
+</style>
+
+<script>
+window.addEvent('domready', function(){
+	if(document.URL.indexOf("user/things_i_love") !== -1){
+		$('topnav_looks').addClass('topnav_cell_pinkarrow');
+	}
+	if(document.URL.indexOf("search/get_items_by_value/under-35") !== -1){
+		$('topnav_under35').addClass('topnav_cell_pinkarrow');
+	}
+	if(document.URL.indexOf("search/get_all_items") !== -1){
+		$('topnav_shops').addClass('topnav_cell_pinkarrow');
+	}
+	if(document.URL.indexOf("shop/category") !== -1){
+		$('topnav_shops').addClass('topnav_cell_pinkarrow');
+	}
+	if(document.URL.indexOf("shop/collections") !== -1){
+		$('topnav_sales').addClass('topnav_cell_pinkarrow');
+	}
+	if(document.URL.indexOf("shop/show_collection") !== -1){
+		$('topnav_sales').addClass('topnav_cell_pinkarrow');
+	}
+	if(document.URL.indexOf("search/get_items_by_sale") !== -1){
+		$('topnav_clearance').addClass('topnav_cell_pinkarrow');
+	}
+});
+</script>
+
+	<div class="topnav_cell" id="topnav_sales"><a href="{{ path('collections_splash') }}">Collections</a></div>
+	<div class="topnav_cell" id="topnav_shops"><a href="{{ path('get_all_items') }}">Shops</a></div>
+	<div class="topnav_cell" id="topnav_looks"><a href="{{ path('current_user_loves') }}">My Looks</a></div>
+	<div class="topnav_cell" id="topnav_under35"><a href="{{ path('get_items_by_value', {'itemValue': 'under-35'}) }}">$35 &amp; Under</a></div>
+	<div class="topnav_cell" id="topnav_blog"><a href="http://blog.niftythrifty.com/">Blog</a></div>
+	<div class="topnav_cell" id="topnav_clearance"><a href="{{ path('get_items_by_sale') }}" style="color:#47baa6;">Clearance</a></div>
+
+	<a href="{{ path('current_user_loves') }}"><img src="/images/images/loveheart_pink_small.png" style="margin-top:20px;float:left;margin-left:120px;"></a>
+
+	<div class="topnav_right" id="left_bar">
+		<li><a href="{{ path('user_my_basket') }}" title="My cart " class="open_sub" id="open_sub_cart"><b>My cart</b></a></li>
+
+		<li id="in_cart" class="in_cart">{% render(controller('NiftyThriftyShopBundle:Basket:getBasketCount')) %}</li>
+		<li id="navcredits"><span class="items_in_cart">{% render(controller('NiftyThriftyShopBundle:Navigation:userCreditTopNav')) %}</span> in Credit</li>
+		<div id="add_item"></div>
+		<div class="tab_selected"></div>
+	</div>
+<!--
+	<div class="topnav_promo">
+		<span>FREE SHIPPING</span><br/>
+		on orders over $70
+		on all orders!
+	</div>
+-->
+
+
+
+</div>
+
+
+
+
+
+<div class="hovernav_container">
+	<div id="hovernav2">
+		<div id="collections-hover" class="hovernavcol">
+			<h3>CURRENT SALES</h3>
+			<ul id="current-sales" class="hovernavlist">
+				{% render(controller('NiftyThriftyShopBundle:Navigation:activeCollections')) %}
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<div id="ending-hover" class="hovernavcol"">
+			<h3>ENDING SOON</h3>
+			<ul id="ending-soon" class="hovernavlist">
+				{% render(controller('NiftyThriftyShopBundle:Navigation:endingCollections')) %}
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+		<h3 class="hovernavmorelink"><a href="{{ path('collections_splash') }}">VIEW ALL COLLECTIONS<img src="/images/images/pinkarrowright.png" align="right" /></a></h3>
+	</div>
+
+	<div id="hovernav">
+		<div id="featured-shops" class="hovernavcol">
+			<h3>FEATURED</h3>
+			<ul class="hovernavlist">
+				<li><a href="{{ path('show_tag', {'slug': '350'}) }}">Fall Essentials</a></li>
+				<li><a href="{{ path('show_tag', {'slug': '351'}) }}">Looks We Love</a></li>
+				<li><a href="{{ path('show_tag', {'slug': '348'}) }}">Cashmere</a></li>
+			</ul>
+			<div class="clear" style="height:15px;"></div>
+			<h3>ERAS</h3>
+			<ul class="hovernavlist">
+				<li><a href="{{ path('show_tag', {'slug': '304'}) }}">1950s, 60s, 70s</a></li>
+				<li><a href="{{ path('show_tag', {'slug': '307'}) }}">1980s</a></li>
+				<li><a href="{{ path('show_tag', {'slug': '308'}) }}">1990s</a></li>
+				<li><a href="{{ path('show_tag', {'slug': '309'}) }}">2000s</a></li>
+			</ul>
+			<div class="clear" style="height:15px;"></div>
+			<h3>ACCESSORIES</h3>
+			<ul class="hovernavlist">
+				<li><a href="{{ path('show_tag', {'slug': '333'}) }}">Jewelry</a></li>
+				<li><a href="{{ path('show_tag', {'slug': '344'}) }}">Belts</a></li>
+				<li><a href="{{ path('show_category', {'slug': '3'}) }}">Scarves</a></li>
+				<li><a href="{{ path('show_tag', {'slug': '311'}) }}">Sunglasses</a></li>
+			</ul>
+			<div class="clear" style="height:15px;"></div>
+			<h3><a href="{{ path('show_category', {'slug': '16'}) }}">BAGS</a></h3>
+		</div>
+		<div id="category-staples" class="hovernavcol">
+			<h3>CLOTHING</h3>
+			<ul id="categoriesList" class="hovernavlist">
+				<li><a href="{{ path('show_category', {'slug': '8'}) }}">Outerwear</a></li>
+				<li><a href="{{ path('show_category', {'slug': '9'}) }}">Jackets & Blazers</a></li>
+				<li><a href="{{ path('show_category', {'slug': '14'}) }}">Sweaters & Cardigans</a></li>
+				<li><a href="{{ path('show_category', {'slug': '4'}) }}">Tops & Blouses</a></li>
+				<li><a href="{{ path('show_category', {'slug': '7'}) }}">Dresses</a></li>
+				<li><a href="{{ path('show_category', {'slug': '5'}) }}">Skirts</a></li>
+				<li><a href="{{ path('show_category', {'slug': '13'}) }}">Pants & Denim</a></li>
+				<li><a href="{{ path('show_category', {'slug': '15'}) }}">Shorts</a></li>
+				<li><a href="{{ path('show_tag', {'slug': '349'}) }}">Overalls</a></li>
+				<li><a href="{{ path('show_category', {'slug': '6'}) }}">Rompers & Jumpsuits</a></li>
+				<li><a href="{{ path('show_tag', {'slug': '321'}) }}">T Shirts</a></li>
+			</ul>
+			<div class="clear" style="height:15px;"></div>
+			<h3><a href="{{ path('show_category', {'slug': '11'}) }}">BOOTS & SHOES</a></h3>
+			<div class="clear" style="height:15px;"></div>
+			<h3><a href="{{ path('show_category', {'slug': '17'}) }}">HOME</a></h3>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+
+	</div>
+
+</div>
+
+
+<div class="subnav_container">
+
+<!--
+	<div class="subnav_cell_long" style="width:1060px;font-family:'Conv_Univers45Light';font-size:12px;float:left;margin-top:8px;">
+		<div style="width:879px;float:left;text-align:right;padding-right:10px;">
+		<img src="/images/images/freeshippingtop20131101.jpg" style="float:left;">
+-->
+	<div style="width:100px;float:left;text-align:left;margin-left:20px;margin-top:8px;padding-top:5px;">
+		<div class="fb-like" data-href="https://www.facebook.com/Niftythriftyvintage" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" style="padding-right:10px;overflow:hidden;"></div>
+	</div>
+	<div class="subnav_cell_long" style="width:960px;font-family:'Conv_Univers45Light';font-size:12px;float:left;margin-top:8px;">
+		<div style="width:379px;float:left;text-align:left;padding-top:7px;color:#47baa6;">
+			FREE SHIPPING ON ALL ORDERS OVER $70
+		</div>
+		<div style="width:400px;float:left;text-align:right;padding-right:10px;">
+			{% render(controller('NiftyThriftyShopBundle:User:isLoggedIn')) %}
+		</div>
+
+		<div style="width:140px;float:left;text-align:right;">
+			<input style="width:130px;height:24px;border:1px solid #eaeaea;font-style:italic;font-size:10px;color:#000000;" type="text" id="search_text_topnav" value="Search on Nifty"
+										onfocus="javascript: if(this.value=='Search on Nifty'){this.value=''}"
+										onblur="javascript: if(this.value==''){this.value='Search on Nifty'}" />
+		</div>
+		<div style="width:31px;float:left;text-align:left;">
+			<input type="button" id="search_button_topnav" value="" style="background:url('/images/images/searchbtnmag.png');width:31px;height:27px;border:0px;cursor:pointer;" />
+		</div>
+	</div>
+</div>
+

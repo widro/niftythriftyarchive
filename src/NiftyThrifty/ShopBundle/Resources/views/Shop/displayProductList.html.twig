@@ -1,0 +1,167 @@
+{% extends 'NiftyThriftyShopBundle::layout.html.twig' %}
+
+{% block page_heading %}{{ title }}{% endblock %}
+
+{% block page_content %}
+
+		<script type="text/javascript">
+			var filters;
+			window.addEvent('domready', function(){
+				if ($$('#filters').length != 0){
+					var collection_ids = '{% for collectionForFilter in collectionsForFilter %}{{collectionForFilter.collectionId}},{% endfor %}0';
+					var ids = (collection_ids.test(/\,/gi)) ? collection_ids.split(',') : [collection_ids];
+					filters = new Filters({collections: ids});
+				}
+			});
+			var page = 'sales';
+		</script>	
+
+
+		{% render(controller('NiftyThriftyShopBundle:Navigation:filtersShopSidebar', {'activeId': activeCategoryId})) %}
+
+		<div id="collection_right">
+		
+
+{% if tagId == "322" %}
+			
+			<div class="collection_featured" style="height:360px;">
+				<div class="collection_featured_top">
+					<img src="/images/images/Portals_800x360_Boho2.jpg" alt="" width="840"/>
+				</div>
+			</div>
+{% endif %}
+
+{% if tagId == "323" %}
+			
+			<div class="collection_featured" style="height:360px;">
+				<div class="collection_featured_top">
+					<img src="/images/images/Portals_800x360_Classic2.jpg" alt="" width="840"/>
+				</div>
+			</div>
+{% endif %}
+
+{% if tagId == "324" %}
+			
+			<div class="collection_featured" style="height:360px;">
+				<div class="collection_featured_top">
+					<img src="/images/images/Portals_800x360_Rock2.jpg" alt="" width="840"/>
+				</div>
+			</div>
+{% endif %}
+
+			<div id="content_list">
+
+				<div id="showing">
+					<div id="title_showing">Showing:</div>
+					<!--
+					<div id="filter_hidecheck" style="width:150px; float:right;">
+						<div class="filter_special">
+							<input type="checkbox" name="hide_sold"/> 
+							<label>Hide sold pieces</label>
+						</div>
+					</div>
+					-->
+					<div id="count_item">
+						<div id="nbr"></div>
+						<div id="text"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div id="filters_loading"></div>
+
+				<div class="overflow overflow_products_wrapper">
+					<div id="products">
+						<script type="text/javascript">
+							var productSearchCount = {{ productscount }};
+						</script>
+    {% if products|length > 0 %}
+            {% for product in products %}
+							<div class="product">									
+								<div id="addtocarthoverdiv">
+									{% if app.user == false %}
+									{% else %}
+									{% if app.user.isLoved(product.getProductId) %}
+									<span class="addtolovehover addtolovehover_pink" name="love{{ product.getId }}" id="love{{ product.getId }}"></span>
+									{% else %}
+									<span class="addtolovehover" name="love{{ product.getId }}" id="love{{ product.getId }}"></span>
+									{% endif %}
+									{% endif %}
+									
+									{% if product.getProductAvailability == 'sale' %}
+									<div class="clear"></div>
+									<span class="addtocarthover" name="{{ product.getId }}" id="{{ product.getId }}">add to cart</span>
+									{% endif %}
+								</div>
+								<div class="img">
+									{% if app.user == false %}
+									{% else %}
+									{% if app.user.isLoved(product.getProductId) %}
+									<div class="loveheartongallery loveheartongallery_pink"></div>
+									{% else %}
+									<div class="loveheartongallery"></div>
+									{% endif %}
+									{% endif %}
+
+
+									<a href="{{ path('show_item', {'slug': product.getProductName|slugify}) }}-{{ product.getId }}" title="{{ product.getProductName }}">
+
+								    {% if product.getProductVisual1Large == '' %}
+										<img class="product_img" src="/{{product.getProductVisual1}}" />
+									{% endif %}
+								    {% if product.getProductVisual1Large != '' %}
+										<img class="product_img2" src="/{{product.getProductVisual1Large}}" />
+									{% endif %}
+
+									</a>
+								</div>
+								<div class="infos">
+									<div class="product_separator"></div>
+									<div class="product_name">{{ product.getProductName }}</div>
+
+									<div class="product_designer">
+									{% if product.getDesignerId > '0' %}
+									{{product.getDesigner.getDesignerName() }}
+									{% endif %}
+									</div>
+
+									{% if product.getProductOldPrice > '0' %}
+										<div class="price old">${{ product.getProductOldPrice }}</div>
+									{% endif %}
+									<div class="price">${{ product.getProductPrice }}</div>
+									<div class="size">
+										<div class="size_left"></div>
+										{% if product.getProductCategorySize > '0' %}
+										<div class="size_value">{{product.getProductCategorySize.getProductCategorySizeValue}}</div>
+										{% endif %}
+										<div class="size_right"></div>
+									</div>
+									<div class="clear"></div>
+								</div>
+
+								<div class="product_separator"></div>
+
+								    {% if product.getProductAvailability != 'sale' %}
+									<div class="status {{ product.getProductAvailability }}"></div>
+									{% endif %}
+							</div>	
+            {% endfor %}
+		{% else %}
+			<div id="noResults">No results matched your search.</div>
+		{% endif %}
+						<div class="clear"></div>
+					</div>
+				</div>
+
+				<div id="load_more">See more products !</div>
+			</div>
+			<!--
+			<div id="view_all">
+				<a id="view_all_sales" href="{//Statics/Site/Various/url/home_index}">View all the sales</a>
+			</div>
+			-->
+		</div>
+	<div class="clear"></div>
+
+
+
+{% endblock %}

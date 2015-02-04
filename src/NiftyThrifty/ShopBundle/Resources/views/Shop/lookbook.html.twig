@@ -1,0 +1,55 @@
+{% extends 'NiftyThriftyShopBundle::layout.html.twig' %}
+
+{% block page_heading %}Nifty Thrifty - Rare Finds Everyday{% endblock %}
+
+{% block page_content %}
+
+
+<div class="splash_header">
+	Introducing the Looks
+</div>
+
+<div class="splash_subheader">
+	Whether you covet the perfect vintage tee, a pristine 50s cardigan or a dreamy peasant top,<br/>you'll be sure to find your style match in one of our NT Looks.
+</div>
+
+
+
+<div class="current_container" style="height:auto;">
+	<div class="current_cell current_cell_lookbook">
+		<a href="/shop/show_tag/322"><img src="/images/images/Portals_340x340_Boho2.jpg"/></a>
+		<a href="/shop/show_tag/322">SHOP NOMADIC FINDS<img src="/images/images/pinkarrowright.png" align="right" style="padding-left:3px;padding-top:3px;" /></a>
+	</div>
+	<div class="current_cell current_cell_lookbook">
+		<a href="/shop/show_tag/323"><img src="/images/images/Portals_340x340_Classic2.jpg" /></a>
+		<a href="/shop/show_tag/323">SHOP HERITAGE LOOKS<img src="/images/images/pinkarrowright.png" align="right" style="padding-left:3px;padding-top:3px;" /></a>
+	</div>
+	<div class="current_cell current_cell_lookbook">
+		<a href="/shop/show_tag/324"><img src="/images/images/Portals_340x340_Rock2.jpg" /></a>
+		<a href="/shop/show_tag/324">SHOP DOWNTOWN GIRL<img src="/images/images/pinkarrowright.png" align="right" style="padding-left:3px;padding-top:3px;" /></a>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div class="clear"></div>
+
+<div class="lookbook_subheader">
+	Our latest collections
+</div>
+
+<div id="lookbook_collections" class="current_container" style="height:240px; overflow:hidden;margin-bottom:40px;">
+            {% for collection in collections %}
+		<div class="current_cell" style="background:url('/{{collection.getCollectionVisualMainPanel }}') top left no-repeat;">
+			<a href="{{ path('show_collection', {'slug': collection.getCollectionName|slugify}) }}-{{ collection.getId }}" title="{{ collection.getCollectionName }}" class="top">
+			</a>
+			<div class="current_cell_bar current_cell_bar_lookbook">
+				<a href="{{ path('show_collection', {'slug': collection.getCollectionName|slugify}) }}-{{ collection.getId }}" title="{{ collection.getCollectionName }}">{{ collection.getCollectionName }}</a>
+				<p>{{ collection.getCollectionDescription }}</p>
+			</div>
+		</div>
+            {% endfor %}
+	<div class="clear"></div>
+</div>
+
+<div class="clear"></div>
+{% endblock %}

@@ -1,0 +1,30 @@
+NiftyThrifty\ShopBundle\Entity\UserCredits:
+    type:               entity
+    repositoryClass:    UserCreditRepository
+    table:              user_credits
+    fields:
+        userCreditsId:
+            id: true
+            type: bigint
+            nullable: false
+            column: user_credits_id
+            generator:
+                strategy: IDENTITY
+        userCreditsDate:
+            type: date
+            nullable: false
+            column: user_credits_date
+        userCreditsDateEnd:
+            type: date
+            nullable: false
+            column: user_credits_date_end
+        userCreditsValue:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: user_credits_value
+        userId:
+            type: bigint
+            nullable: false
+            column: user_id
+    lifecycleCallbacks: {  }

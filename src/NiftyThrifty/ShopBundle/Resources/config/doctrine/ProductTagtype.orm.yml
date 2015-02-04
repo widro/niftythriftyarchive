@@ -1,0 +1,24 @@
+NiftyThrifty\ShopBundle\Entity\ProductTagtype:
+    type: entity
+    repositoryClass: ProductTagtypeRepository
+    table: product_tagtype
+    fields:
+        productTagtypeId:
+            id: true
+            type: bigint
+            nullable: false
+            column: product_tagtype_id
+            generator:
+                strategy: IDENTITY
+        productTagtypeName:
+            type: string
+            length: 254
+            fixed: false
+            nullable: false
+            column: product_tagtype_name
+    oneToMany:
+        productTags:
+            orderBy:      { 'productTagName' : 'asc' }
+            targetEntity: ProductTag
+            mappedBy:     productTagtype
+    lifecycleCallbacks: {  }

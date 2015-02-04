@@ -1,0 +1,145 @@
+{% extends 'NiftyThriftyShopBundle::layout.html.twig' %}
+{% block page_heading %}Nifty Thrifty - Home{% endblock %}
+{% block page_content %}
+
+<script>
+window.addEvent('domready',function() {
+	$$('div.current_cell').addEvent('mouseover', function(){
+		var image = $(this).getElementById('hiddencellimg').getStyle('background');
+		$(this).setStyle('background',image);
+	});
+	$$('div.current_cell').addEvent('mouseout', function(){
+		var image = $(this).getElementById('hiddencellimgbw').getStyle('background');
+		$(this).setStyle('background',image);
+	});
+});
+</script>
+
+{% if slug == 'registerbonus' %}
+
+<script type="text/javascript">
+var fb_param = {};
+fb_param.pixel_id = '6005698054912';
+fb_param.value = '0.00';
+fb_param.currency = 'USD';
+(function(){
+  var fpw = document.createElement('script');
+  fpw.async = true;
+  fpw.src = '//connect.facebook.net/en_US/fp.js';
+  var ref = document.getElementsByTagName('script')[0];
+  ref.parentNode.insertBefore(fpw, ref);
+})();
+</script>
+<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6005698054912&amp;value=0&amp;currency=USD" /></noscript>
+
+<!-- Google Code for Registration Conversion Conversion Page -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 996728353;
+var google_conversion_language = "en";
+var google_conversion_format = "2";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "3ZBPCJ_iigYQobyj2wM";
+var google_conversion_value = 0;
+var google_remarketing_only = false;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/996728353/?value=0&amp;label=3ZBPCJ_iigYQobyj2wM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+{% endif %}
+
+
+<div id="homeIndex" class="featured_container">
+	<div class="featured_left">
+		<div id="slideshow-container" style="width:700px;height:450px;">
+            {% for collection in collections %}
+		<!--<a href="{{ path('show_collection', {'slug': collection.getCollectionName|slugify}) }}-{{ collection.getId }}"><img src="/{{collection.getCollectionVisualHomeHero }}" /></a>-->
+            {% endfor %}
+		<a href="/shop/show_collection/natalie-joos-539"><img src="/images/uploads/2014/02/fce7a48047c3843daa53b57ab40b23a01768f55c.jpeg" /></a>
+		<a href="/search/get_all_items"><img src="/images/images/Items_700x450.jpg" /></a>
+		<a href="/shop/category/11"><img src="/images/images/Boots_700x450.jpg" /></a>
+		</div>
+	</div>
+	<div class="featured_right">
+        {% render(controller('NiftyThriftyShopBundle:Navigation:getBanner', {'bannerTypeName': 'home_upper_right'})) %}
+	</div>
+</div>
+<div id="homeCollections" class="current_container current_container_home">
+            {% for collection in collections %}
+		<!--
+		<div id="homeCollectionId_{{ collection.getCollectionId }}" class="current_cell" style="background:url('/{{collection.getCollectionVisualMainPanelBw }}');">
+			<a href="{{ path('show_collection', {'slug': collection.getCollectionName|slugify}) }}-{{ collection.getId }}" title="{collection_title}" class="top">
+			</a>
+			<div class="current_cell_bar current_cell_bar_home">
+				<a href="{{ path('show_collection', {'slug': collection.getCollectionName|slugify}) }}-{{ collection.getId }}" title="{{ collection.getCollectionName }}">{{ collection.getCollectionName }}</a>
+				<p>{{ collection.getCollectionDescription }}</p>
+			</div>
+			<div id="hiddencellimg" style="display:none;background:url('/{{collection.getCollectionVisualMainPanel }}');"></div>
+			<div id="hiddencellimgbw" style="display:none;background:url('/{{collection.getCollectionVisualMainPanelBw }}');"></div>
+		</div>
+		-->
+            {% endfor %}
+		<div id="homeCollectionId_2" class="current_cell" style="background:url('/images/images/nj1_bw.jpg');">
+			<a href="/shop/collaborators" class="top">
+			</a>
+			<div class="current_cell_bar current_cell_bar_home">
+				<a href="/shop/collaborators">Guest Curators</a>
+				<p></p>
+			</div>
+			<div id="hiddencellimg" style="display:none;background:url('/images/images/nj1.jpg');"></div>
+			<div id="hiddencellimgbw" style="display:none;background:url('/images/images/nj1_bw.jpg');"></div>
+		</div>
+		<div id="homeCollectionId_3" class="current_cell" style="background:url('/images/images/Items_340x220_BW.jpg');">
+			<a href="/search/get_all_items" class="top">
+			</a>
+			<div class="current_cell_bar current_cell_bar_home">
+				<a href="/search/get_all_items">Shop Full Catalog</a>
+				<p></p>
+			</div>
+			<div id="hiddencellimg" style="display:none;background:url('/images/images/Items_340x220.jpg');"></div>
+			<div id="hiddencellimgbw" style="display:none;background:url('/images/images/Items_340x220_BW.jpg');"></div>
+		</div>
+		<div id="homeCollectionId_1" class="current_cell" style="background:url('/images/images/Boots_340x220_BW.jpg');">
+			<a href="/shop/category/11" class="top">
+			</a>
+			<div class="current_cell_bar current_cell_bar_home">
+				<a href="/shop/category/11">Shop Boots</a>
+				<p></p>
+			</div>
+			<div id="hiddencellimg" style="display:none;background:url('/images/images/Boots_340x220.jpg');"></div>
+			<div id="hiddencellimgbw" style="display:none;background:url('/images/images/Boots_340x220_BW.jpg');"></div>
+		</div>
+	<div class="clear"></div>
+</div>
+
+<div class="clear"></div>
+
+<div class="current_container" style="height:auto;">
+	<div class="home_shop_looks">
+		SHOP OUR NIFTY LOOKS
+	</div>
+
+	<div class="clear"></div>
+
+	<div class="current_cell_lookbook">
+		<a href="/shop/show_tag/322"><img src="/images/images/Portals_340x340_Boho2.jpg" /></a>
+	</div>
+	<div class="current_cell_lookbook">
+		<a href="/shop/show_tag/323"><img src="/images/images/Portals_340x340_Classic2.jpg" /></a>
+	</div>
+	<div class="current_cell_lookbook">
+		<a href="/shop/show_tag/324"><img src="/images/images/Portals_340x340_Rock2.jpg" /></a>
+	</div>
+	<div class="clear"></div>
+
+</div>
+
+<div class="clear"></div>
+
+{% endblock %}

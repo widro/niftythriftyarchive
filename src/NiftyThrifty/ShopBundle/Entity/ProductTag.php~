@@ -1,0 +1,150 @@
+<?php
+
+namespace NiftyThrifty\ShopBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ProductTag
+ */
+class ProductTag
+{
+    /**
+     * @var integer
+     */
+    private $productTagId;
+
+    /**
+     * @var string
+     */
+    private $productTagName;
+
+    /**
+     * @var string
+     */
+    private $productTagSlug;
+
+    /**
+     * @var integer
+     */
+    private $productTagtypeId;
+
+    /**
+     * @var \NiftyThrifty\ShopBundle\Entity\ProductTagtype
+     */
+    private $productTagtype;
+
+    /**
+     * Sanitized getters for shared templates.
+     */
+    public function getId()
+    {
+        return $this->getProductTagId();
+    }
+    public function getName()
+    {
+        return $this->getProductTagName();
+    }
+
+    /**
+     * Get productTagId
+     *
+     * @return integer 
+     */
+    public function getProductTagId()
+    {
+        return $this->productTagId;
+    }
+
+    /**
+     * Set productTagName
+     *
+     * @param string $productTagName
+     * @return ProductTag
+     */
+    public function setProductTagName($productTagName)
+    {
+        $this->productTagName = $productTagName;
+    
+        return $this;
+    }
+
+    /**
+     * Get productTagName
+     *
+     * @return string 
+     */
+    public function getProductTagName()
+    {
+        return $this->productTagName;
+    }
+
+    /**
+     * Set productTagSlug
+     *
+     * @param string $productTagSlug
+     * @return ProductTag
+     */
+    public function setProductTagSlug($productTagSlug)
+    {
+        $this->productTagSlug = $productTagSlug;
+    
+        return $this;
+    }
+
+    /**
+     * Get productTagSlug
+     *
+     * @return string 
+     */
+    public function getProductTagSlug()
+    {
+        return $this->productTagSlug;
+    }
+
+    /**
+     * Set productTagtypeId
+     *
+     * @param integer $productTagtypeId
+     * @return ProductTag
+     */
+    public function setProductTagtypeId($productTagtypeId)
+    {
+        $this->productTagtypeId = $productTagtypeId;
+    
+        return $this;
+    }
+
+    /**
+     * Get productTagtypeId
+     *
+     * @return integer 
+     */
+    public function getProductTagtypeId()
+    {
+        return $this->productTagtypeId;
+    }
+
+    /**
+     * Set productTagtype
+     *
+     * @param \NiftyThrifty\ShopBundle\Entity\ProductTagtype $productTagtype
+     * @return ProductTag
+     */
+    public function setProductTagtype(\NiftyThrifty\ShopBundle\Entity\ProductTagtype $productTagtype = null)
+    {
+        $this->productTagtype = $productTagtype;
+    
+        return $this;
+    }
+
+    /**
+     * Get productTagtype
+     *
+     * @return \NiftyThrifty\ShopBundle\Entity\ProductTagtype 
+     */
+    public function getProductTagtype()
+    {
+        return $this->productTagtype;
+    }
+}

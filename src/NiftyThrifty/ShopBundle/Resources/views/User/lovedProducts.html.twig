@@ -1,0 +1,20 @@
+{% extends 'NiftyThriftyShopBundle::layout.html.twig' %}
+
+{% block page_heading %}Loved Items - {{ user.getUserEmail }}{% endblock %}
+
+{% block page_content %}
+<div id="lovedProducts">
+    <h2>Loved Items</h2>
+    {% if loves|length > 0 %}
+        <div id="productList">
+            {% for love in loves %}
+                <div id="lovedProduct_{{ love.getProductId }}">
+                    <div id=lovedName_{{ love.getProductId }}">{{love.getProduct.getProductName}}</div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div id="noLovedItems">You haven't loved any items</div>
+    {% endif %}
+</div>
+{% endblock %}

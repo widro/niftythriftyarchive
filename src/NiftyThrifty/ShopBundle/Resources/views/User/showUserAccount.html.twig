@@ -1,0 +1,85 @@
+{% extends 'NiftyThriftyShopBundle::layout.html.twig' %}
+
+{% block page_heading %}My Account {{ user.getUserEmail }}{% endblock %}
+
+{% block page_content %}
+		<div id="user_account">
+			<h1>
+				My Account
+			</h1>
+			
+			<p>
+				Update your personal information, check your last order and upload your picture in the new Nifty look you've just purchased!
+			</p>
+			
+			<ul class="menu">
+				<li>
+					<a href="{{ url('user_account') }}" title="Account Settings">
+						Account Settings
+					</a>
+				</li>
+				<li>
+					<a href="{{ path('view_order_history') }}" title="Orders">
+						Orders
+					</a>
+				</li>
+				
+				<li>
+					<a href="#" id="fb-login" name="fb_account_btn" title="Add Facebook" style="background-color: #6884B3;">
+						Connect To Facebook
+					</a>
+				</li>
+			</ul>
+			
+			<div class="clear"></div>
+			
+			<div class="separator"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+<h1>User Info</h1>
+<div id="accountUserName">Username/E-mail: {{ user.getUserEmail }} </div>
+<div id="accountFirstName">First Name: {{ user.getUserFirstName }} </div>
+<div id="accountLastName">Last Name: {{ user.getUserLastName }} </div>
+<div id="accountJoinDate">Join Date: {{ user.getUserDateCreation|date('m/d/Y') }} </div>
+<div id="accountLoginDate">Last Login: {{ user.getUserDateLastConnection|date('m/d/Y') }} </div>
+<ul>
+	<li><a href="{{ path('edit_account_info_form') }}" style="color:#ff7070;">Edit account info</a></li>
+	<li><a href="{{ path('edit_password_form') }}" style="color:#ff7070;">Change password</a></li>
+</ul>
+
+<h1>Shipping Address</h1>
+{% if user.getAddressIdShipping %}
+<div id="shippingFirstName">First Name: {{ user.getAddressShipping.getAddressFirstName }}</div>
+<div id="shippingLastName">Last Name: {{ user.getAddressShipping.getAddressLastName }}</div>
+<div id="shippingStreet">Street: {{ user.getAddressShipping.getAddressStreet }}</div>
+<div id="shippingCity">City: {{ user.getAddressShipping.getAddressCity }}</div>
+<div id="shippingState">State: {{ user.getAddressShipping.getState.getStateCode }}</div>
+<div id="shippingZip">Zip: {{ user.getAddressShipping.getAddressZipcode }}</div>
+{% endif %}
+<a href="{{ path('user_update_address_form', { 'slug': 'shipping' }) }}" style="color:#ff7070;">Edit Shipping Address</a>
+
+<h1>Billing Address</h1>
+{% if user.getAddressIdBilling %}
+<div id="billingFirstName">First Name: {{ user.getAddressBilling.getAddressFirstName }}</div>
+<div id="billingLastName">Last Name: {{ user.getAddressBilling.getAddressLastName }}</div>
+<div id="billingStreet">Street: {{ user.getAddressBilling.getAddressStreet }}</div>
+<div id="billingCity">City: {{ user.getAddressBilling.getAddressCity }}</div>
+<div id="billingState">State: {{ user.getAddressBilling.getState.getStateCode }}</div>
+<div id="billingZip">Zip: {{ user.getAddressBilling.getAddressZipcode }}</div>
+{% endif %}
+<a href="{{ path('user_update_address_form', { 'slug': 'billing' }) }}" style="color:#ff7070;">Edit Billing Address</a>
+
+</div>
+
+
+{% endblock %}

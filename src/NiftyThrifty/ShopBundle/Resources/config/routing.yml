@@ -1,0 +1,58 @@
+nifty_thrifty_content:
+    pattern:  /content/{slug}
+    defaults: {_controller: NiftyThriftyShopBundle:Content:index, slug: about-us }
+
+nifty_thrifty_user:
+    resource:   "@NiftyThriftyShopBundle/Controller/UserController.php"
+    type:       annotation
+    prefix:     /user
+
+nifty_thrifty_shop:
+    resource:  "@NiftyThriftyShopBundle/Controller/ShopController.php"
+    type:      annotation
+    prefix:    /shop
+
+# All basket/basket-item related things
+nifty_thrifty_basket:
+    resource:  "@NiftyThriftyShopBundle/Controller/BasketController.php"
+    type:      annotation
+    prefix:    /basket
+
+#All checkout related things.
+nifty_thrifty_checkout:
+    resource:   "@NiftyThriftyShopBundle/Controller/CheckoutController.php"
+    type:       annotation
+    prefix:     /checkout
+    
+#All search related things.
+nifty_thrifty_search:
+    resource:   "@NiftyThriftyShopBundle/Controller/SearchController.php"
+    type:       annotation
+    prefix:     /search
+    
+#Back ofice stuff
+back_office:
+    resource:   "@NiftyThriftyShopBundle/Controller/Admin/"
+    type:       annotation
+    prefix:     /admin
+
+#######
+# User management stuff
+
+#handles login form display
+login:
+    pattern: /login
+    defaults: { _controller: NiftyThriftyShopBundle:User:loginIntercept }
+
+#handles login form submission
+login_check:
+    pattern: /login_user
+    
+#handles log out
+logout:
+    pattern: /logout
+
+# Catch all default
+nifty_thrifty_shop_homepage:
+    pattern: /
+    defaults: {_controller: NiftyThriftyShopBundle:Content:index, slug: home }

@@ -1,0 +1,73 @@
+NiftyThrifty\ShopBundle\Entity\Newsletter:
+    type: entity
+    table: newsletter
+    fields:
+        newsletterId:
+            id: true
+            type: bigint
+            nullable: false
+            column: newsletter_id
+            generator:
+                strategy: IDENTITY
+        newsletterName:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: newsletter_name
+        newsletterLink:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: newsletter_link
+        newsletterTitle:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: newsletter_title
+        newsletterCollectionImg:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: newsletter_collection_img
+        newsletterProduct1Img:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: newsletter_product1_img
+        newsletterProduct1Link:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: newsletter_product1_link
+        newsletterProduct2Img:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: newsletter_product2_img
+        newsletterProduct2Link:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: newsletter_product2_link
+        newsletterBlastId:
+            type: bigint
+            nullable: true
+            column: newsletter_blast_id
+        newsletterBlastScheduleTime:
+            type: datetime
+            nullable: true
+            column: newsletter_blast_schedule_time
+    lifecycleCallbacks: 
+        prePersist: [processImages]
+        postPersist: [upload]
+        preUpdate: [checkImages]
+        postUpdate: [checkUpload]
+        postRemove: [deleteFile]

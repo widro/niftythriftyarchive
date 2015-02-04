@@ -1,0 +1,70 @@
+NiftyThrifty\ShopBundle\Entity\Address:
+    type: entity
+    repositoryClass: AddressRepository
+    table: address
+    fields:
+        addressId:
+            id: true
+            type: bigint
+            nullable: false
+            column: address_id
+            generator:
+                strategy: IDENTITY
+        userId:
+            type: bigint
+            nullable: false
+            column: user_id
+        addressFirstName:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: address_first_name
+        addressLastName:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: address_last_name
+        addressStreet:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: address_street
+        addressCity:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: address_city
+        stateId:
+            type: bigint
+            nullable: false
+            column: state_id
+        addressZipcode:
+            type: string
+            length: 20
+            fixed: false
+            nullable: false
+            column: address_zipcode
+        addressCountry:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: address_country
+    manyToOne:
+        user:
+            targetEntity:   User
+            inversedBy:     addresses
+            joinColumn:
+                name:                   user_id
+                referencedColumnName:   user_id
+    oneToOne:
+        state:
+            targetEntity: State
+            joinColumn:
+                name:                 state_id
+                referencedColumnName: state_id
+    lifecycleCallbacks: {  }

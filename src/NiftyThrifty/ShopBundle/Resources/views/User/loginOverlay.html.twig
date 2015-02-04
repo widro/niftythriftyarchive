@@ -1,0 +1,72 @@
+			<div id="user_login" style="margin:0 auto;height:505px;display:none;">
+				<a href="#" title="Close" id="close_login"></a>
+				<div class="left">
+					<h1>
+						Rare Finds. Everyday.
+					</h1>
+					<h1 class="light">
+						Free Membership
+					</h1>
+					<span class="desc">
+						Not a member yet? <br />
+						Sign Up Now to access our smartly <br />
+						curated sales.
+					</span>
+					<a class="link login" id="logintoregister" href="#">
+						register
+					</a>
+				</div>
+				<div class="separator"></div>
+				<div class="right">
+					<h1>
+						Member sign in
+					</h1>
+
+					<a href="#" id="fb-login" name="fb_login_btn" title="Fill registration fields with Facebook" style="margin-top:12px; width:190px;float:left;margin-right:120px;">
+						Login Using Facebook
+					</a>
+					<div class="clear"></div>
+					<h1 style="margin-top:10px;">
+						Or, with your email address
+					</h1>
+
+					<div class="clear"></div>
+					<form action="{{ path('login_check') }}" method="POST">
+						<input type="hidden" name="login_reload" value="true" />
+						<input type="hidden" name="login_facebook" id="login_facebook" value="false" />
+						<input type="hidden" name="user_login[user_fb_id]" id="user_fb_id" value="" />
+						<div class="row">
+							<label for="user_login_email">
+								Email
+							</label>
+							<div class="input_gen">
+								<div class="input_gen_left"></div>
+								<div class="input_gen_middle">
+									<input type="text" id="username" name="userEmail" value="">
+								</div>
+								<div class="input_gen_right"></div>
+							</div>
+						</div>
+						<div class="row">
+							<label for="user_login_password">
+								Password
+							</label>
+							<div class="input_gen">
+								<div class="input_gen_left"></div>
+								<div class="input_gen_middle">
+									<input type="password" id="password" name="userPassword">
+								</div>
+								<div class="input_gen_right"></div>
+							</div>
+						</div>
+						<a href="{{ path('recover_password_form') }}" class="password" title="Forgot password">
+							Forgot your password ?
+						</a>
+						<input type="hidden" name="login_redirect" id="login_redirect" value="" /> 
+						<input type="checkbox" id="remember_me" name="_remember_me" checked="checked">
+						<label for="remember_me">Keep me logged in</label>
+						<input class="submit" type="submit" value="Login"  style="width:130px;"/>
+					</form>
+					<div class="clear"></div>
+				</div>
+			</div>

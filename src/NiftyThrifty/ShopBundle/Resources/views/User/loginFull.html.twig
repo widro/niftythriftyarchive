@@ -1,0 +1,15 @@
+{% extends 'NiftyThriftyShopBundle::layout.html.twig' %}
+
+{% block page_heading %}Nifty Thrifty - Login Required{% endblock %}
+
+{% block page_content %}
+  <h1>Login</h1>
+  
+  {% if error %}
+    <div id="loginErrors">Login error: {{ error.message }}</div>
+  {% endif %}
+  
+  {% include 'NiftyThriftyShopBundle:User:loginPartial.html.twig' with {'last_username': last_username} %}
+  
+  <div><a href="{{ path('register') }}">Register</a></div>
+{% endblock %}

@@ -1,0 +1,8 @@
+services:
+    shipping_manager:
+        class:       NiftyThrifty\ShopBundle\Service\ShippingCostService
+        arguments:   ["no", 70, 7, 19]
+
+    shipping_manager_free:
+        class:      NiftyThrifty\ShopBundle\Service\ShippingCostService
+        arguments:  ["yes", 10, 15, 20]

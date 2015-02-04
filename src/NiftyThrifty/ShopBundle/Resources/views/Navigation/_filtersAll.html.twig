@@ -1,0 +1,62 @@
+	<div id="filters" class="category_bar">
+		<div class="filter filter_product_category filter_single_value">
+			<span class="select">Categories<span class="nb_selected"></span></span>
+			<div class="dropdown">
+				<div id="filters-category-list" class="wrapper">
+			            {% for category in categories %}
+						<div class="option product_category  product_category_{{category.productCategoryId}} {% if category.productCategoryId == activeCategoryId %}selected{% endif %}">
+							<span class="label">{{category.productCategoryName}}</span>
+							<span class="value display_none">{{category.productCategoryId}}</span>
+						</div>
+				    {% endfor %}
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="category_bar_spacer"></div>
+		<div class="filter filter_product_size">
+			<span class="select">Sizes<span class="nb_selected"></span></span>
+			<div class="dropdown sizeboxes">
+				<div class="wrapper">
+					<div id="filters-category-sizes-list" class="container">
+			            {% for category in categories %}
+							<div class="product_category filter_single_value" id="sizes_container" style="display:none;">
+								<span class="optionGroup_title">{{category.productCategoryName}}</span>
+								<div class="optionGroup product_category_{{category.productCategoryId}}">
+			       					     {% for size in sizes[category.productCategoryId] %}
+										<div class="option product_category_size product_category_size_{{size.productCategorySizeId}} sizebox" style="width:45px;padding-top:7px;text-align:center;height:18px;margin:6px;float:left;display:block;border:1px #cccccc solid;">
+											<span class="label">{{size.productCategorySizeValue}}</span>
+											<span class="value display_none">{{size.productCategorySizeId}}</span>
+										</div>
+				    					{% endfor %}
+									<div class="clear"></div>
+								</div>
+							</div>
+				    {% endfor %}
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="category_bar_spacer"></div>
+		<div class="filter filter_sort filter_single_value">
+			<span class="select">Sort by<span class="nb_selected"></span></span>
+			<div class="dropdown">
+				<div class="wrapper">
+					<div class="option">
+						<span class="label">Prices (Hi to Lo)</span>
+						<span class="value display_none">product_price_hi</span>
+					</div>
+					<div class="option">
+						<span class="label">Prices (Lo to Hi)</span>
+						<span class="value display_none">product_price_lo</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="category_bar_spacer"></div>
+		<div class="clear"></div>
+	</div>

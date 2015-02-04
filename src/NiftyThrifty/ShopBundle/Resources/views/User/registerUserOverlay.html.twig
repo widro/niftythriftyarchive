@@ -1,0 +1,204 @@
+<script type="text/javascript">
+var _fbAppId = '297949530277661';
+var _fbChannelUrl = 'http://www.niftythrifty.com/channel.html';
+var _json_url = 'https://www.niftythrifty.com/Home/Json.sls';
+</script>
+<style>
+div#user_first_name_div3 div.input_gen_middle label{
+	display:none;
+}
+
+div#user_last_name_div3 div.input_gen_middle label{
+	display:none;
+}
+
+div#user_email_div3 div.input_gen_middle label{
+	display:none;
+}
+
+div#user_password1_div3 div.input_gen_middle label{
+	display:none;
+}
+
+div#user_password2_div3 div.input_gen_middle label{
+	display:none;
+}
+
+div button#registration_Submit{
+	margin: '6px 15px 0 0';
+	width: 120px;
+	float: left;
+
+	background-color: #FF7070;
+	color: #FFFFFF;
+	cursor: pointer;
+	display: block;
+	height: 52px;
+	line-height: 50px;
+	font-family: Volkorn-Italic;
+	text-align: center;
+	border: none;
+	font-size: 15px;
+}
+
+</style>
+
+<div id="user_registration" style="margin:0 auto;width:800px;height:450px;display:none;">
+	<a href="#" title="Close" id="close_register" style="display: block;height: 32px;float:right;width: 32px;background: url('/bundles/niftythriftyshop/Img/nifty_box_close.png') top left no-repeat;"></a>
+	<h1 id="reg_form_h1">
+		Signup with your email address
+	</h1>
+    {{ form_start(editForm) }}
+			<div class="left">
+				<div class="row">
+					<label for="user_first_name" id="user_first_name_label">
+						First name :
+					</label>
+					<div class="input_gen" id="user_first_name_div3">
+						<div class="input_gen_left"></div>
+						<div class="input_gen_middle">
+							{{ form_row(editForm.userFirstName) }}
+						</div>
+						<div class="input_gen_right"></div>
+					</div>
+				</div>
+				<div class="row">
+					<label for="user_last_name" id="user_last_name_label">
+						Last name :
+					</label>
+					<div class="input_gen" id="user_last_name_div3">
+						<div class="input_gen_left"></div>
+						<div class="input_gen_middle">
+							{{ form_row(editForm.userLastName) }}
+						</div>
+						<div class="input_gen_right"></div>
+					</div>
+				</div>
+				<div class="row">
+					<label for="user_email" id="user_email_label">
+						E-mail :
+					</label>
+					<div class="input_gen" id="user_email_div3">
+						<div class="input_gen_left"></div>
+						<div class="input_gen_middle">
+							{{ form_row(editForm.userEmail) }}
+
+						</div>
+						<div class="input_gen_right"></div>
+					</div>
+				</div>
+				<div class="row" style="margin-top:50px;">
+					<h1>Or, register with Facebook</h1>
+					<span href="#" id="fb-register" name="fb_register_btn" title="Fill registration fields with Facebook" style="float:left;">
+						Register with Facebook
+					</span>
+				</div>
+
+
+
+
+
+
+
+
+
+			</div>
+			<div class="right">
+				<div class="row">
+					<label for="user_password">
+						Password :
+					</label>
+					<div class="input_gen" id="user_password1_div3">
+						<div class="input_gen_left"></div>
+						<div class="input_gen_middle">
+							{{ form_row(editForm.userPassword['first']) }}
+						</div>
+						<div class="input_gen_right"></div>
+					</div>
+				</div>
+				<div class="row">
+					<label for="user_password2">
+						Retype password :
+					</label>
+					<div class="input_gen" id="user_password2_div3">
+						<div class="input_gen_left"></div>
+						<div class="input_gen_middle">
+							{{ form_row(editForm.userPassword['second']) }}
+						</div>
+						<div class="input_gen_right"></div>
+					</div>
+				</div>
+				<div class="clear"></div>
+				<a href="#" title="Sign in" class="sign_in">
+					Already member? <span>Sign in</span>
+				</a>
+				<div class="clear"></div>
+				            {{ form_row(editForm.inviteToken) }}
+				            {{ form_row(editForm.tokenType) }}
+				            {{ form_row(editForm.referSite) }}
+    {{ form_end(editForm) }}
+
+				<br />
+				<br />
+				<br />
+				<a href="{{ path('nifty_thrifty_content', {'slug': 'terms-of-use'}) }}" target="_blank" class="sign_in">
+					By registering, you are agreeing to the terms of our <span>privacy policy</span>
+				</a>
+				<br />
+				
+			</div>
+			</form>
+	<div class="clear"></div>
+</div>
+
+
+
+
+<div id="registerbonus" style="margin:0 auto;width:800px;height:450px;display:none;">
+	<div style="width:826px;height:510px;margin: 0 auto;font-family: 'Conv_Univers45Light';font-size:15px;">
+		<div style="width:320px; background:#ff7070;float:left;height:510px;color:#ffffff;">
+			<div style="margin-top:130px;margin-left:45px;width:250px;font-family:'Thristy-Light';font-size:30px;">
+				Thank you for joining
+				Nifty Thrifty
+			</div>
+			<div class="clear"></div>
+			<div style="margin-top:90px;margin-left:45px;width:230px;letter-spacing:2px;">
+			ENJOY RARE VINTAGE FINDS. EVERYDAY.
+			</div>
+
+
+		</div>
+		<div style="width:506px; background:#ffffff;float:left;height:510px;color:#7f7f7f;">
+			<div style="margin-left:60px;margin-top:45px;width:360px;">
+				<div style="width:360px;height:120px;margin-bottom:10px;">
+					<div style="width:80px;height:120px;float:left;">
+						<img src="/images/images/signup_step_1.png" />
+					</div>
+					<div style="width:240px;padding-top:20px;height:100px;border-bottom:1px dashed #cccccc;float:right;">
+						BECOME A FAN<br/>ON FACEBOOK<br/><br/>
+						<div class="fb-like" data-href="https://www.facebook.com/Niftythriftyvintage" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" style="padding-right:10px;overflow:hidden;"></div>
+
+					</div>
+				</div>
+				<div style="width:360px;height:120px;margin-bottom:10px;">
+					<div style="width:80px;height:120px;float:left;">
+						<img src="/images/images/signup_step2.png" />
+					</div>
+					<div style="width:240px;padding-top:20px;height:100px;border-bottom:1px dashed #cccccc;float:right;">
+						SHARE NIFTY THRIFTY<br/>WITH YOUR FRIENDS<br/><br/>
+						<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fniftythrifty.com" target="_blank"><img src="/images/images/facebookshareregoverlay.png" border="0" /></a>					
+					</div>
+				</div>
+				<div style="width:360px;height:120px;margin-bottom:10px;">
+					<div style="width:80px;height:120px;float:left;">
+						<img src="/images/images/signup_step3.png" />
+					</div>
+					<div style="width:240px;padding-top:20px;height:100px;float:right;">
+						GET 20% OFF YOUR FIRST<br/>PURCHASE<br/><br/><br/><br/>
+						<a href="/"><img src="/images/images/regoverlayshopnow.jpg" border="0" /></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

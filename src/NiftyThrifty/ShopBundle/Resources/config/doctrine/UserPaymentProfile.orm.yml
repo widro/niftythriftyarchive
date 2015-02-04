@@ -1,0 +1,39 @@
+NiftyThrifty\ShopBundle\Entity\UserPaymentProfile:
+    type: entity
+    table: user_payment_profile
+    fields:
+        userPaymentProfileId:
+            id: true
+            type: bigint
+            nullable: false
+            column: user_payment_profile_id
+            generator:
+                strategy: IDENTITY
+        userId:
+            type: bigint
+            nullable: false
+            column: user_id
+        cardDigits:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+            column: card_digits
+        expirationDate:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+            column: expiration_date
+        authorizeNetProfileId:
+            type: bigint
+            nullable: false
+            column: authorize_net_profile_id
+    manyToOne:
+        user:
+            targetEntity:   User
+            inversedBy:     userPaymentProfiles
+            joinColumn:
+                name:                   user_id
+                referencedColumnName:   user_id
+    lifecycleCallbacks: {  }

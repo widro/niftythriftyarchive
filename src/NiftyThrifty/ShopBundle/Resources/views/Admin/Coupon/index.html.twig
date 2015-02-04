@@ -1,0 +1,116 @@
+{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
+
+{% block title %}
+{{ parent() }} - {{ 'views.index.list'|trans({'%entity%': 'Coupon'}, 'JordiLlonchCrudGeneratorBundle') }}
+{% endblock %}
+
+{% block page %}
+
+<div class="row">
+
+    <div class="span8">
+        <h1>{{ 'views.index.list'|trans({'%entity%': 'Coupon'}, 'JordiLlonchCrudGeneratorBundle') }}</h1>
+    </div>
+    <div class="span2">
+        {% if form_errors(filterForm) %}
+        <div class="alert alert-block alert-error fade in form-errors">
+            {{ form_errors(filterForm) }}
+        </div>
+        {% endif %}
+        &nbsp;
+    </div>
+    <div class="span2">
+        <div class="filters-right">
+            <a class="btn dropdown-toggle" data-toggle="collapse" data-target="#filters">
+                {{ 'views.index.filters'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+                <span class="caret"></span>
+            </a>
+        </div>
+    </div>
+
+    <div class="span12">
+        <div id="filters" class="collapse">
+
+            <form class="well" action="{{ path('coupon_admin') }}" method="get" {{ form_enctype(filterForm) }}>
+                {{ form_row(filterForm.couponId) }}
+                {{ form_row(filterForm.couponCode) }}
+                {{ form_row(filterForm.couponDateStart) }}
+                {{ form_row(filterForm.couponDateEnd) }}
+                {{ form_row(filterForm.couponPercent) }}
+                {{ form_row(filterForm.couponAmount) }}
+                {{ form_row(filterForm.couponQuantityLimited) }}
+                {{ form_row(filterForm.couponQuantity) }}
+                {{ form_row(filterForm.couponUnique) }}
+                {{ form_row(filterForm.couponDateAdd) }}
+                {{ form_row(filterForm.couponFreeShipping) }}
+                {{ form_row(filterForm.userId) }}
+                {{ form_rest(filterForm) }}
+
+                <p>
+                    <button type="submit" name="filter_action" value="filter">{{ 'views.index.filter'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+                    <button type="submit" name="filter_action" value="reset">{{ 'views.index.reset'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div class="span12">
+
+    <table class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Couponid</th>
+            <th>Couponcode</th>
+            <th>Coupondatestart</th>
+            <th>Coupondateend</th>
+            <th>Couponpercent</th>
+            <th>Couponamount</th>
+            <th>Couponquantitylimited</th>
+            <th>Couponquantity</th>
+            <th>Couponunique</th>
+            <th>Coupondateadd</th>
+            <th>Couponfreeshipping</th>
+            <th>Userid</th>
+            <th>{{ 'views.index.actions'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('coupon_admin_show', { 'id': entity.id }) }}">{{ entity.couponId }}</a></td>
+            <td>{{ entity.couponCode }}</td>
+            <td>{% if entity.couponDateStart %}{{ entity.couponDateStart|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.couponDateEnd %}{{ entity.couponDateEnd|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.couponPercent }}</td>
+            <td>{{ entity.couponAmount }}</td>
+            <td>{{ entity.couponQuantityLimited }}</td>
+            <td>{{ entity.couponQuantity }}</td>
+            <td>{{ entity.couponUnique }}</td>
+            <td>{% if entity.couponDateAdd %}{{ entity.couponDateAdd|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.couponFreeShipping }}</td>
+            <td>{{ entity.userId }}</td>
+            <td>
+        <a class="btn btn-mini" href="{{ path('coupon_admin_show', { 'id': entity.id }) }}">
+            {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>
+        <a class="btn btn-mini" href="{{ path('coupon_admin_edit', { 'id': entity.id }) }}">
+            {{ 'views.actions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    </div>
+
+    <div class="span4">
+    {{ pagerHtml|raw }}
+    </div>
+
+        <div class="span8">
+    <a class="btn btn-primary likepaginator" href="{{ path('coupon_admin_new') }}">
+            {{ 'views.index.createnew'|trans({}, 'JordiLlonchCrudGeneratorBundle') }} Coupon
+        </a>
+    </div>
+    </div>
+
+{% endblock %}

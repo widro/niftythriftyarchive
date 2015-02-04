@@ -1,0 +1,202 @@
+{% extends 'NiftyThriftyShopBundle::layout.html.twig' %}
+
+{% block page_heading %}Nifty Thrifty - Rare Finds Everyday{% endblock %}
+
+{% block page_content %}
+
+		<script type="text/javascript">
+			var filters;
+			window.addEvent('domready', function(){
+				if ($$('#filters').length != 0){
+					var collection_ids = '{{collection.getCollectionId }}';
+					var ids = (collection_ids.test(/\,/gi)) ? collection_ids.split(',') : [collection_ids];
+					filters = new Filters({collections: ids});
+				}
+			});
+			var page = 'sales';
+		</script>	
+
+
+	<div id="filters" class="category_bar">
+		<div class="filter filter_product_category filter_single_value">
+			<span class="select">Categories<span class="nb_selected"></span></span>
+			<div class="dropdown">
+				<div id="collection_categories" class="wrapper">
+			            {% for category in categories %}
+						<div class="option product_category  product_category_{{category.productCategoryId}}">
+							<span class="label">{{category.productCategoryName}}</span>
+							<span class="value display_none">{{category.productCategoryId}}</span>
+						</div>
+				    {% endfor %}
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="category_bar_spacer"></div>
+		<div class="filter filter_product_size">
+			<span class="select">Sizes<span class="nb_selected"></span></span>
+			<div class="dropdown">
+				<div class="wrapper">
+					<div id="collection_category_sizes" class="container">
+			            {% for category in categories %}
+							<div class="product_category filter_single_value" id="sizes_container" style="display:none;">
+								<span class="optionGroup_title">{{category.productCategoryName}}</span>
+								<div class="optionGroup product_category_{{category.productCategoryId}}">
+			       					     {% for size in sizes[category.productCategoryId] %}
+										<div class="option product_category_size product_category_size_{{size.productCategorySizeId}}">
+											<span class="label">{{size.productCategorySizeValue}}</span>
+											<span class="value display_none">{{size.productCategorySizeId}}</span>
+										</div>
+				    					{% endfor %}
+									<div class="clear"></div>
+								</div>
+							</div>
+				        {% endfor %}
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="category_bar_spacer"></div>
+		<div class="filter filter_sort filter_single_value">
+			<span class="select">Sort by<span class="nb_selected"></span></span>
+			<div class="dropdown">
+				<div class="wrapper">
+					<div class="option">
+						<span class="label">Prices (Hi to Lo)</span>
+						<span class="value display_none">product_price_hi</span>
+					</div>
+					<div class="option">
+						<span class="label">Prices (Lo to Hi)</span>
+						<span class="value display_none">product_price_lo</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="category_bar_spacer"></div>
+		<div class="clear"></div>
+	</div>
+
+		<div id="collection_right">
+
+			<div class="collection_featured" style="height:400px;">
+				<div class="collection_featured_top" style="height:360px;">
+					<img src="/{{collection.getCollectionVisualSaleHero }}" alt="" width="840" height="360"/>
+				</div>
+			</div>
+
+			<div id="content_list">
+
+				<div id="showing">
+					<div id="title_showing">Showing:</div>
+					<xsl:if test="//View/upcoming = 'false'">
+					<div id="filter_hidecheck" style="width:150px; float:right;">
+						<div class="filter_special">
+							<input type="checkbox" name="hide_sold"/> 
+							<label>Hide sold pieces</label>
+						</div>
+					</div>
+					</xsl:if>
+					<div id="count_item">
+						<div id="nbr"></div>
+						<div id="text"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div id="filters_loading"></div>
+
+				<div class="overflow overflow_products_wrapper">
+					<div id="products">
+						<script type="text/javascript">
+							var productSearchCount = {{productcount}};
+						</script>
+            {% for product in products %}
+							<div class="product">									
+								<div id="addtocarthoverdiv">
+									{% if app.user == false %}
+									{% else %}
+									{% if app.user.isLoved(product.getProductId) %}
+									<span class="addtolovehover addtolovehover_pink" name="love{{ product.getId }}" id="love{{ product.getId }}"></span>
+									{% else %}
+									<span class="addtolovehover" name="love{{ product.getId }}" id="love{{ product.getId }}"></span>
+									{% endif %}
+									{% endif %}
+									
+									{% if product.getProductAvailability == 'sale' %}
+									<div class="clear"></div>
+									<span class="addtocarthover" name="{{ product.getId }}" id="{{ product.getId }}">add to cart</span>
+									{% endif %}
+								</div>
+								<div class="img">
+									{% if app.user == false %}
+									{% else %}
+									{% if app.user.isLoved(product.getProductId) %}
+									<div class="loveheartongallery loveheartongallery_pink"></div>
+									{% else %}
+									<div class="loveheartongallery"></div>
+									{% endif %}
+									{% endif %}
+
+									<a href="{{ path('show_item', {'slug': product.getProductName|slugify}) }}-{{ product.getId }}" title="{{ product.getProductName }}">
+
+								    {% if product.getProductVisual1Large == '' %}
+										<img class="product_img" src="/{{product.getProductVisual1}}" />
+									{% endif %}
+								    {% if product.getProductVisual1Large != '' %}
+										<img class="product_img2" src="/{{product.getProductVisual1Large}}" />
+									{% endif %}
+
+									</a>
+								</div>
+								<div class="infos">
+									<div class="product_separator"></div>
+									<div class="product_name">{{ product.getProductName }}</div>
+
+									<div class="product_designer">
+									{% if product.getDesignerId > '0' %}
+									{{product.getDesigner.getDesignerName() }}
+									{% endif %}
+									</div>
+
+									{% if product.getProductOldPrice > '0' %}
+										<div class="price old">${{ product.getProductOldPrice }}</div>
+									{% endif %}
+									<div class="price">${{ product.getProductPrice }}</div>
+									{% if product.getProductCategorySize != '' %}
+									<div class="size">
+										<div class="size_left"></div>
+										<div class="size_value">{{product.getProductCategorySize.getProductCategorySizeValue}}</div>
+										<div class="size_right"></div>
+
+
+									</div>
+									{% endif %}
+									<div class="clear"></div>
+								</div>
+
+								<div class="product_separator"></div>
+
+								    {% if product.getProductAvailability != 'sale' %}
+									<div class="status {{ product.getProductAvailability }}"></div>
+									{% endif %}
+							</div>	
+            {% endfor %}
+						<div class="clear"></div>
+					</div>
+				</div>
+
+				<div id="load_more">See more products !</div>
+			</div>
+			<!--
+			<div id="view_all">
+				<a id="view_all_sales" href="{//Statics/Site/Various/url/home_index}">View all the sales</a>
+			</div>
+			-->
+		</div>
+	<div class="clear"></div>
+
+
+{% endblock %}

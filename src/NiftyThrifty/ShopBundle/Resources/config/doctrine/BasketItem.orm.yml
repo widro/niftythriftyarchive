@@ -1,0 +1,59 @@
+NiftyThrifty\ShopBundle\Entity\BasketItem:
+    type: entity
+    repositoryClass: BasketItemRepository
+    table: basket_item
+    fields:
+        basketItemId:
+            id: true
+            type: bigint
+            nullable: false
+            column: basket_item_id
+            generator:
+                strategy: IDENTITY
+        basketId:
+            type: bigint
+            nullable: false
+            column: basket_id
+        productId:
+            type: bigint
+            nullable: false
+            column: product_id
+        basketItemDateAdd:
+            type: datetime
+            nullable: false
+            column: basket_item_date_add
+        basketItemDateEnd:
+            type: datetime
+            nullable: false
+            column: basket_item_date_end
+        basketItemPrice:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: basket_item_price
+        basketItemDiscount:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: basket_item_discount
+        basketItemStatus:
+            type: string
+            length: null
+            fixed: false
+            nullable: false
+            column: basket_item_status
+    oneToOne:
+        product:
+            targetEntity:   Product
+            joinColumn:
+                name:                 product_id
+                referencedColumnName: product_id
+    manyToOne:
+        basket:
+            targetEntity:   Basket
+            inversedBy:     basketItems
+            joinColumn:
+                name:                 basket_id
+                referencedColumnName: basket_id
+    lifecycleCallbacks:
+        prePersist: [validateItem]

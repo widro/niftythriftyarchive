@@ -1,0 +1,95 @@
+{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
+
+{% block title %}
+{{ parent() }} - {{ 'views.index.list'|trans({'%entity%': 'ProductCategorySize'}, 'JordiLlonchCrudGeneratorBundle') }}
+{% endblock %}
+
+{% block page %}
+
+<div class="row">
+
+    <div class="span8">
+        <h1>{{ 'views.index.list'|trans({'%entity%': 'ProductCategorySize'}, 'JordiLlonchCrudGeneratorBundle') }}</h1>
+    </div>
+    <div class="span2">
+        {% if form_errors(filterForm) %}
+        <div class="alert alert-block alert-error fade in form-errors">
+            {{ form_errors(filterForm) }}
+        </div>
+        {% endif %}
+        &nbsp;
+    </div>
+    <div class="span2">
+        <div class="filters-right">
+            <a class="btn dropdown-toggle" data-toggle="collapse" data-target="#filters">
+                {{ 'views.index.filters'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+                <span class="caret"></span>
+            </a>
+        </div>
+    </div>
+    <div style="clear:both"></div>
+    <div class="span12">
+        <div id="filters" class="collapse">
+
+            <form class="well" action="{{ path('product_category_size_admin') }}" method="get" {{ form_enctype(filterForm) }}>
+                {{ form_row(filterForm.productCategorySizeId) }}
+                {{ form_row(filterForm.productCategorySizeName) }}
+                {{ form_row(filterForm.productCategorySizeValue) }}
+                {{ form_row(filterForm.productCategorySizeOrder) }}
+                {{ form_row(filterForm.productCategoryId) }}
+                {{ form_rest(filterForm) }}
+
+                <p>
+                    <button type="submit" name="filter_action" value="filter">{{ 'views.index.filter'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+                    <button type="submit" name="filter_action" value="reset">{{ 'views.index.reset'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div class="span12">
+
+    <table class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Productcategorysizeid</th>
+            <th>Productcategorysizename</th>
+            <th>Productcategorysizevalue</th>
+            <th>Productcategorysizeorder</th>
+            <th>Productcategoryid</th>
+            <th>{{ 'views.index.actions'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('product_category_size_admin_show', { 'id': entity.id }) }}">{{ entity.productCategorySizeId }}</a></td>
+            <td>{{ entity.productCategorySizeName }}</td>
+            <td>{{ entity.productCategorySizeValue }}</td>
+            <td>{{ entity.productCategorySizeOrder }}</td>
+            <td>{{ entity.productCategoryId }}</td>
+            <td>
+        <a class="btn btn-mini" href="{{ path('product_category_size_admin_show', { 'id': entity.id }) }}">
+            {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>
+        <a class="btn btn-mini" href="{{ path('product_category_size_admin_edit', { 'id': entity.id }) }}">
+            {{ 'views.actions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    </div>
+    <div style="clear:both"></div>
+    <div class="span4">
+    {{ pagerHtml|raw }}
+    </div>
+
+        <div class="span8">
+    <a class="btn btn-primary likepaginator" href="{{ path('product_category_size_admin_new') }}">
+            {{ 'views.index.createnew'|trans({}, 'JordiLlonchCrudGeneratorBundle') }} ProductCategorySize
+        </a>
+    </div>
+    </div>
+
+{% endblock %}

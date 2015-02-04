@@ -1,0 +1,117 @@
+{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
+
+{% block title %}
+{{ parent() }} - {{ 'views.index.list'|trans({'%entity%': 'Collection'}, 'JordiLlonchCrudGeneratorBundle') }}
+{% endblock %}
+
+{% block page %}
+
+<div class="row">
+
+    <div class="span8">
+        <h1>{{ 'views.index.list'|trans({'%entity%': 'Collection'}, 'JordiLlonchCrudGeneratorBundle') }}</h1>
+    </div>
+    <div class="span2">
+        {% if form_errors(filterForm) %}
+        <div class="alert alert-block alert-error fade in form-errors">
+            {{ form_errors(filterForm) }}
+        </div>
+        {% endif %}
+        &nbsp;
+    </div>
+    <div class="span2">
+        <div class="filters-right">
+            <a class="btn dropdown-toggle" data-toggle="collapse" data-target="#filters">
+                {{ 'views.index.filters'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+                <span class="caret"></span>
+            </a>
+        </div>
+    </div>
+    <div style="clear:both"></div>
+    <div class="span12">
+        <div id="filters" class="collapse">
+
+            <form class="well" action="{{ path('collection_admin') }}" method="get" {{ form_enctype(filterForm) }}>
+                {{ form_row(filterForm.collectionId) }}
+                {{ form_row(filterForm.collectionCode) }}
+                {{ form_row(filterForm.isShop) }}
+                {{ form_row(filterForm.collectionName) }}
+                {{ form_row(filterForm.collectionDescription) }}
+                {{ form_row(filterForm.collectionType) }}
+                {{ form_row(filterForm.collectionDateStart) }}
+                {{ form_row(filterForm.collectionDateEnd) }}
+                {{ form_row(filterForm.collectionActive) }}
+                {{ form_row(filterForm.collectionVisualHomeHero) }}
+                {{ form_row(filterForm.collectionVisualMainPanel) }}
+                {{ form_row(filterForm.collectionVisualSaleHero) }}
+                {{ form_rest(filterForm) }}
+
+                <p>
+                    <button type="submit" name="filter_action" value="filter">{{ 'views.index.filter'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+                    <button type="submit" name="filter_action" value="reset">{{ 'views.index.reset'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+                </p>
+            </form>
+        </div>
+    </div>
+	<div style="clear:both;"></div>
+
+    <div class="span12">
+
+    <table class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Collectionid</th>
+            <th>Collectioncode</th>
+            <th>Isshop</th>
+            <th>Collectionname</th>
+            <th>Collectiondescription</th>
+            <th>Collectiontype</th>
+            <th>Collectiondatestart</th>
+            <th>Collectiondateend</th>
+            <th>Collectionactive</th>
+            <th>Collectionvisualhomehero</th>
+            <th>Collectionvisualmainpanel</th>
+            <th>Collectionvisualsalehero</th>
+            <th>{{ 'views.index.actions'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('collection_admin_show', { 'id': entity.id }) }}">{{ entity.collectionId }}</a></td>
+            <td>{{ entity.collectionCode }}</td>
+            <td>{{ entity.isShop }}</td>
+            <td>{{ entity.collectionName }}</td>
+            <td>{{ entity.collectionDescription }}</td>
+            <td>{{ entity.collectionType }}</td>
+            <td>{% if entity.collectionDateStart %}{{ entity.collectionDateStart|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.collectionDateEnd %}{{ entity.collectionDateEnd|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.collectionActive }}</td>
+            <td>{{ entity.collectionVisualHomeHero }}</td>
+            <td>{{ entity.collectionVisualMainPanel }}</td>
+            <td>{{ entity.collectionVisualSaleHero }}</td>
+            <td>
+        <a class="btn btn-mini" href="{{ path('collection_admin_show', { 'id': entity.id }) }}">
+            {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>
+        <a class="btn btn-mini" href="{{ path('collection_admin_edit', { 'id': entity.id }) }}">
+            {{ 'views.actions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    </div>
+	<div style="clear:both;"></div>
+    <div class="span4">
+    {{ pagerHtml|raw }}
+    </div>
+
+        <div class="span8">
+    <a class="btn btn-primary likepaginator" href="{{ path('collection_admin_new') }}">
+            {{ 'views.index.createnew'|trans({}, 'JordiLlonchCrudGeneratorBundle') }} Collection
+        </a>
+    </div>
+    </div>
+
+{% endblock %}

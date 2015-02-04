@@ -1,0 +1,469 @@
+{% extends 'NiftyThriftyShopBundle::layout.html.twig' %}
+
+{% block page_heading %}{{ product.getProductName() }}{% endblock %}
+
+{% block page_content %}
+        <script type="text/javascript" src=" {{ asset('/bundles/niftythriftyshop/js/jdzoom.js') }}"></script>
+        <script type="text/javascript" src=" {{ asset('/bundles/niftythriftyshop/js/slimbox.js') }}"></script>
+        <script type="text/javascript" src=" {{ asset('/bundles/niftythriftyshop/js/ProductPreview.js') }}"></script>
+        <script type="text/javascript" src=" {{ asset('/bundles/niftythriftyshop/js/ProductSize.js') }}"></script>
+
+
+
+
+		<div id="nifty_box" class="product_sizes">
+			<div class="content" style="margin:0 auto;">
+				<div class="top">
+					<h1>
+						Size chart
+					</h1>
+					<a href="#" class="close_btn" title="close">
+					</a>
+				</div>
+				<div class="sizes">
+					<div class="categories">
+						<a href="#" title="" class="selected first">
+							Sizes
+						</a>
+						<a href="#" title="">
+							Tops
+						</a>
+						<a href="#" title="">
+							Bottoms
+						</a>
+						<a href="#" title="">
+							Accessories
+						</a>
+					</div>
+					<div class="panes">
+						<div class="pane display">
+						<table cellpadding="0" cellspacing="0">
+<tr class="titles"><td>CONTEMPORARY</td><td>SIZE</td><td>BUST</td><td>WAIST</td><td>HIP</td></tr>
+<tr><td>00, 0</td><td>XS</td><td>33-35</td><td>26-27.5</td><td>36-38</td></tr>
+<tr><td>2</td><td>S </td><td>35-37</td><td>27.5-30</td><td>38-40</td></tr>
+<tr><td>4, 6</td><td>M</td><td>37-39</td><td>30-32</td><td>40-42</td></tr>
+<tr><td>8, 10</td><td>L</td><td>39-41</td><td>32-34</td><td>42-43.5</td></tr>
+<tr><td>12, 14</td><td>XL</td><td>41-42</td><td>34-35</td><td>43.5-45</td></tr>
+<tr><td>16, 18</td><td>XXL</td><td>43-45</td><td>35-36.5</td><td>45-47.5</td></tr>
+<tr><td>20, 22</td><td>XXXL</td><td>45-47</td><td>36.5-38</td><td>47.5-49</td></tr>
+<tr><td></td><td>OS</td><td>48+</td><td>38+</td><td>49+</td></tr>
+
+						</table>
+						</div>
+
+						<div class="pane">
+						<table cellpadding="0" cellspacing="0">
+<tr class="titles"><td>CONTEMPORARY</td><td>SIZE</td><td>BUST</td></tr>
+<tr><td>00, 0</td><td>XS</td><td>33-35</td></tr>
+<tr><td>2</td><td>S </td><td>35-37</td></tr>
+<tr><td>4, 6</td><td>M</td><td>37-39</td></tr>
+<tr><td>8, 10</td><td>L</td><td>39-41</td></tr>
+<tr><td>12, 14</td><td>XL</td><td>41-42</td></tr>
+<tr><td>16, 18</td><td>XXL</td><td>43-45</td></tr>
+<tr><td>20, 22</td><td>XXXL</td><td>45-47</td></tr>
+<tr><td></td><td>OS</td><td>48+</td></tr>
+
+						</table>
+						</div>
+
+						<div class="pane">
+						<table cellpadding="0" cellspacing="0">
+<tr class="titles"><td>CONTEMPORARY</td><td>SIZE</td><td>WAIST</td><td>HIP</td></tr>
+<tr><td>00, 0</td><td>XS</td><td>26-27.5</td><td>36-38</td></tr>
+<tr><td>2</td><td>S </td><td>27.5-30</td><td>38-40</td></tr>
+<tr><td>4, 6</td><td>M</td><td>30-32</td><td>40-42</td></tr>
+<tr><td>8, 10</td><td>L</td><td>32-34</td><td>42-43.5</td></tr>
+<tr><td>12, 14</td><td>XL</td><td>34-35</td><td>43.5-45</td></tr>
+<tr><td>16, 18</td><td>XXL</td><td>35-36.5</td><td>45-47.5</td></tr>
+<tr><td>20, 22</td><td>XXXL</td><td>36.5-38</td><td>47.5-49</td></tr>
+<tr><td></td><td>OS</td><td>38+</td><td>49+</td></tr>
+						</table>
+						</div>
+
+						<div class="pane">
+						<table cellpadding="0" cellspacing="0">
+<tr class="titles"><td>SIZE</td><td>WAIST</td></tr>
+<tr><td>XS</td><td>FITS UP TO 26</td></tr>
+<tr><td>S </td><td>FITS UP TO 27.5</td></tr>
+<tr><td>M</td><td>FITS UP TO 30</td></tr>
+<tr><td>L</td><td>FITS UP TO 32</td></tr>
+<tr><td>XL</td><td>FITS UP TO 34</td></tr>
+<tr><td>XXL</td><td>FITS UP TO 36.5</td></tr>
+<tr><td>XXXL</td><td>FITS UP TO 38</td></tr>
+<tr><td>OS</td><td>38"+</td></tr>
+							</table>
+						</div>
+						
+						<table cellpadding="0" cellspacing="0" style="margin-top:20px;">
+						<tr class="titles"><td colspan="10">
+						Each garment is unique, and we measure every piece flat.  If you have questions about the sizing on a garment, please contact our sizing expert Taylor at <a href="mailto:taylor@niftythrifty.com">taylor@niftythrifty.com</a>
+						</td></tr>
+						</table>
+						<div class="clear"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				
+			</div>	
+		</div>
+
+		<div id="picture_full" class="product_full_images" style="display:none;">
+			<div class="content" style="margin:0 auto;">
+				<div>
+					<h3 class="zoomh3" style="width:100%;margin:0;">Other Views</h3>
+				</div>
+				<div class="categories" style="margin:0 auto; height:120px; ">
+					<div class="img_product_thumb img_product_thumb_active" style="margin-left:250px">
+						<img id="full_thumb1" class="sub_picture2" src="/{{product.getProductVisual1Large}}" style="float:left;" />
+					</div>
+					<div class="img_product_thumb">
+						<img id="full_thumb2" class="sub_picture2" src="/{{product.getProductVisual2Large}}" style="float:left;" />
+					</div>
+					<div class="img_product_thumb">
+						<img id="full_thumb3" class="sub_picture2" src="/{{product.getProductVisual3Large}}" style="float:left;" />
+					</div>
+					<a href="#" class="close_btn" title="close"></a>
+				</div>
+				<div class="panes" style="border-top:1px #cccccc solid;">
+					<div class="pane display">
+						<img id="full_image1" src="/{{product.getProductVisual1Large}}" width="900"/>
+					</div>
+					<div class="pane display">
+						<img id="full_image2" src="/{{product.getProductVisual2Large}}" width="900" style="display:none;"/>
+					</div>
+					<div class="pane display">
+						<img id="full_image3" src="/{{product.getProductVisual3Large}}" width="900" style="display:none;"/>
+					</div>
+
+
+
+				</div>
+			</div>	
+					<div class="clear"></div>
+		</div>
+		<div id="info_product">
+
+
+	<script type="text/javascript">
+	window.addEvent('load',function() { 
+		var jdz = new JDZoom();
+		var jdz2 = new JDZoom({
+			'selector':'a[rel=jdzoom_fixed]',
+			'magnified_pos':'fixed',
+			classes: {
+				placeholder  : 'jdz_img_fixed',
+				looking_glass:'jdz_looking_glass_fixed',
+				magnified: 'jdz_magnified_fixed'
+			}
+		});
+		var jdz3 = new JDZoom({
+			'selector':'a[rel=jdzoom_fixed2]',
+			'magnified_pos':'fixed',
+			classes: {
+				placeholder  : 'jdz_img_fixed',
+				looking_glass:'jdz_looking_glass_fixed',
+				magnified: 'jdz_magnified_fixed'
+			}
+		});
+		var jdz4 = new JDZoom({
+			'selector':'a[rel=jdzoom_fixed3]',
+			'magnified_pos':'fixed',
+			classes: {
+				placeholder  : 'jdz_img_fixed',
+				looking_glass:'jdz_looking_glass_fixed',
+				magnified: 'jdz_magnified_fixed'
+			}
+		});
+	});
+	</script>
+
+
+			<xsl:if test="//View/product/product_visual1_large = ''">
+		    {% if product.getProductVisual1Large == '' %}
+			<div id="pictures">
+				<div class="main_img">
+				    {% if product.getProductPrice > '69' %}
+					<div style="background:url('/images/images/freeshipping_bogo.png'); width: 74px; height:74px; z-index:5;position:absolute; margin-left:350px;"></div>
+				    {% endif %}
+					<img class="main_picture" src="/{{product.getProductVisual1}}" />
+					<img class="main_picture" src="/{{product.getProductVisual2}}" />
+					<img class="main_picture" src="/{{product.getProductVisual3}}" />
+				</div>
+				<div class="others_img">
+					<div class="img">
+						<img class="sub_picture" src="/{{product.getProductVisual1}}" />
+					</div>
+					<div class="img">
+						<img class="sub_picture" src="/{{product.getProductVisual2}}" />
+					</div>
+					<div class="img">
+						<img class="sub_picture" src="/{{product.getProductVisual3}}" />
+					</div>
+				</div>
+				
+			</div>
+
+		    {% endif %}
+		    {% if product.getProductVisual1Large != '' %}
+			<div id="pictures">
+				<div class="main_img2">
+
+				    {% if product.getProductPrice > '69' %}
+					<div style="background:url('/images/images/freeshipping_bogo.png'); width: 74px; height:74px; z-index:5;position:absolute; margin-left:350px;"></div>
+				    {% endif %}
+
+					<a rel="jdzoom_fixed" href="/{{product.getProductVisual1Large}}"><img id="page_image1" src="/{{product.getProductVisual1Large}}" style="float:left" /></a>
+					<a rel="jdzoom_fixed2" href="/{{product.getProductVisual2Large}}"><img id="page_image2" src="/{{product.getProductVisual2Large}}" style="float:left; display:none; opacity:0;"/></a>
+					<a rel="jdzoom_fixed3" href="/{{product.getProductVisual3Large}}"><div style="width:400px;overflow:hidden;"><img id="page_image3" src="/{{product.getProductVisual3Large}}" style="float:left;display:none; opacity:0;" /></div></a>
+				</div>
+				
+				<div class="clear"></div>
+				
+				<h3 class="zoomh3">
+				<span style="display:none">Image <span id="active_thumb">1</span>/3 | </span>
+				<img src="/images/images/zoomicon.png" /> <a class="show_full" href="#" title="Show Full Sized" style="text-decoration:none;">View Full Size Image</a>
+				</h3>
+				
+				<div class="others_img2">
+					<div class="img_product_thumb img_product_thumb_active">
+						<img id="page_thumb1" class="sub_picture2" src="/{{product.getProductVisual1Large}}" height="50"/>
+					</div>
+					<div class="img_product_thumb">
+						<img id="page_thumb2" class="sub_picture2" src="/{{product.getProductVisual2Large}}" height="50" />
+					</div>
+					<div class="img_product_thumb">
+						<img id="page_thumb3" class="sub_picture2" src="/{{product.getProductVisual3Large}}" height="50" />
+					</div>
+				</div>
+				
+			</div>
+
+		    {% endif %}
+
+
+
+
+
+			<div id="product_infos">
+				<div id="product_title">
+					<div id="product_name">{{ product.getProductName }}</div>
+					
+					{% if product.getDesignerId  %}
+						<div id="product_designer">{{ product.getDesigner.getDesignerName }}</div>
+					{% endif %}
+				
+				</div>
+				<div id="product_description">
+					{{ product.getProductDescription() }}
+					
+				    {% if product.getProductTagsize != '' %}
+						 Tag size {{ product.getProductTagsize }}
+				    {% endif %}
+
+					<a class="show_sizes" href="#" title="Show Sizes"> Estimated Size {{product.getProductCategorySize().getProductCategorySizeValue() }}</a>
+					
+				</div>
+				<div id="product_sizeandcondition">
+					<div id="size">
+						<div id="size_title">Size</div>
+						<div id="size_value">{{product.getProductCategorySize().getProductCategorySizeValue() }}</div>
+					</div>
+					<div id="condition">
+						<div id="condition_title">Condition</div>
+						<div id="condition_value">{{product.getProductOverallCondition }}</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div id="add_to_basket" class="{{ product.getProductAvailability }}">
+					<div style="width:140px; float:left; height:80px;">					
+					<div class="price" id="product_price">${{ product.getProductPrice }}</div>
+					
+					<!--<div class="price old">${{ product.getProductOldPrice }} retail price</div>-->
+					
+					</div>
+					{% if app.user == false %}
+					{% else %}
+					{% if app.user.isLoved(product.getProductId) %}
+					<span class="addtolovehover_page addtolovehover_page_pink" name="love{{ product.getId }}" id="love{{ product.getId }}"></span>
+					{% else %}
+					<span class="addtolovehover_page" name="love{{ product.getId }}" id="love{{ product.getId }}"></span>
+					{% endif %}
+					{% endif %}
+
+				    {% if product.getProductAvailability == 'sale' %}
+					<div id="p{{ product.getProductId }}_addLink" name="p{{ product.getProductId }}_addLink" class="add_to_cart_btn" title="Add to my basket">
+					
+					<a href="{{ path('add_item_to_basket', {'productId': product.getProductId}) }}" style="float: right;font-family: Gotham;font-size: 13px;line-height: 53px;text-align: center;width: 192px;cursor: pointer;display: block;background-color: #FF7070;color: #FFFFFF;margin-left: 20px;">add to my cart</a>
+					</div>
+				    {% endif %}
+
+					<span id="sold_item" class="add_button">
+						Sold
+					</span>
+					<span id="reserved_item" class="add_button">
+						Reserved
+					</span>
+					
+					<div class="clear"></div>
+					<div id="ajax_result"></div>
+				</div>
+
+				<div class="product_main_right_collapseable" id="detail_condition">
+					<div id="top">
+						Condition <span id="productplus">+</span>
+					</div>
+					<div id="bottom">
+						<span class="title"></span>
+					    {% if product.productDetailedConditionValue == '5' %}
+							<span class="{class}">•••••</span>
+					    {% endif %}
+					    {% if product.productDetailedConditionValue == '4' %}
+							<span class="{class}">••••</span>
+					    {% endif %}
+					    {% if product.productDetailedConditionValue == '3' %}
+							<span class="{class}">•••</span>
+					    {% endif %}
+					    {% if product.productDetailedConditionValue == '2' %}
+							<span class="{class}">••</span>
+					    {% endif %}
+					    {% if product.productDetailedConditionValue == '1' %}
+							<span class="{class}">•</span>
+					    {% endif %}
+						
+						
+						
+						
+						/ {{ product.getProductDetailedConditionDescription }}
+					</div>
+				</div>
+				<div class="product_main_right_collapseable" id="detail_fabric">
+					<div id="top">
+						Fabric <span id="productplus">+</span>
+					</div>
+					<div id="bottom">
+						{{ product.getProductFabric }} 
+					</div>
+				</div>
+				<div class="product_main_right_collapseable" id="detail_measurements">
+					<div id="top">
+						Measurements <span id="productplus">+</span>
+					</div>
+					<div id="bottom">
+						{{ product.getProductMeasurements }} 
+						<a class="show_sizes" href="#" title="Show Sizes"> (?)</a>
+					</div>
+				</div>
+				<div class="product_main_right_collapseable" id="detail_shipping">
+					<div id="top">
+						Shipping and returns <span id="productplus">+</span>
+					</div>
+					<div id="bottom">
+						You should receive this within 7 days. If you are not completely satisfied, you can return the item within 30 days for a full refund. <a href="{//Statics/Site/Various/url/page_shipping_and_returns}" title="">(?)</a>
+					</div>
+				</div>
+
+				<div class="clear"></div>
+				<div id="social">
+					<div class="addthis_toolbox addthis_default_style ">
+						<a class="addthis_button_facebook_like"></a>
+						<a class="addthis_button_tweet"></a>
+						<a class="addthis_button_pinterest_pinit"></a>
+						<a class="addthis_counter addthis_pill_style"></a>
+						<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+						<script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-506451ea19f14f3e"></script>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+
+		<div id="suggest">
+			<div id="suggest_title">we suggest...</div>
+			<div id="suggested_products">
+            {% for product in suggestproducts %}
+							<div class="product">									
+								<div id="addtocarthoverdiv">
+									{% if app.user == false %}
+									{% else %}
+									{% if app.user.isLoved(product.getProductId) %}
+									<span class="addtolovehover addtolovehover_pink" name="love{{ product.getId }}" id="love{{ product.getId }}"></span>
+									{% else %}
+									<span class="addtolovehover" name="love{{ product.getId }}" id="love{{ product.getId }}"></span>
+									{% endif %}
+									{% endif %}
+									
+									{% if product.getProductAvailability == 'sale' %}
+									<div class="clear"></div>
+									<span class="addtocarthover" name="{{ product.getId }}" id="{{ product.getId }}">add to cart</span>
+									{% endif %}
+								</div>
+								<div class="img">
+									{% if app.user == false %}
+									{% else %}
+									{% if app.user.isLoved(product.getProductId) %}
+									<div class="loveheartongallery loveheartongallery_pink"></div>
+									{% else %}
+									<div class="loveheartongallery"></div>
+									{% endif %}
+									{% endif %}
+
+									<a href="{{ path('show_item', {'slug': product.getProductName|slugify}) }}-{{ product.getId }}" title="{{ product.getProductName }}">
+
+								    {% if product.getProductVisual1Large == '' %}
+										<img class="product_img" src="/{{product.getProductVisual1}}" />
+									{% endif %}
+								    {% if product.getProductVisual1Large != '' %}
+										<img class="product_img2" src="/{{product.getProductVisual1Large}}" />
+									{% endif %}
+
+									</a>
+								</div>
+								<div class="infos">
+									<div class="product_separator"></div>
+									<div class="product_name">{{ product.getProductName }}</div>
+
+									<div class="product_designer">
+									{% if product.getDesignerId > '0' %}
+									{{product.getDesigner.getDesignerName() }}
+									{% endif %}
+									</div>
+
+									{% if product.getProductOldPrice > '0' %}
+										<div class="price old">${{ product.getProductOldPrice }}</div>
+									{% endif %}
+									<div class="price">${{ product.getProductPrice }}</div>
+									<div class="size">
+										<div class="size_left"></div>
+										<div class="size_value">{{product.getProductCategorySize.getProductCategorySizeValue}}</div>
+										<div class="size_right"></div>
+									</div>
+									<div class="clear"></div>
+								</div>
+
+								<div class="product_separator"></div>
+
+								    {% if product.getProductAvailability != 'sale' %}
+									<div class="status {product_availability}"></div>
+									{% endif %}
+							</div>	
+            {% endfor %}
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+

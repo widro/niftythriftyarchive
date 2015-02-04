@@ -1,0 +1,331 @@
+<?php
+
+namespace NiftyThrifty\ShopBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * NiftyThrifty\ShopBundle\Entity\Address
+ *
+ * @ORM\Table(name="address")
+ * @ORM\Entity
+ */
+class Address
+{
+    /**
+     * @var integer $addressId
+     *
+     * @ORM\Column(name="address_id", type="bigint", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $addressId;
+
+    /**
+     * @var integer $userId
+     *
+     * @ORM\Column(name="user_id", type="bigint", nullable=false)
+     */
+    private $userId;
+
+    /**
+     * @var string $addressFirstName
+     *
+     * @ORM\Column(name="address_first_name", type="string", length=64, nullable=false)
+     */
+    private $addressFirstName;
+
+    /**
+     * @var string $addressLastName
+     *
+     * @ORM\Column(name="address_last_name", type="string", length=64, nullable=false)
+     */
+    private $addressLastName;
+
+    /**
+     * @var string $addressStreet
+     *
+     * @ORM\Column(name="address_street", type="string", length=255, nullable=false)
+     */
+    private $addressStreet;
+
+    /**
+     * @var string $addressCity
+     *
+     * @ORM\Column(name="address_city", type="string", length=64, nullable=false)
+     */
+    private $addressCity;
+
+    /**
+     * @var integer $stateId
+     *
+     * @ORM\Column(name="state_id", type="bigint", nullable=false)
+     */
+    private $stateId;
+
+    /**
+     * @var string $addressZipcode
+     *
+     * @ORM\Column(name="address_zipcode", type="string", length=20, nullable=false)
+     */
+    private $addressZipcode;
+
+    /**
+     * @var string $addressCountry
+     *
+     * @ORM\Column(name="address_country", type="string", length=255, nullable=false)
+     */
+    private $addressCountry;
+
+
+
+    /**
+     * Get addressId
+     *
+     * @return integer 
+     */
+    public function getAddressId()
+    {
+        return $this->addressId;
+    }
+
+    /**
+     * Set userId
+     *
+     * @param integer $userId
+     * @return Address
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+    
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return integer 
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * Set addressFirstName
+     *
+     * @param string $addressFirstName
+     * @return Address
+     */
+    public function setAddressFirstName($addressFirstName)
+    {
+        $this->addressFirstName = $addressFirstName;
+    
+        return $this;
+    }
+
+    /**
+     * Get addressFirstName
+     *
+     * @return string 
+     */
+    public function getAddressFirstName()
+    {
+        return $this->addressFirstName;
+    }
+
+    /**
+     * Set addressLastName
+     *
+     * @param string $addressLastName
+     * @return Address
+     */
+    public function setAddressLastName($addressLastName)
+    {
+        $this->addressLastName = $addressLastName;
+    
+        return $this;
+    }
+
+    /**
+     * Get addressLastName
+     *
+     * @return string 
+     */
+    public function getAddressLastName()
+    {
+        return $this->addressLastName;
+    }
+
+    /**
+     * Set addressStreet
+     *
+     * @param string $addressStreet
+     * @return Address
+     */
+    public function setAddressStreet($addressStreet)
+    {
+        $this->addressStreet = $addressStreet;
+    
+        return $this;
+    }
+
+    /**
+     * Get addressStreet
+     *
+     * @return string 
+     */
+    public function getAddressStreet()
+    {
+        return $this->addressStreet;
+    }
+
+    /**
+     * Set addressCity
+     *
+     * @param string $addressCity
+     * @return Address
+     */
+    public function setAddressCity($addressCity)
+    {
+        $this->addressCity = $addressCity;
+    
+        return $this;
+    }
+
+    /**
+     * Get addressCity
+     *
+     * @return string 
+     */
+    public function getAddressCity()
+    {
+        return $this->addressCity;
+    }
+
+    /**
+     * Set stateId
+     *
+     * @param integer $stateId
+     * @return Address
+     */
+    public function setStateId($stateId)
+    {
+        $this->stateId = $stateId;
+    
+        return $this;
+    }
+
+    /**
+     * Get stateId
+     *
+     * @return integer 
+     */
+    public function getStateId()
+    {
+        return $this->stateId;
+    }
+
+    /**
+     * Set addressZipcode
+     *
+     * @param string $addressZipcode
+     * @return Address
+     */
+    public function setAddressZipcode($addressZipcode)
+    {
+        $this->addressZipcode = $addressZipcode;
+    
+        return $this;
+    }
+
+    /**
+     * Get addressZipcode
+     *
+     * @return string 
+     */
+    public function getAddressZipcode()
+    {
+        return $this->addressZipcode;
+    }
+
+    /**
+     * Set addressCountry
+     *
+     * @param string $addressCountry
+     * @return Address
+     */
+    public function setAddressCountry($addressCountry)
+    {
+        $this->addressCountry = $addressCountry;
+    
+        return $this;
+    }
+
+    /**
+     * Get addressCountry
+     *
+     * @return string 
+     */
+    public function getAddressCountry()
+    {
+        return $this->addressCountry;
+    }
+    /**
+     * @var \NiftyThrifty\ShopBundle\Entity\User
+     */
+    private $user;
+
+
+    /**
+     * Set user
+     *
+     * @param \NiftyThrifty\ShopBundle\Entity\User $user
+     * @return Address
+     */
+    public function setUser(\NiftyThrifty\ShopBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \NiftyThrifty\ShopBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+    /**
+     * @var \NiftyThrifty\ShopBundle\Entity\State
+     */
+    private $state;
+
+
+    /**
+     * Set state
+     *
+     * @param \NiftyThrifty\ShopBundle\Entity\State $state
+     * @return Address
+     */
+    public function setState(\NiftyThrifty\ShopBundle\Entity\State $state = null)
+    {
+        $this->state = $state;
+    
+        return $this;
+    }
+
+    /**
+     * Get state
+     *
+     * @return \NiftyThrifty\ShopBundle\Entity\State 
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+}

@@ -1,0 +1,70 @@
+{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
+
+{% block title %}
+{{ parent() }} - {{ 'views.show.show'|trans({'%entity%': 'Collection'}, 'JordiLlonchCrudGeneratorBundle') }}
+{% endblock %}
+
+{% block page %}
+
+<h1>Collection</h1>
+
+<form class="form-horizontal">
+    <fieldset>        <div class="control-group">
+            <label class="control-label">Collectionid</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.collectionId }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Collectioncode</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.collectionCode }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Isshop</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.isShop }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Collectionname</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.collectionName }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Collectiondescription</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.collectionDescription }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Collectiontype</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.collectionType }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Collectiondatestart</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.collectionDateStart|date('Y-m-d H:i:s') }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Collectiondateend</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.collectionDateEnd|date('Y-m-d H:i:s') }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Collectionactive</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.collectionActive }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Collectionvisualhomehero</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.collectionVisualHomeHero }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Collectionvisualmainpanel</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.collectionVisualMainPanel }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Collectionvisualsalehero</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.collectionVisualSaleHero }}</span>            </div>
+        </div>    </fieldset>
+</form>
+
+<div>
+    <div class="float-left">
+        <a class="btn" href="{{ path('collection_admin') }}">
+            {{ 'views.recordactions.backtothelist'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>
+    </div>
+    <div class="float-left">
+        <a class="btn btn-primary" href="{{ path('collection_admin_edit', { 'id': entity.id }) }}">
+            {{ 'views.recordactions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>
+    </div>
+    <div class="float-left">
+        <form action="{{ path('collection_admin_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button class="btn btn-danger" type="submit" onclick="return confirm('{{ 'views.recordactions.confirm'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}');">{{ 'views.recordactions.delete'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

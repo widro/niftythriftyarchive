@@ -1,0 +1,39 @@
+parameters:
+#    nifty_thrifty_shop.example.class: NiftyThrifty\ShopBundle\Example
+
+services:
+
+    # Adds twig extensions for the NiftyThriftyShop Bundle
+    nifty.twig.nifty_extension:
+        class: NiftyThrifty\ShopBundle\Twig\NiftyExtension
+        tags:
+            - { name: twig.extension }
+
+    # Extension handles updating entities with image inputs
+    nifty.file_image_upload_type_extension:
+        class: NiftyThrifty\ShopBundle\Form\Extension\FileImageUploadTypeExtension
+        tags:
+            - { name: form.type_extension, alias: file }
+
+    # Wraps some credit card validation stuff.
+    credit_card_validator:
+        class:  NiftyThrifty\ShopBundle\Service\CreditCardService
+
+    # Wraps calls to Authorize.Net's CIM object.
+    authorize_cim:
+        class:      NiftyThrifty\ShopBundle\Service\AuthorizeNetCIMService
+        arguments:  ["%authorize_net_api_login_id%", "%authorize_net_transaction_key%"]
+
+    # Arguments in order:
+    # 1) Is sitewide free shipping enabled? yes/no
+    # 2) Cart dollar total that triggers free shipping
+    # 3) Classic shipping cost if free shipping isn't enabled
+    # 4) Express shipping cost
+    shipping_manager:
+        class:       NiftyThrifty\ShopBundle\Service\ShippingCostService
+        arguments:   ["%nifty_sitewide_free_shipping%", 70, 7.95, 19.95]
+        
+#                        
+#    nifty_thrifty_shop.example:
+#        class: %nifty_thrifty_shop.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

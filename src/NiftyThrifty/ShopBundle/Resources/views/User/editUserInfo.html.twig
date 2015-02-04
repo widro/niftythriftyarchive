@@ -1,0 +1,8 @@
+{% extends 'NiftyThriftyShopBundle::layout.html.twig' %}
+
+{% block page_heading %}My Account {{ user.getUserEmail }}{% endblock %}
+
+{% block page_content %}
+    <h1>Update Account Info</h1>
+    {{ form(editForm) }}
+{% endblock %}

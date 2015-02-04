@@ -1,0 +1,214 @@
+{% extends 'NiftyThriftyShopBundle::layout.html.twig' %}
+
+{% block page_heading %}Nifty Thrifty - Invite Friends!{% endblock %}
+
+{% block page_content %}
+
+<style>
+
+button#form_Invite{
+	background-color: #FF7070;
+	color: #FFFFFF;
+	display: block;
+	float: right;
+	font-size: 16px;
+	height: 39px;
+	margin: 15px 0 0;
+	padding: 15px 0 0;
+	text-align: center;
+	width: 175px;
+	cursor: pointer;
+	border:0px;
+	font-family: Volkorn-Italic;
+	padding-bottom:35px;
+}
+
+
+</style>
+
+
+
+		<div id="user_invite">
+			<h1>
+				Invite your friends. Earn Nifty credits
+			</h1>
+			<span class="sub">
+				when they join and when they buy.
+			</span>
+			
+			<div class="credits">
+				<h2>
+					Total Credits Earned <span id="totalUserCredits"> ${{ totalcredits }}</span>
+				</h2>
+				<span class="sub">
+					Any friend invited will earn you $1, the more friend you invite, the more credits you get!
+				</span>
+
+
+				<div class="credits_list">
+					
+					<div class="item">
+						<div class="bg">
+							<span>$5</span>
+						</div>
+						<div class="mask"></div>
+						<span class="friends">5 friends</span>
+					</div>
+					
+					<div class="separator">
+						<div></div>
+					</div>
+					
+					<div class="item">
+						<div class="bg">
+							<span>
+								$10
+							</span>
+						</div>
+						<div class="mask"></div>
+						<span class="friends">10 friends</span>
+					</div>
+					
+					<div class="separator">
+						<div></div>
+					</div>
+					
+					<div class="item">
+						<div class="bg">
+							<span>
+								$25
+							</span>
+						</div>
+						<div class="mask"></div>
+						<span class="friends">25 friends</span>
+					</div>
+					
+					<div class="separator">
+						<div></div>
+					</div>
+					
+					<div class="item">
+						<div class="bg">
+							<span>
+								$50
+							</span>
+						</div>
+						<div class="mask"></div>
+						<span class="friends">50 friends</span>
+					</div>
+					
+					<div class="clear"></div>
+					
+				</div>
+				
+				<div class="clear"></div>
+				
+				<div class="purchase_bonus">
+					<h4>Purchase bonus</h4>
+					<p>Earn <span>$25</span> every time a friend you invite makes their first purchase</p>
+				</div>
+			</div>
+
+
+
+  
+    {{ form_start(inviteForm) }}
+
+			<div class="invites">
+				<div class="invite link">
+					<h4>YOUR INVITE LINK</h4>
+					<p>Copy and share the link below with your friends on Email, <br />Facebook, Twitter, Tumblr, Pinterest or even Instagram</p>
+					<div class="input_gen">
+					<div class="input_gen_left"></div>
+						<div class="input_gen_middle">
+							{{ form_row(inviteForm.inviteLink) }}
+						</div>
+						<div class="input_gen_right"></div>
+					</div>
+				</div>
+
+
+				<div class="invite multiple_mails">
+					<h4>Invite friends via email</h4>
+					<p>Separate addresses with commas.</p>
+					<div class="input_gen">
+						<div class="input_gen_left"></div>
+						<div class="input_gen_middle">
+							{{ form_row(inviteForm.emailAddresses) }}
+						</div>
+						<div class="input_gen_right"></div>
+					</div>
+					
+					<div class="clear"></div>
+        
+					<div class="textarea_gen">
+						<div class="textarea_gen_left"></div>
+						<div class="textarea_gen_middle">
+						{{ form_row(inviteForm.inviteText) }}
+						</div>
+						<div class="textarea_gen_right"></div>
+					</div>
+					
+					{{ form_end(inviteForm) }}
+					<div class="clear"></div>
+					
+				</div>
+			</div>					
+        
+	
+    
+
+			<div id="invitations_list">
+				<div class="top">
+					<div class="col name">Name</div>
+					<div class="col email">Email</div>
+					<div class="col invited">Last invited</div>
+					<div class="col status">Status</div>
+				</div>
+					<div id="invitationList" class="list">
+		    {% if invitations|length > 0 %}
+					
+					    {% for invitation in invitations %}
+						<div id="invitation{{ invitation.getUserInvitationId }}" class="line">
+							<div class="col name">
+								{{ invitation.getUserInvitationFirstName }} {{ invitation.getUserInvitationLastName }}		
+							</div>
+							<div class="col email">
+								{{ invitation.getUserInvitationEmail }}	
+							</div>
+							<div class="col invited">
+								{{ invitation.getUserInvitationDate|date("m/d/Y") }}
+							</div>
+							<div class="col status pending">
+								{{ invitation.getUserInvitationStatus }}
+							</div>
+						</div>
+
+					    {% endfor %}
+					
+		    {% endif %}
+		    {% if invitations|length <= 0 %}
+					<div id="noInvitationsSent" class="none">
+						You haven't sent any invitations.
+					</div>
+		    {% endif %}
+					
+					</div>
+				<div class="clear"></div>
+			</div>
+			
+			<div class="clear"></div>
+
+    
+    
+    
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+{% endblock %}

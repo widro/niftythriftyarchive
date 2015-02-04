@@ -1,0 +1,67 @@
+{% extends 'NiftyThriftyShopBundle::layout.html.twig' %}
+
+{% block page_heading %}My Account {{ user.getUserEmail }}{% endblock %}
+
+{% block page_content %}
+
+
+<style>
+
+#user_account label{
+	font-size: 15px;
+	font-family: Volkorn-Regular;
+	margin:10px;
+	width:200px;
+	display:block;
+}
+
+#user_account input{
+	border:2px solid #cccccc;
+	font-family: Volkorn-Regular;
+	color: #2b2b2b;
+	font-size: 13px;
+	height: 35px;
+	padding: 0 7px;
+
+}
+
+#user_account select{
+	border:2px solid #cccccc;
+	font-family: Volkorn-Regular;
+	color: #2b2b2b;
+	font-size: 13px;
+	height: 35px;
+	padding: 0 7px;
+
+}
+
+#user_account h1{
+	color:#ff7070;
+}
+
+#user_account button{
+	background-color: #FF7070;
+	color: #FFFFFF;
+	display: block;
+	font-size: 15px;
+	height: 39px;
+	text-align: center;
+	width: 155px;
+	margin: 15px 0 0 0;
+	font-family: Volkorn-Italic;
+	cursor: pointer;
+	border: none;
+}
+
+
+</style>
+
+
+
+<div id="user_account">	<div class="account">
+		<h2>Update {{ addressType|capitalize }} Address</h2>
+    {{ form(editForm) }}
+	</div>
+</div>
+		
+{% endblock %}

@@ -1,0 +1,46 @@
+NiftyThrifty\ShopBundle\Entity\ProductCategorySize:
+    type: entity
+    repositoryClass: ProductCategorySizeRepository
+    table: product_category_size
+    fields:
+        productCategorySizeId:
+            id: true
+            type: bigint
+            nullable: false
+            column: product_category_size_id
+            generator:
+                strategy: IDENTITY
+        productCategorySizeName:
+            type: string
+            length: 63
+            fixed: false
+            nullable: false
+            column: product_category_size_name
+        productCategorySizeValue:
+            type: string
+            length: 63
+            fixed: false
+            nullable: false
+            column: product_category_size_value
+        productCategorySizeOrder:
+            type: bigint
+            nullable: false
+            column: product_category_size_order
+        productCategoryId:
+            type: bigint
+            nullable: false
+            column: product_category_id
+    oneToMany:
+        products:
+            targetEntity:   Product
+            mappedBy:       productCategorySize
+            referencedColumnName: productCategorySizeName
+    manyToOne:
+        productCategory:
+            targetEntity:   ProductCategory
+            inversedBy:     productCategorySizes
+            joinColumn:
+                name:                   product_category_id
+                referencedColumnName:   product_category_id
+
+    lifecycleCallbacks: {  }

@@ -1,0 +1,66 @@
+NiftyThrifty\ShopBundle\Entity\Coupon:
+    type: entity
+    repositoryClass: CouponRepository
+    table: coupon
+    fields:
+        couponId:
+            id: true
+            type: bigint
+            nullable: false
+            column: coupon_id
+            generator:
+                strategy: IDENTITY
+        couponCode:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: coupon_code
+        couponDateStart:
+            type: date
+            nullable: true
+            column: coupon_date_start
+        couponDateEnd:
+            type: date
+            nullable: true
+            column: coupon_date_end
+        couponPercent:
+            type: float
+            nullable: true
+            column: coupon_percent
+        couponAmount:
+            type: float
+            nullable: true
+            column: coupon_amount
+        couponQuantityLimited:
+            type: string
+            length: null
+            fixed: false
+            nullable: false
+            column: coupon_quantity_limited
+        couponQuantity:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: coupon_quantity
+        couponUnique:
+            type: string
+            length: null
+            fixed: false
+            nullable: false
+            column: coupon_unique
+        couponDateAdd:
+            type: datetime
+            nullable: false
+            column: coupon_date_add
+        couponFreeShipping:
+            type: string
+            length: null
+            fixed: false
+            nullable: false
+            column: coupon_free_shipping
+        userId:
+            type: bigint
+            nullable: true
+            column: user_id
+    lifecycleCallbacks: {  }

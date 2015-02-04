@@ -1,0 +1,50 @@
+{% extends 'NiftyThriftyShopBundle::layout.html.twig' %}
+
+{% block page_heading %}Nifty Thrifty Invoice{% endblock %}
+
+{% block page_content %}
+
+<script>
+  dataLayer = [{
+	'order_id': '{{ invoice.getInvoiceNum }}',
+	'order_value_dollars': '{{ invoice.getInvoiceAmount }}',
+  }];
+</script>
+
+<!-- Conversion Pixel - NifityThrifty--Conversion - DO NOT MODIFY -->
+<script src="https://secure.adnxs.com/px?id=151243&seg=1431232&order_id={{ invoice.getInvoiceNum }}&value={{ invoice.getInvoiceAmount }}&t=1" type="text/javascript"></script>
+<!-- End of Conversion Pixel -->
+
+
+
+<div id="orderProcessed" class="content_page content_payment">
+	<h1>Order checkout</h1>
+	<div class="steps">
+		<div class="steps_list">
+			<div class="item truck">
+				<div class="bg"><span><img src="/images/images/truck.png"/></span></div>
+				<div class="mask"></div>
+			</div>
+			<div class="separator"><div></div></div>
+			<div class="item tag ">
+				<div class="bg"><span><img src="/images/images/tag.png"/></span></div>
+				<div class="mask"></div>
+			</div>
+			<div class="separator"><div></div></div>
+			<div class="item card selected">
+				<div class="bg"><span><img src="/images/images/suitcase.png"/></span></div>
+				<div class="mask"></div>
+			</div>
+		</div>
+	</div>
+	<h1 class="step_title">Success</h1>
+	<div class="subtitle">
+		<p>Thank you for your order in the Nifty store.</p>
+		
+		<p id="orderThankYou">
+			Your order <strong>#{{ invoice.getInvoiceId }}</strong> will be processed as soon as possible.<br />
+		 	You will receive a shipping confirmation e-mail.
+		</p>
+	</div>
+</div>
+{% endblock %}

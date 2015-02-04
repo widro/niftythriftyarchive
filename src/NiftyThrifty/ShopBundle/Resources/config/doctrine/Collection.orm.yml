@@ -1,0 +1,87 @@
+NiftyThrifty\ShopBundle\Entity\Collection:
+    type: entity
+    repositoryClass: CollectionRepository
+    table: collection
+    fields:
+        collectionId:
+            id: true
+            type: bigint
+            nullable: false
+            column: collection_id
+            generator:
+                strategy: IDENTITY
+        collectionCode:
+            type: string
+            length: 5
+            fixed: false
+            nullable: true
+            column: collection_code
+        isShop:
+            type: string
+            length: 5
+            nullable: false
+            column: is_shop
+        collectionName:
+            type: string
+            length: 63
+            fixed: false
+            nullable: false
+            column: collection_name
+        collectionDescription:
+            type: text
+            nullable: false
+            column: collection_description
+        collectionType:
+            type: string
+            length: null
+            fixed: false
+            nullable: true
+            column: collection_type
+        collectionDateStart:
+            type: datetime
+            nullable: false
+            column: collection_date_start
+        collectionDateEnd:
+            type: datetime
+            nullable: false
+            column: collection_date_end
+        collectionActive:
+            type: string
+            length: null
+            fixed: false
+            nullable: false
+            column: collection_active
+        collectionVisualHomeHero:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: collection_visual_home_hero
+        collectionVisualMainPanel:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: collection_visual_main_panel
+        collectionVisualMainPanelBw:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: collection_visual_main_panel_bw
+        collectionVisualSaleHero:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: collection_visual_sale_hero
+    oneToMany:
+        products:
+            targetEntity:   Product
+            mappedBy:       collection
+    lifecycleCallbacks: 
+        prePersist: [processImages]
+        postPersist: [upload]
+        preUpdate: [checkImages]
+        postUpdate: [checkUpload]
+        postRemove: [deleteFile]

@@ -1,0 +1,206 @@
+NiftyThrifty\ShopBundle\Entity\Product:
+    type: entity
+    repositoryClass: ProductRepository
+    table: product
+    fields:
+        productId:
+            id: true
+            type: bigint
+            nullable: false
+            column: product_id
+            generator:
+                strategy: IDENTITY
+        productName:
+            type: string
+            length: 63
+            fixed: false
+            nullable: false
+            column: product_name
+        productDescription:
+            type: text
+            nullable: false
+            column: product_description
+        productCategorySizeId:
+            type: bigint
+            nullable: false
+            column: product_category_size_id
+        productTypeId:
+            type: bigint
+            nullable: true
+            column: product_type_id
+        productOverallCondition:
+            type: string
+            length: 63
+            fixed: false
+            nullable: false
+            column: product_overall_condition
+        productPrice:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: product_price
+        productOldPrice:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: product_old_price
+        productDiscount:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: product_discount
+        productDetailedConditionValue:
+            type: integer
+            nullable: false
+            column: product_detailed_condition_value
+        productDetailedConditionDescription:
+            type: string
+            length: 63
+            fixed: false
+            nullable: false
+            column: product_detailed_condition_description
+        productFabric:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: product_fabric
+        productMeasurements:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: product_measurements
+        productAvailability:
+            type: string
+            length: null
+            fixed: false
+            nullable: false
+            column: product_availability
+        productHeavy:
+            type: string
+            length: null
+            fixed: false
+            nullable: false
+            column: product_heavy
+        productVisual1:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: product_visual1
+        productVisual1Large:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: product_visual1_large
+        productVisual2:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: product_visual2
+        productVisual2Large:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: product_visual2_large
+        productVisual3:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: product_visual3
+        productVisual3Large:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: product_visual3_large
+        collectionId:
+            type: bigint
+            nullable: false
+            column: collection_id
+        designerId:
+            type: bigint
+            nullable: true
+            column: designer_id
+        productHashtag:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: product_hashtag
+        productInstagramMediaIdNifty:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: product_instagram_media_id_nifty
+        productInstagramMediaIdCustomer:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: product_instagram_media_id_customer
+        productTaxes:
+            type: float
+            nullable: false
+            column: product_taxes
+        productTaxesActive:
+            type: string
+            length: null
+            fixed: false
+            nullable: false
+            column: product_taxes_active
+        productCode:
+            type: string
+            length: 10
+            fixed: false
+            nullable: false
+            column: product_code
+        productTagsize:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: product_tagsize
+    manyToOne:
+        collection:
+            targetEntity:   Collection
+            inversedBy:     products
+            joinColumn:
+                name:                   collection_id
+                referencedColumnName:   collection_id
+        productCategorySize:
+            targetEntity:   ProductCategorySize
+            inversedBy:     products
+            joinColumn:
+                name:                   product_category_size_id
+                referencedColumnName:   product_category_size_id
+        designer:
+            targetEntity:   Designer
+            inversedBy:     products
+            joinColumn:
+                name:                   designer_id
+                referencedColumnName:   designer_id
+    manyToMany:
+        productTags:
+            targetEntity:   ProductTag
+            joinTable: 
+                name:       xproduct_tag
+                joinColumns:
+                    product_id:
+                        referencedColumnName: product_id
+                inverseJoinColumns:
+                    product_tag_id:
+                        referencedColumnName: product_tag_id
+    lifecycleCallbacks: 
+        prePersist: [processImages]
+        postPersist: [upload]
+        preUpdate: [checkImages]
+        postUpdate: [checkUpload]
+        postRemove: [deleteFile]
+

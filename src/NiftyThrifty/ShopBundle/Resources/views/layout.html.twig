@@ -1,0 +1,431 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+
+	<title>{% block page_heading %}Nifty Thrifty{% endblock %}</title>
+
+	<link rel="stylesheet" type="text/css" href="{{ asset('/bundles/niftythriftyshop/css/Fonts.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('/bundles/niftythriftyshop/css/GlobalNew2.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('/bundles/niftythriftyshop/css/inuse.css') }}" />
+	<script type="text/javascript" src=" {{ asset('/bundles/niftythriftyshop/js/mootools-core-1.4.5-full-compat.js') }}"></script>
+	<script type="text/javascript" src=" {{ asset('/bundles/niftythriftyshop/js/MooTools-more.js') }}"></script>
+	<script type="text/javascript" src=" {{ asset('/bundles/niftythriftyshop/js/Asset.Extras.js') }}"></script>
+	<script type="text/javascript" src=" {{ asset('/bundles/niftythriftyshop/js/Additions.js') }}"></script>
+	<script type="text/javascript" src=" {{ asset('/bundles/niftythriftyshop/js/Basket.js') }}"></script>
+	<script type="text/javascript" src=" {{ asset('/bundles/niftythriftyshop/js/Filters.js') }}"></script>
+	<script type="text/javascript" src=" {{ asset('/bundles/niftythriftyshop/js/ImgLoader.js') }}"></script>
+	<script type="text/javascript" src=" {{ asset('/bundles/niftythriftyshop/js/Nav.js') }}"></script>
+	<script type="text/javascript" src=" {{ asset('/bundles/niftythriftyshop/js/Scrollbar.js') }}"></script>
+
+	<meta name="google-site-verification" content="-0J4h8Mia_LcCu5zjKizFon-NXdDhVP9vn3C0tHAS6c" />
+	<script>
+	  dataLayer = [];
+	</script>
+	<script type="text/javascript" src="https://connect.facebook.net/en_US/all.js"></script>
+	<script type="text/javascript" src=" {{ asset('/bundles/niftythriftyshop/js/FbLogin.js') }}"></script>
+	<meta property="fb:app_id" content="374731519293179" />				
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=374731519293179";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+	<link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body>
+
+
+<style>
+div.headerbar{
+	width:1084px;
+	height:130px;
+	margin:0 auto;
+	background:#ffffff;
+	font-family: 'Conv_Univers45Light';
+	font-size:11px;
+	padding-top:5px;
+}
+
+div.headerbartop_left{
+	width:336px;
+	height:60px;
+	float:left;
+	font-family: 'Playfair Display', serif;
+}
+
+div.headerbartop_left1{
+	width:336px;
+	height:26px;
+	display:block;
+}
+
+div.headerbartop_left2a{
+	width:24px;
+	float:left;
+	padding-right:5px;
+	border-right:1px solid #000000;
+}
+
+div.headerbartop_left2b{
+	width:300px;
+	float:left;
+	font-size:11px;
+	padding-left:5px;
+}
+
+
+div.headerbartop_center{
+	width:415px;
+	height:60px;
+	float:left;
+}
+
+div.headerbartop_right{
+	width:333px;
+	height:60px;
+	float:left;
+	font-size:13px;
+}
+
+
+
+div.headerbarmid{
+	width:1084px;
+	height:20px;
+	background:#000000;
+	color:#ffffff;
+	text-align:center;
+	border-bottom:1px solid #cccccc;
+}
+
+div.headerbarbottom{
+	width:1064px;
+	height:20px;
+	padding:10px;
+}
+
+div.headerbarbottom_left{
+	width:164px;
+	float:left;
+}
+
+div.headerbarbottom_center{
+	width:700px;
+	float:left;
+}
+
+div.headerbarbottom_right{
+	width:200px;
+	font-style:italic;
+	font-size:13px;
+	float:left;
+	text-align:right;
+	font-weight:bold;
+}
+
+li.navblack{
+	float:left;
+	list-style:none;
+	margin:0 auto;
+	padding:5px;
+	padding-left:30px;
+	padding-right:30px;
+}
+
+li.navblackleft{
+	padding-left:200px;
+}
+
+li.navblack a{
+	color:#ffffff;
+}
+
+li.navgreen{
+	float:right;
+	list-style:none;
+	margin:0 auto;
+	padding:5px;
+	padding-left:30px;
+	padding-right:30px;
+	background:#47baa6;
+}
+
+li.navgreen a{
+	color:#ffffff;
+}
+
+
+
+</style>
+
+<div class="headerbar">
+
+	<div class="headerbartop_left">
+		<div class="headerbartop_left1">
+			<!--<input type="text" style="font-size:10px;font-style:italic;color:#eaeaea;width:100px; height:16px;border:1px solid #eaeaea;" value="Search on Nifty"><img src="https://www.niftythrifty.com/images/images/header_magglass.png">-->
+		</div>
+		<div class="headerbartop_left2a">
+			<img src="https://www.niftythrifty.com/images/images/header_recycle_logo.png">
+		</div>
+		<div class="headerbartop_left2b">
+			<b>FREE SHIPPING</b><br>on all orders above $70
+		</div>
+	</div>
+	<div class="headerbartop_center">
+		<a href="{{ path('nifty_thrifty_content', {'slug': 'home'}) }}"><img src="https://www.niftythrifty.com/images/images/header_logo_trasn.png" border=0></a>
+	</div>
+	<div class="headerbartop_right">
+		<div style="width:210px;height:60px;float:left;text-align:right;">
+			{% render(controller('NiftyThriftyShopBundle:User:isLoggedIn')) %}
+		</div>
+		<div style="width:100px;height:60px;float:right;padding-right:5px;border-left:1px solid #000000;text-align:right;text-transform:uppercase;">
+			<a href="" style="font-size:13px;font-weight:bold;">MY CART</a><br>
+			{% render(controller('NiftyThriftyShopBundle:Basket:getBasketCount')) %}<br>
+			<span class="items_in_cart">{% render(controller('NiftyThriftyShopBundle:Navigation:userCreditTopNav')) %}</span> in Credit
+		</div>
+	</div>
+
+	<div class="clear"></div>
+
+	<div class="headerbarmid">
+		<li class="navblack navblackleft"><a href="{{ path('collections_splash') }}">COLLECTIONS</a>
+		<li class="navblack"><a href="{{ path('shops_splash') }}">COLLABORATORS</a>
+		<li class="navblack"><a href="{{ path('get_all_items') }}">SHOPS</a>
+		<li class="navblack"><a href="{{ path('get_items_by_value', {'itemValue': 'under-35'}) }}">UNDER $35</a>
+		<li class="navblack"><a href="{{ path('current_user_loves') }}">MY HEARTS</a>
+		<li class="navgreen"><a href="http://blog.niftythrifty.com/">THE BLOG</a>
+	</div>
+
+	<div class="clear"></div>
+	<div class="headerbarbottom">
+		<div class="headerbarbottom_left">
+			<div class="fb-like" data-href="https://www.facebook.com/Niftythriftyvintage" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" style="padding-right:10px;overflow:hidden;"></div>
+		</div>
+		<div class="headerbarbottom_center">
+			<input type="text" style="font-size:13px;font-style:italic;color:#cccccc;width:650px; height:24px;border:1px solid #dddddd;" id="search_text_topnav" value="Search on Nifty"
+										onfocus="javascript: if(this.value=='Search on Nifty'){this.value=''}"
+										onblur="javascript: if(this.value==''){this.value='Search on Nifty'}" >
+													<input type="button" id="search_button_topnav" value="" style="background:url('/images/images/header_magglass.png');width:12px;height:12px;border:0px;cursor:pointer;" />
+
+		</div>
+		<div class="headerbarbottom_right">
+			CONTACT US: 917-664-0161
+		</div>
+	</div>
+</div>
+
+
+
+<div id="cart_wrapper">
+	<div id="sub_cart_container">
+		<div id="sub_cart" class="sub">
+		<div class="right_decoration"></div>
+		<div id="sub_cart_title">My cart
+			<div style="float:right;">
+				<img src="/images/images/freeship70cart.jpg" />
+			</div>
+		</div>
+		<div id="cart_dyn"></div>
+		<div class="clear"></div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	    
+<div id="right_content">
+	<div id="backtotopbtn"></div>
+	<div id="main_content">
+
+	
+	
+		<!-- BEGIN page content -->
+			{% block page_content %}{% endblock %}
+		<!-- END page content -->
+	</div>
+
+
+<div class="clear"></div>
+
+<div class="footer4container">
+
+	<div class="footer4line"></div>
+
+	<div class="footer4col1">
+		<img src="/images/images/logo_footer.png" />
+	</div>
+
+	<div class="footer4verticalline"></div>
+
+	<div class="footer4col2">
+		<h3>SHOPPING</h3>
+		<a href="{{ path('user_account') }}">ACCOUNT</a>
+		<a href="{{ path('user_my_basket') }}">MY CART</a>
+		<a href="{{ path('user_invite_friend') }}">INVITE A FRIEND</a>
+		<a href="{{ path('nifty_thrifty_content', {'slug': 'shipping-and-returns'}) }}">SHIPPING &amp; RETURNS</a>
+		<a href="{{ path('nifty_thrifty_content', {'slug': 'faq'}) }}">FAQs</a>
+	</div>
+
+	<div class="footer4verticalline"></div>
+
+	<div class="footer4col3">
+		<h3>ABOUT NIFTY</h3>
+		<a href="{{ path('nifty_thrifty_content', {'slug': 'about-us'}) }}">ABOUT</a>
+		<a href="{{ path('nifty_thrifty_content', {'slug': 'contact-us'}) }}">CONTACT US: 917-664-0161</a>
+		<a href="{{ path('nifty_thrifty_content', {'slug': 'press'}) }}">NIFTY PRESS</a>
+		<a href="{{ path('nifty_thrifty_content', {'slug': 'terms-of-use'}) }}">TERMS OF USE</a>
+		<a href="{{ path('nifty_thrifty_content', {'slug': 'careers'}) }}">CAREERS</a>
+	</div>
+
+	<div class="footer4verticalline"></div>
+
+	<div class="footer4col4">
+		<h3>GET SOCIAL</h3>
+		<div class="footer4socialleft">
+			<div class="footer4social_image">
+				<img src="/images/images/blogicons_facebook.png" />
+			</div>
+			<div class="footer4social_text">
+				<a href="https://www.facebook.com/Niftythriftyvintage" class="sociallabel">FACEBOOK</a>
+			</div>
+		</div>
+		<div class="footer4socialright">
+			<div class="footer4social_image">
+				<img src="/images/images/blogicons_instagram.png" />
+			</div>
+			<div class="footer4social_text">
+				<a href="http://instagram.com/niftythrifty" class="sociallabel">INSTAGRAM</a>
+			</div>
+		</div>
+		<div class="footer4socialleft">
+			<div class="footer4social_image">
+				<img src="/images/images/blogicons_twitter.png" />
+			</div>
+			<div class="footer4social_text">
+				<a href="https://twitter.com/niftythrifty" class="sociallabel">TWITTER</a>
+			</div>
+		</div>
+		<div class="footer4socialright">
+			<div class="footer4social_image">
+				<img src="/images/images/blogicons_pinterest.png" />
+			</div>
+			<div class="footer4social_text">
+				<a href="http://pinterest.com/niftythriftynyc/" class="sociallabel">PINTEREST</a>
+			</div>
+		</div>
+
+	</div>
+
+
+</div>
+
+<div class="clear"></div>
+		<div id="opa_wrapper" style="visibility:hidden; opacity:0; display:none;">
+		{% render(controller('NiftyThriftyShopBundle:User:showRegistrationForm', {'type': 'overlay'})) %}
+
+			<div id="user_login" style="margin:0 auto;height:505px;display:none;">
+				<a href="#" title="Close" id="close_login"></a>
+
+				<div class="login_center">
+					<img src="/images/images/logo_login.png">
+
+					<div class="clear"></div>
+					<form action="{{ path('login_check') }}" method="POST" id="login_form">
+						<input type="hidden" name="login_facebook" id="login_facebook" value="false" />
+						<div class="row" style="margin-top:30px;">
+							<label for="user_login_email">
+								Email
+							</label>
+							<div class="input_gen">
+								<div class="input_gen_left"></div>
+								<div class="input_gen_middle">
+									<input type="text" id="username" name="userEmail" value="">
+								</div>
+								<div class="input_gen_right"></div>
+							</div>
+						</div>
+						<div class="row" style="margin-top:30px;margin-bottom:20px;">
+							<label for="user_login_password">
+								Password
+							</label>
+							<div class="input_gen">
+								<div class="input_gen_left"></div>
+								<div class="input_gen_middle">
+									<input type="password" id="password" name="userPassword">
+								</div>
+								<div class="input_gen_right"></div>
+							</div>
+						</div>
+						<div style="text-align:right;padding-right:20px;font-family: 'Volkorn-Regular';font-size:12px;margin-bottom:20px;">
+							<a href="{{ path('recover_password_form') }}" title="Forgot password">
+								Forgot your password ?
+							</a><br>
+							<label for="remember_me">Keep me logged in</label>
+							<input type="checkbox" id="remember_me" name="_remember_me" checked="checked">
+						</div>
+						<input type="hidden" name="login_redirect" id="login_redirect" value="" /> 
+						<input type="hidden" name="userFbId" id="userFbId" value="" /> 
+						<input class="submit" type="submit" value="LOGIN" style="width:100px; height:47px; margin:0; margin-left:20px;margin-right:10px; float:left;"/>
+						<span href="#" id="fb-login" name="fb_login_btn" title="Fill registration fields with Facebook" style="margin-right:20px; float:right;">
+							<img src="/images/images/registerwithfacebookbtn.png">
+						</span>
+						<div class="clear"></div>
+						<div class="notmemberrow">
+							Not a member yet? <a id="logintoregister" href="#" style="">SIGN UP</a>
+						</div>
+					</form>
+
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+
+	                {% render(controller('NiftyThriftyShopBundle:User:customTags')) %}
+
+
+				<script type="text/javascript">
+
+				  var _gaq = _gaq || [];
+				  _gaq.push(['_setAccount', 'UA-35258507-1']);
+				  _gaq.push(['_trackPageview']);
+				
+				  (function() {
+				    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				  })();
+				
+				</script>
+
+
+
+
+<!-- Segment Pixel - NifityThrifty--Visitor  - DO NOT MODIFY -->
+<script src="http://ib.adnxs.com/seg?add=1431228&t=1" type="text/javascript"></script>
+<!-- End of Segment Pixel -->
+
+
+
+<!-- Segment Pixel - NifityThrifty--Shopper - DO NOT MODIFY -->
+<script src="http://ib.adnxs.com/seg?add=1431230&t=1" type="text/javascript"></script>
+<!-- End of Segment Pixel -->
+
+
+    </body>
+</html>

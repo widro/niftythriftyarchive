@@ -1,0 +1,38 @@
+		<div id="user_invite">
+			<h1>
+				Invite your friends. Earn Nifty credits
+			</h1>
+			<span class="sub">
+				Users invited: <span id="inviteCount">{{ inviteCount }}</span>
+			</span>
+
+
+
+{% if invalidEmails|length > 0 %}
+			<span class="sub">
+				Not all invitations could be sent.  Invitations were not sent to:
+			</span>
+			<div id="invitations_list">
+				<div class="top">
+					<div class="col email">Email</div>
+				</div>
+					<div id="invitationList" class="list">
+						{% for email in invalidEmails %}
+						<div class="line">
+							<div class="col email">
+								{{ email }}
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				<div class="clear"></div>
+			</div>
+{% endif %}
+			
+			<div class="clear"></div>
+
+    
+    
+    
+    
+    </div>

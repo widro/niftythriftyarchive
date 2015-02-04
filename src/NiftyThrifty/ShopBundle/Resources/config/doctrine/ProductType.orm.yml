@@ -1,0 +1,18 @@
+NiftyThrifty\ShopBundle\Entity\ProductType:
+    type: entity
+    table: product_type
+    fields:
+        productTypeId:
+            id: true
+            type: bigint
+            nullable: false
+            column: product_type_id
+            generator:
+                strategy: IDENTITY
+        productTypeName:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: product_type_name
+    lifecycleCallbacks: {  }

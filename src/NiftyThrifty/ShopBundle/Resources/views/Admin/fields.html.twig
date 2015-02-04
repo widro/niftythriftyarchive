@@ -1,0 +1,20 @@
+{% extends 'form_div_layout.html.twig' %}
+
+{% block file_widget %}
+    {% spaceless %}
+
+    {% if image_url is not null %}
+        <div style="border: 1px solid black;">
+            <img id="{{ id_name }}_img" src="{{ asset(image_url) }}"/>
+            <input type="hidden" id="existing_{{ id_name }}" name="existing_{{ field_name }}" value="{{ image_url }}">
+            <br>Change this image: 
+            {{ block('form_widget') }}
+            <br>
+            <input type="checkbox" name="delete_{{ field_name }}" value="1"> Delete image?
+        </div>
+    {% else %}
+        {{ block('form_widget') }}
+    {% endif %}
+
+    {% endspaceless %}
+{% endblock %}

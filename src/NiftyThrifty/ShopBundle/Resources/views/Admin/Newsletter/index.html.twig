@@ -1,0 +1,115 @@
+{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
+
+{% block title %}
+{{ parent() }} - {{ 'views.index.list'|trans({'%entity%': 'Newsletter'}, 'JordiLlonchCrudGeneratorBundle') }}
+{% endblock %}
+
+{% block page %}
+
+<div class="row">
+
+    <div class="span8">
+        <h1>{{ 'views.index.list'|trans({'%entity%': 'Newsletter'}, 'JordiLlonchCrudGeneratorBundle') }}</h1>
+    </div>
+    <div class="span2">
+        {% if form_errors(filterForm) %}
+        <div class="alert alert-block alert-error fade in form-errors">
+            {{ form_errors(filterForm) }}
+        </div>
+        {% endif %}
+        &nbsp;
+    </div>
+    <div class="span2">
+        <div class="filters-right">
+            <a class="btn dropdown-toggle" data-toggle="collapse" data-target="#filters">
+                {{ 'views.index.filters'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+                <span class="caret"></span>
+            </a>
+        </div>
+    </div>
+    <div style="clear:both"></div>
+    <div class="span12">
+        <div id="filters" class="collapse">
+
+            <form class="well" action="{{ path('newsletter_admin') }}" method="get" {{ form_enctype(filterForm) }}>
+                {{ form_row(filterForm.newsletterId) }}
+                {{ form_row(filterForm.newsletterName) }}
+                {{ form_row(filterForm.newsletterTitle) }}
+                {{ form_row(filterForm.newsletterCollectionImg) }}
+                {{ form_row(filterForm.newsletterProduct1Img) }}
+                {{ form_row(filterForm.newsletterProduct1Link) }}
+                {{ form_row(filterForm.newsletterProduct2Img) }}
+                {{ form_row(filterForm.newsletterProduct2Link) }}
+                {{ form_row(filterForm.newsletterBlastId) }}
+                {{ form_row(filterForm.newsletterBlastScheduleTime) }}
+                {{ form_rest(filterForm) }}
+
+                <p>
+                    <button type="submit" name="filter_action" value="filter">{{ 'views.index.filter'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+                    <button type="submit" name="filter_action" value="reset">{{ 'views.index.reset'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div class="span12">
+
+    <table class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Newsletterid</th>
+            <th>Newslettername</th>
+            <th>Newslettertitle</th>
+            <th>Newslettercollectionimg</th>
+            <th>Newsletterproduct1img</th>
+            <th>Newsletterproduct1link</th>
+            <th>Newsletterproduct2img</th>
+            <th>Newsletterproduct2link</th>
+            <th>Newsletterblastid</th>
+            <th>Newsletterblastscheduletime</th>
+            <th>{{ 'views.index.actions'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('newsletter_admin_show', { 'id': entity.id }) }}">{{ entity.newsletterId }}</a></td>
+            <td>{{ entity.getNewsletterName }}</td>
+            <td>{{ entity.getNewsletterTitle }}</td>
+            <td>{{ entity.getNewsletterCollectionImg }}</td>
+            <td>{{ entity.getNewsletterProduct1Img }}</td>
+            <td>{{ entity.getNewsletterProduct1Link }}</td>
+            <td>{{ entity.getNewsletterProduct2Img }}</td>
+            <td>{{ entity.getNewsletterProduct2Link }}</td>
+            <td>{{ entity.getNewsletterBlastId }}</td>
+            <td>{{ entity.getNewsletterBlastScheduleTime|date('Y-m-d H:i:s') }}</td>
+            <td>
+        <a class="btn btn-mini" href="{{ path('newsletter_admin_show', { 'id': entity.id }) }}">
+            {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>
+        <a class="btn btn-mini" href="{{ path('newsletter_admin_edit', { 'id': entity.id }) }}">
+            {{ 'views.actions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>
+        <a class="btn btn-mini" href="{{ path('newsletter_admin_schedule', { 'id': entity.id }) }}">
+            Schedule
+        </a>
+        </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    </div>
+    <div style="clear:both"></div>
+
+    <div class="span4">
+    {{ pagerHtml|raw }}
+    </div>
+
+        <div class="span8">
+    <a class="btn btn-primary likepaginator" href="{{ path('newsletter_admin_new') }}">
+            {{ 'views.index.createnew'|trans({}, 'JordiLlonchCrudGeneratorBundle') }} Newsletter
+        </a>
+    </div>
+    </div>
+
+{% endblock %}

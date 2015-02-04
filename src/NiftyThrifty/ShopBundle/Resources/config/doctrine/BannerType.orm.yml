@@ -1,0 +1,18 @@
+NiftyThrifty\ShopBundle\Entity\BannerType:
+    type: entity
+    table: banner_type
+    fields:
+        name:
+            id:         true
+            type:       string
+            length:     50
+            fixed:      false
+            nullable:   false
+            column:     name
+    oneToMany:
+        banners:
+            targetEntity:   Banner
+            mappedBy:       bannerTypeEntity
+            orderBy:
+                rotationStartTime: ASC
+    lifecycleCallbacks: {  }

@@ -1,0 +1,140 @@
+<div style="width:760px;max-height:300px; overflow-y:scroll;overflow-x:hidden;">
+<table>
+	<tr class="legend">
+		<th class="item">item</th>
+		<th class="description">description</th>
+		<th class="delivery">estimated delivery</th>
+		<th  class="time">time remaining</th>
+		<th class="price">price</th>
+		<th class="delete"></th>
+	</tr>
+	<tr class="sepa">
+		<td colspan="6"><div class="cart_separator"></div></td>
+	</tr>
+
+
+    {% set subtotal = 0 %}
+    {% if basketItems|length > 0 %}
+            {% for basketItem in basketItems %}
+                    {% set subtotal = subtotal + basketItem.getProduct.getProductPrice %}
+
+		<tr class="product" id="basket-item-{{ basketItem.getBasketItemid }}">
+			<td><a href="{{ path('show_item', {'slug': basketItem.getProduct.getProductName|slugify}) }}-{{ basketItem.getProduct.getId }}" title="">
+			{% if basketItem.getProduct.getProductVisual1Large == '' %}
+				<img class="cart_pic" src="/{{ basketItem.getProduct.getProductVisual1 }}" />
+			{% endif %}
+			{% if basketItem.getProduct.getProductVisual1Large != '' %}
+				<img class="cart_pic" src="/{{ basketItem.getProduct.getProductVisual1Large }}" />
+			{% endif %}
+
+
+			</a></td>
+			<td>
+				<div class="description_name">{{ basketItem.getProduct.getProductName }}</div>
+				<div class="description_size">Size: {{basketItem.getProduct.getProductCategorySize.getProductCategorySizeValue}}</div>
+			</td>
+			<td>
+				<div class="delivery"><xsl:value-of select="basket_item_delivery" /></div>
+			</td>
+			<td>
+				<div class="time_remaining active"><span>{{ basketItem.findBasketItemTimeRemaining }}</span> min.</div>				
+			</td>
+			<td>
+				<div class="price_final">$<span>{{ basketItem.getProduct.getProductPrice|number_format(2) }}</span></div>
+			</td>
+			<td>
+				<!--<a href="{{ path('remove_item_from_basket', {'productId': basketItem.getProduct.getProductId}) }}">Remove from basket</a>-->
+				<span name="{{ basketItem.getProduct.getProductId }}" id="{{ basketItem.getProduct.getProductId }}" class="remove"></span>
+			</td>
+		</tr>
+		<tr class="sepa">
+			<td colspan="6"><div class="cart_separator"></div></td>
+		</tr>
+            {% endfor %}
+    {% else %}
+	<tr id="no_products">
+		<td colspan="6">Your cart is empty !</td>
+	</tr>
+    {% endif %}
+</table>
+</div>
+<div id="order_subtotal">
+	<div id="order_subtotal_title" style="width:110px;">order subtotal</div>
+	<div id="order_subtotal_value" style="width:54px;text-align:right;">$<span>{{ subtotal|number_format(2) }}</span></div>
+</div>
+<style>
+
+div.checkout_form label{
+	font-size: 15px;
+	font-family: Volkorn-Regular;
+	margin:10px;
+	width:200px;
+	display:block;
+}
+
+div.checkout_form input{
+	border:2px solid #cccccc;
+	font-family: Volkorn-Regular;
+	color: #2b2b2b;
+	font-size: 13px;
+	height: 35px;
+	padding: 0 7px;
+	width:400px;
+
+}
+
+div.checkout_form textarea{
+	border:2px solid #cccccc;
+	font-family: Volkorn-Regular;
+	color: #2b2b2b;
+	font-size: 13px;
+	height: 35px;
+	padding: 0 7px;
+	width:400px;
+	height:90px;
+
+}
+
+div.checkout_form select{
+	font-family: Volkorn-Regular;
+	color: #2b2b2b;
+	font-size: 13px;
+	height: 35px;
+	padding: 0 7px;
+
+}
+
+div.checkout_form h1{
+	color:#ff7070;
+}
+
+div.checkout_form button{
+	background-color: #FF7070;
+	color: #FFFFFF;
+	display: block;
+	font-size: 15px;
+	height: 39px;
+	text-align: center;
+	width: 155px;
+	margin: 15px 0 0 0;
+	font-family: Volkorn-Italic;
+	cursor: pointer;
+	border: none;
+}
+
+div.checkout_form input[type="radio"]{
+	height: auto;
+	padding: 0px;
+	border:0px;
+	float:left;
+	width:40px;
+}
+
+</style>
+
+
+
+
+<div class="clear"></div>
+<a id="proceed" href="{{ path('start_order') }}">Proceed to checkout &gt;</a>
+<a id="proceed" href="javascript:panels.close($('sub_cart'));">Continue Shopping &gt;</a>

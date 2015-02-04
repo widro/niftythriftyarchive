@@ -1,0 +1,24 @@
+NiftyThrifty\ShopBundle\Entity\State:
+    type: entity
+    table: state
+    fields:
+        stateId:
+            id: true
+            type: bigint
+            nullable: false
+            column: state_id
+            generator:
+                strategy: IDENTITY
+        stateName:
+            type: string
+            length: 64
+            fixed: false
+            nullable: false
+            column: state_name
+        stateCode:
+            type: string
+            length: 5
+            fixed: false
+            nullable: false
+            column: state_code
+    lifecycleCallbacks: {  }

@@ -1,0 +1,170 @@
+{% extends 'NiftyThriftyShopBundle::layout.html.twig' %}
+
+{% block page_heading %}Nifty Thrifty - Contact Us{% endblock %}
+
+{% block page_content %}
+
+<div id="main_content">
+        <div id="contactUs" class="content_page">
+          <h1>Contact us</h1>
+          <div class="content">
+            <div class="content_contact">
+            
+		    {% if viewtype == 'thanks' %}
+            
+            
+              <div class="subtitle">
+              Thanks for contacting us!
+              </div>
+            
+            
+            
+		    {% endif %}
+            
+            
+		    {% if viewtype == 'showform' %}
+            
+            
+            
+            
+              <div class="subtitle">
+								If you have any questions or requests, please contact us.
+							</div>
+              <div class="form">
+                <form method="post">
+                  <input type="hidden" name="reload" value="true">
+                  <div class="row">
+                    <div class="block">
+                      <label for="message[first_name]">
+												First name
+											</label>
+                      <div class="input_gen">
+                        <div class="input_gen_left"></div>
+                        <div class="input_gen_middle">
+                          <input class="half" type="text" value="" name="message[first_name]" id="message_first_name">
+                        </div>
+                        <div class="input_gen_right"></div>
+                      </div>
+                    </div>
+                    <div class="block">
+                      <label for="message[last_name]">
+												Last name
+											</label>
+                      <div class="input_gen">
+                        <div class="input_gen_left"></div>
+                        <div class="input_gen_middle">
+                          <input class="half" type="text" value="" name="message[last_name]" id="message[last_name]">
+                        </div>
+                        <div class="input_gen_right"></div>
+                      </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  <div class="row">
+                    <label for="message[subject]">
+											Subject
+										</label>
+                    <div class="input_gen">
+                      <div class="input_gen_left"></div>
+                      <div class="input_gen_middle">
+                        <input class="full" type="text" value="" name="message[subject]" id="message[subject]">
+                      </div>
+                      <div class="input_gen_right"></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <label for="message[email]">
+											Email
+										</label>
+                    <div class="input_gen">
+                      <div class="input_gen_left"></div>
+                      <div class="input_gen_middle">
+                        <input class="full" type="text" value="" name="message[email]" id="message[email]">
+                      </div>
+                      <div class="input_gen_right"></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <label for="message[content]">
+											Message
+										</label>
+                    <div class="textarea_gen">
+                      <div class="textarea_gen_left"></div>
+                      <div class="textarea_gen_middle">
+                        <textarea class="full" name="message[content]" id="message[content]"></textarea>
+                      </div>
+                      <div class="textarea_gen_right"></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <input type="submit" value="Submit &gt;" name="submit" class="submit">
+                    <div class="clear"></div>
+                  </div>
+                </form>
+              </div>
+              <div class="emails">
+                <div class="email">
+                  <div class="title">Returns</div>
+                  <div class="content">Write us if you are unhappy with an item</div>
+                  <div class="email_link">
+                    <a href="mailto:returns@niftythrifty.com" title="">returns@niftythrifty.com</a>
+                  </div>
+                </div>
+                <div class="email">
+                  <div class="title">Customer support</div>
+                  <div class="content">Contact us if you have a question or need help</div>
+                  <div class="email_link">
+                    <a href="mailto:help@niftythrifty.com" title="">help@niftythrifty.com</a>
+                  </div>
+                </div>
+                <div class="clear"></div>
+                <div class="email">
+                  <div class="title">Buzz</div>
+                  <div class="content">Let us know if you'd like to feature NiftyThrifty in an article, blog post or on TV</div>
+                  <div class="email_link">
+                    <a href="mailto:buzz@niftythrifty.com" title="">buzz@niftythrifty.com</a>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="address">
+                <div class="separator"></div>
+                <div class="adress_details">
+                  <div class="title">NiftyThrifty, Inc.</div>
+                  <div class="street">37 Greenpoint Avenue - Suite A3A</div>
+                  <div class="city">Brooklyn (Greenpoint),  NY 11222</div>
+                </div>
+                <!--
+                <div class="social_links">
+                  <ul>
+                    <li class="facebook">
+                      <a href="https://www.facebook.com/Niftythriftyvintage">
+                        <img src="/Public/Style/Img/facebook_round_button.png">
+                      </a>
+                    </li>
+                    <li class="twitter">
+                      <a href="https://twitter.com/niftythrifty">
+                        <img src="/Public/Style/Img/twitter_round_button.png">
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                -->
+                <div class="clear"></div>
+                <p>
+                                    Contact us 917-664-0161 from 9AM-5PM Eastern.<br>
+                                    If you have a question about a product, an order or a return.
+                                </p>
+                <div class="separator"></div>
+              </div>
+		    {% endif %}
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+{% endblock %}

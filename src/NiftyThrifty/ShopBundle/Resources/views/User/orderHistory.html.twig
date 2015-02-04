@@ -1,0 +1,77 @@
+{% extends 'NiftyThriftyShopBundle::layout.html.twig' %}
+
+{% block page_heading %}My Account {{ user.getUserEmail }}{% endblock %}
+
+{% block page_content %}
+<div class="orders">
+		<div id="user_account">
+			<h1>
+				My Account
+			</h1>
+			
+			<p>
+				Update your personal information, check your last order and upload your picture in the new Nifty look you've just purchased!
+			</p>
+			
+			<ul class="menu">
+				<li>
+					<a href="{{ url('user_account') }}" title="Account Settings">
+						Account Settings
+					</a>
+				</li>
+				<li>
+					<a href="{{ path('view_order_history') }}" title="Orders">
+						Orders
+					</a>
+				</li>
+				
+				<li>
+					<a href="#" id="fb-login" name="fb_account_btn" title="Add Facebook" style="background-color: #6884B3;">
+						Connect To Facebook
+					</a>
+				</li>
+			</ul>
+			
+			<div class="clear"></div>
+			
+			<div class="separator"></div>
+
+
+
+	<div class="orders">
+	<h2>Orders<h2>
+    {% if invoices|length > 0 %}
+	<div id="orderList" class="top">
+		<div class="col number">
+			Order number
+		</div>
+		<div class="col date">
+			Order date
+		</div>
+		<div class="col shipping_status">
+			Status
+		</div>
+	</div>
+                {% for invoice in invoices %}
+		<div class="line" id="invoice{{ invoice.getInvoiceId }}">
+			<div id="invoice{{ invoice.getInvoiceId }}_orderId" class="col number">{{ invoice.getInvoiceNum }}</div>
+			<div id="invoice{{ invoice.getInvoiceId }}_orderDate" class="col date">{{ invoice.getInvoiceDate|date("m/d/Y") }}</div>
+			<div id="invoice{{ invoice.getInvoiceId }}_status" class="col shipping {{ invoice.getInvoiceShippingStatus }}">{{ invoice.getInvoiceShippingStatus }}</div>
+		</div>
+                {% endfor %}
+
+
+
+
+    {% else %}
+	<div id="noOrders" class="nifty_error">
+		<div class="content">
+			You haven't ordered on Nifty Trifty yet.
+		</div>
+	</div>
+    {% endif %}
+    
+    </div>
+    
+    
+{% endblock %}

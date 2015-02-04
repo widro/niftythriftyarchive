@@ -1,0 +1,170 @@
+{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
+
+{% block title %}
+{{ parent() }} - {{ 'views.index.list'|trans({'%entity%': 'Product'}, 'JordiLlonchCrudGeneratorBundle') }}
+{% endblock %}
+
+{% block page %}
+
+<div class="row">
+
+    <div class="span8">
+        <h1>{{ 'views.index.list'|trans({'%entity%': 'Product'}, 'JordiLlonchCrudGeneratorBundle') }}</h1>
+    </div>
+    <div class="span2">
+        {% if form_errors(filterForm) %}
+        <div class="alert alert-block alert-error fade in form-errors">
+            {{ form_errors(filterForm) }}
+        </div>
+        {% endif %}
+        &nbsp;
+    </div>
+    <div class="span2">
+        <div class="filters-right">
+            <a class="btn dropdown-toggle" data-toggle="collapse" data-target="#filters">
+                {{ 'views.index.filters'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+                <span class="caret"></span>
+            </a>
+        </div>
+    </div>
+    <div style="clear:both"></div>
+    <div class="span12">
+        <div id="filters" class="collapse">
+
+            <form class="well" action="{{ path('product_admin') }}" method="get" {{ form_enctype(filterForm) }}>
+                {{ form_row(filterForm.productId) }}
+                {{ form_row(filterForm.productName) }}
+                {{ form_row(filterForm.productDescription) }}
+                {{ form_row(filterForm.productCategorySizeId) }}
+                {{ form_row(filterForm.productTypeId) }}
+                {{ form_row(filterForm.productOverallCondition) }}
+                {{ form_row(filterForm.productPrice) }}
+                {{ form_row(filterForm.productOldPrice) }}
+                {{ form_row(filterForm.productDiscount) }}
+                {{ form_row(filterForm.productDetailedConditionValue) }}
+                {{ form_row(filterForm.productDetailedConditionDescription) }}
+                {{ form_row(filterForm.productFabric) }}
+                {{ form_row(filterForm.productMeasurements) }}
+                {{ form_row(filterForm.productAvailability) }}
+                {{ form_row(filterForm.productHeavy) }}
+                {{ form_row(filterForm.productVisual1) }}
+                {{ form_row(filterForm.productVisual1Large) }}
+                {{ form_row(filterForm.productVisual2) }}
+                {{ form_row(filterForm.productVisual2Large) }}
+                {{ form_row(filterForm.productVisual3) }}
+                {{ form_row(filterForm.productVisual3Large) }}
+                {{ form_row(filterForm.collectionId) }}
+                {{ form_row(filterForm.designerId) }}
+                {{ form_row(filterForm.productHashtag) }}
+                {{ form_row(filterForm.productInstagramMediaIdNifty) }}
+                {{ form_row(filterForm.productInstagramMediaIdCustomer) }}
+                {{ form_row(filterForm.productTaxes) }}
+                {{ form_row(filterForm.productTaxesActive) }}
+                {{ form_row(filterForm.productCode) }}
+                {{ form_row(filterForm.productTagsize) }}
+                {{ form_rest(filterForm) }}
+
+                <p>
+                    <button type="submit" name="filter_action" value="filter">{{ 'views.index.filter'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+                    <button type="submit" name="filter_action" value="reset">{{ 'views.index.reset'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div class="span12">
+
+    <table class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Productid</th>
+            <th>Productname</th>
+            <th>Productdescription</th>
+            <th>Productcategorysizeid</th>
+            <th>Producttypeid</th>
+            <th>Productoverallcondition</th>
+            <th>Productprice</th>
+            <th>Productoldprice</th>
+            <th>Productdiscount</th>
+            <th>Productdetailedconditionvalue</th>
+            <th>Productdetailedconditiondescription</th>
+            <th>Productfabric</th>
+            <th>Productmeasurements</th>
+            <th>Productavailability</th>
+            <th>Productheavy</th>
+            <th>Productvisual1</th>
+            <th>Productvisual1large</th>
+            <th>Productvisual2</th>
+            <th>Productvisual2large</th>
+            <th>Productvisual3</th>
+            <th>Productvisual3large</th>
+            <th>Collectionid</th>
+            <th>Designerid</th>
+            <th>Producthashtag</th>
+            <th>Productinstagrammediaidnifty</th>
+            <th>Productinstagrammediaidcustomer</th>
+            <th>Producttaxes</th>
+            <th>Producttaxesactive</th>
+            <th>Productcode</th>
+            <th>Producttagsize</th>
+            <th>{{ 'views.index.actions'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('product_admin_show', { 'id': entity.id }) }}">{{ entity.productId }}</a></td>
+            <td>{{ entity.productName }}</td>
+            <td>{{ entity.productDescription }}</td>
+            <td>{{ entity.productCategorySizeId }}</td>
+            <td>{{ entity.productTypeId }}</td>
+            <td>{{ entity.productOverallCondition }}</td>
+            <td>{{ entity.productPrice }}</td>
+            <td>{{ entity.productOldPrice }}</td>
+            <td>{{ entity.productDiscount }}</td>
+            <td>{{ entity.productDetailedConditionValue }}</td>
+            <td>{{ entity.productDetailedConditionDescription }}</td>
+            <td>{{ entity.productFabric }}</td>
+            <td>{{ entity.productMeasurements }}</td>
+            <td>{{ entity.productAvailability }}</td>
+            <td>{{ entity.productHeavy }}</td>
+            <td>{{ entity.productVisual1 }}</td>
+            <td>{{ entity.productVisual1Large }}</td>
+            <td>{{ entity.productVisual2 }}</td>
+            <td>{{ entity.productVisual2Large }}</td>
+            <td>{{ entity.productVisual3 }}</td>
+            <td>{{ entity.productVisual3Large }}</td>
+            <td>{{ entity.collectionId }}</td>
+            <td>{{ entity.designerId }}</td>
+            <td>{{ entity.productHashtag }}</td>
+            <td>{{ entity.productInstagramMediaIdNifty }}</td>
+            <td>{{ entity.productInstagramMediaIdCustomer }}</td>
+            <td>{{ entity.productTaxes }}</td>
+            <td>{{ entity.productTaxesActive }}</td>
+            <td>{{ entity.productCode }}</td>
+            <td>{{ entity.productTagsize }}</td>
+            <td>
+        <a class="btn btn-mini" href="{{ path('product_admin_show', { 'id': entity.id }) }}">
+            {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>
+        <a class="btn btn-mini" href="{{ path('product_admin_edit', { 'id': entity.id }) }}">
+            {{ 'views.actions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    </div>
+    <div style="clear:both"></div>
+    <div class="span4">
+    {{ pagerHtml|raw }}
+    </div>
+
+        <div class="span8">
+    <a class="btn btn-primary likepaginator" href="{{ path('product_admin_new') }}">
+            {{ 'views.index.createnew'|trans({}, 'JordiLlonchCrudGeneratorBundle') }} Product
+        </a>
+    </div>
+    </div>
+
+{% endblock %}

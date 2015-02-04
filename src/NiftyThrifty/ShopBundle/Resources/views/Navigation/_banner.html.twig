@@ -1,0 +1,7 @@
+{% if (banner.getUrl) %}
+  <a id="{{ banner.getBannerType }}_link" href="{{ banner.getUrl }}">
+{% endif %}
+    <img class="{{ banner.getBannerType }}" src="/{{ banner.getBannerImage}}"></img>
+{% if (banner.getUrl) %}
+  </a>
+{% endif %}

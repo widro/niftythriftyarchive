@@ -1,0 +1,147 @@
+<?php
+
+namespace NiftyThrifty\ShopBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * NiftyThrifty\ShopBundle\Entity\ProductCategory
+ *
+ * @ORM\Table(name="product_category")
+ * @ORM\Entity
+ */
+class ProductCategory
+{
+    /**
+     * @var integer $productCategoryId
+     *
+     * @ORM\Column(name="product_category_id", type="bigint", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $productCategoryId;
+
+    /**
+     * @var string $productCategoryName
+     *
+     * @ORM\Column(name="product_category_name", type="string", length=63, nullable=false)
+     */
+    private $productCategoryName;
+
+    /**
+     * Sanitized getters for navigation
+     */
+    public function getId()
+    {
+        return $this->getProductCategoryId();
+    }
+    public function getName()
+    {
+        return $this->getProductCategoryName();
+    }
+
+    /**
+     * Get productCategoryId
+     *
+     * @return integer 
+     */
+    public function getProductCategoryId()
+    {
+        return $this->productCategoryId;
+    }
+
+    /**
+     * Set productCategoryName
+     *
+     * @param string $productCategoryName
+     * @return ProductCategory
+     */
+    public function setProductCategoryName($productCategoryName)
+    {
+        $this->productCategoryName = $productCategoryName;
+    
+        return $this;
+    }
+
+    /**
+     * Get productCategoryName
+     *
+     * @return string 
+     */
+    public function getProductCategoryName()
+    {
+        return $this->productCategoryName;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $productCategorySizes;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->productCategorySizes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add productCategorySizes
+     *
+     * @param NiftyThrifty\ShopBundle\Entity\ProductCategorySize $productCategorySizes
+     * @return ProductCategory
+     */
+    public function addProductCategorySize(\NiftyThrifty\ShopBundle\Entity\ProductCategorySize $productCategorySizes)
+    {
+        $this->productCategorySizes[] = $productCategorySizes;
+    
+        return $this;
+    }
+
+    /**
+     * Remove productCategorySizes
+     *
+     * @param NiftyThrifty\ShopBundle\Entity\ProductCategorySize $productCategorySizes
+     */
+    public function removeProductCategorySize(\NiftyThrifty\ShopBundle\Entity\ProductCategorySize $productCategorySizes)
+    {
+        $this->productCategorySizes->removeElement($productCategorySizes);
+    }
+
+    /**
+     * Get productCategorySizes
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getProductCategorySizes()
+    {
+        return $this->productCategorySizes;
+    }
+    /**
+     * @var int
+     */
+    private $navigationOrder;
+
+    /**
+     * Set navigationOrder
+     *
+     * @param \int $navigationOrder
+     * @return ProductCategory
+     */
+    public function setNavigationOrder(\int $navigationOrder)
+    {
+        $this->navigationOrder = $navigationOrder;
+    
+        return $this;
+    }
+
+    /**
+     * Get navigationOrder
+     *
+     * @return \int 
+     */
+    public function getNavigationOrder()
+    {
+        return $this->navigationOrder;
+    }
+}

@@ -1,0 +1,237 @@
+{% extends 'NiftyThriftyShopBundle::layout.html.twig' %}
+
+{% block page_heading %}Nifty Thrifty Order{% endblock %}
+
+{% block page_content %}
+<style>
+
+button{
+	background-color: #FF7070;
+	color: #FFFFFF;
+	display: block;
+	font-size: 15px;
+	height: 39px;
+	text-align: center;
+	width: 155px;
+	margin: 15px 0 0 0;
+	font-family: Volkorn-Italic;
+	cursor: pointer;
+	border: none;
+}
+
+
+
+</style>
+
+<script type="text/javascript">
+	//window.addEvent('domready', function(){
+		//disable button
+		//document.getElements('button').addEvent('click', function(){
+			//document.getElements('button').set('disabled', true); 
+			//document.getElements('button').setStyles({'background-color' : '#cccccc'});			
+			//document.getElements('button').set('html', 'Loading...'); 			
+			//document.forms[0].submit()
+		//});
+	//});
+</script>
+
+
+<div id="reviewOrder" class="content_page content_shipping">
+			<h1>Order checkout</h1>
+			<div class="subtitle">
+				<p>Thanks for broswing Nifty Thrifty's unique &amp; smartly curated pieces.<br />
+				You're only few steps away from receiving your product, follow the instructions below and you'll get your package very soon.
+				</p>
+			</div>
+			<div class="steps">
+				<div class="steps_list">
+					<div class="item truck">
+						<div class="bg"><span><img src="/images/images/truck.png"/></span></div>
+						<div class="mask"></div>
+					</div>
+					<div class="separator"><div></div></div>
+					<div class="item tag selected">
+						<div class="bg"><span><img src="/images/images/tag.png"/></span></div>
+						<div class="mask"></div>
+					</div>
+					<div class="separator"><div></div></div>
+					<div class="item card">
+						<div class="bg"><span><img src="/images/images/suitcase.png"/></span></div>
+						<div class="mask"></div>
+					</div>
+				</div>
+			</div>
+			<h1 class="step_title">Order review</h1>
+			<div class="subtitle"><p>Review your order and choose your shipment option</p></div>
+			<div class="shipping_wrapper">
+				<div class="main">
+					<div class="resume_addresses">
+						<div class="resume_shipping">
+
+							<h3>Shipping</h3>
+							<!--<a href="####" title="Modify" class="modify">[Change]</a>-->
+							<div class="clear"></div>
+							<div class="resume">
+								{{ order.getOrderShippingAddressFirstName }} {{ order.getOrderShippingAddressLastName }}
+								<br />
+								{{ order.getOrderShippingAddressStreet }}
+								<br />
+								{{ order.getOrderShippingAddressCity }} {{ order.getOrderShippingAddressState }} {{ order.getOrderShippingAddressZipcode }}
+							</div>
+						</div>
+						<div class="resume_billing">
+							<h3>Billing</h3>
+							<!--<a href="###" title="Modify" class="modify">[Change]</a>-->
+							<div class="clear"></div>
+							<div class="resume">
+								{{ order.getOrderBillingAddressFirstName }} {{ order.getOrderBillingAddressLastName }}
+								<br />
+								{{ order.getOrderBillingAddressStreet }}
+								<br />
+								{{ order.getOrderBillingAddressCity }} {{ order.getOrderBillingAddressState }} {{ order.getOrderBillingAddressZipcode }}
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+					
+					<div class="basket">
+						<h3>My order</h3>
+							<div class="items">
+		
+			<table id="basket_table">
+				<tr class="legend">
+					<th class="item">item</th>
+					<th class="description">description</th>
+					<th class="delivery">estimated delivery</th>
+					<th class="time">time remaining</th>
+					<th class="price">price</th>
+					<th class="delete"></th>
+				</tr>
+				<tr class="sepa">
+					<td colspan="6">
+						<div class="cart_separator"></div>
+					</td>
+				</tr>
+
+	    {% for basketItem in basketItems %}
+					<tr class="product" id="basket-item-{{ basketItem.getBasketItemid }}">
+						<td><a href="{{ path('show_item', {'slug': basketItem.getProduct.getProductName|slugify}) }}-{{ basketItem.getProduct.getId }}" title="">
+						{% if basketItem.getProduct.getProductVisual1Large == '' %}
+							<img class="cart_pic" src="/{{ basketItem.getProduct.getProductVisual1 }}" />
+						{% endif %}
+						{% if basketItem.getProduct.getProductVisual1Large != '' %}
+							<img class="cart_pic" src="/{{ basketItem.getProduct.getProductVisual1Large }}" />
+						{% endif %}
+
+
+						</a></td>
+						<td>
+							<div class="description_name">
+								{{ basketItem.getProduct.getProductName }}
+							</div>
+							<div class="description_size">
+								Size:
+								{{basketItem.getProduct.getProductCategorySize.getProductCategorySizeValue}}
+							</div>
+						</td>
+						<td>
+							<div class="delivery">
+								
+							</div>
+						</td>
+						<td>
+							<div class="time_remaining">
+								<span>
+									{{ basketItem.findBasketItemTimeRemaining }}
+								</span>
+								min.
+							</div>
+						</td>
+						<td>
+							<div class="price_final">
+								$
+								<span>
+									{{ basketItem.getProduct.getProductPrice|number_format(2) }}
+								</span>
+							</div>
+						</td>
+						<td>
+							<a href="{{ path('remove_item_from_basket', {'productId': basketItem.getProduct.getProductId}) }}" class="remove"></a>
+						</td>
+					</tr>
+					<tr class="sepa">
+						<td colspan="6">
+							<div class="cart_separator"></div>
+						</td>
+					</tr>
+	    {% endfor %}
+					<tr class="sepa">
+						<td colspan="6">
+						ALL SALES ARE FINAL
+						</td>
+					</tr>
+			</table>
+{{ form(reviewForm)}}
+						</div>
+					</div>
+					
+
+					</div>
+				</div>
+					<div class="sidebar_checkout">
+						<div class="summary">
+							<div id="reviewOrderItemCount" class="resume_nb">
+								<span>{{ basketItems|length }}</span>item{% if basketItems|length > 1 %}s{% endif %}<br />in your cart
+								<span class="clear"></span>
+							</div>
+							
+							<div id="reviewOrderSubtotal" class="resume_row">
+								<span class="label">Subtotal</span><span class="price">${{ order.getOrderAmount|number_format(2) }}</span>
+							</div>
+							
+           						{% if order.getOrderAmountVat == true %}
+								<div id="reviewOrderVat" class="resume_row">
+									<span class="label">Taxes</span><span class="price">${{ order.getOrderAmountVat|number_format(2) }}</span>
+								</div>
+							{% endif %}
+
+           						{% if order.getOrderAmountCoupon == true %}
+								<div id="reviewOrderCoupon" class="resume_row">
+									<span class="label">Coupons</span><span class="price">-${{ order.getOrderAmountCoupon|number_format(2) }}</span>
+								</div>
+							{% endif %}
+
+           						{% if order.basketItemTooLow == true %}
+								<div id="reviewOrderCoupon" class="resume_row">
+									<span class="label">NO DISCOUNT DINKERS</span>
+								</div>
+							{% endif %}
+
+           						{% if order.getOrderAmountCredits == true %}
+								<div id="reviewOrderPreCreditsTotal" class="resume_row">
+									<span class="label">Total</span><span class="price">${{ order.getOrderTotalPreCredits|number_format(2) }}</span>
+								</div>
+								<div id="reviewOrderCredits" class="resume_row">
+									<span class="label">Credits</span><span class="price">-${{ order.getOrderAmountCredits|number_format(2) }}</span>
+								</div>
+							{% endif %}
+
+							
+							<div id="reviewOrderShipping" class="resume_row">
+								<span class="label">Shipping</span><span class="price">${{ order.getOrderAmountShipping|number_format(2) }}</span>
+							</div>
+							
+							<div id="reviewOrderTotal" class="resume_row total">
+								<span class="label">Total</span><span class="price">${{ order.getOrderTotal|number_format(2) }}</span>
+							</div>
+							<div class="clear"></div>
+							<div style="font-size:13px; margin-top:10px; padding:10px; background:#FF7070; color:#ffffff; font-weight:normal; text-decoration:underline;">
+								ALL SALES ARE FINAL
+							</div>
+							<div class="clear"></div>
+						</div>
+						
+					</div>
+				<div class="clear"></div>
+		</div>
+{% endblock %}
